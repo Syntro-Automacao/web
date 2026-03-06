@@ -1,9 +1,9 @@
 import { FeatureSection } from "@/components/sections/Features/FeatureSection";
-
+import { SECTION_IDS } from "@/components/sections/hooks/section-ids";
 export function Borunte() {
   return (
     <FeatureSection
-      id="borunte"
+      id={SECTION_IDS.BORUNTE}
       title="Robô Industrial de Seis Eixos"
       description="Solução de automação industrial para operações repetitivas e de alta precisão. Ideal para montagem, pintura, polimento e manipulação de peças, com confiabilidade em ambientes industriais exigentes."
       imageSrc="/assets/robos/borunte.png"

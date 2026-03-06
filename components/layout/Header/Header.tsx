@@ -6,18 +6,11 @@ import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/layout/Header/ThemeToggle";
 import { Logo } from "@/components/icons/logo";
-
-const navItems = [
-  { label: "Sobre", href: "#sobre" },
-  { label: "Serviços", href: "#servicos" },
-  { label: "Diferenciais", href: "#diferenciais" },
-  { label: "Cases", href: "#cases" },
-  { label: "Missão", href: "#missao" },
-];
+import { navItems } from "@/components/layout/Header/hooks/nav-items";
+import { SECTION_IDS } from "@/components/sections/hooks/section-ids";
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
@@ -27,25 +20,22 @@ export function Header() {
 
     window.addEventListener("scroll", handleScroll);
     handleScroll();
+
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Função para rolagem suave
   const handleSmoothScroll = (
     e: React.MouseEvent<HTMLAnchorElement>,
     href: string,
   ) => {
     e.preventDefault();
-
     setIsMenuOpen(false);
 
-    // Pegar o elemento alvo
     const targetId = href.replace("#", "");
     const targetElement = document.getElementById(targetId);
 
     if (targetElement) {
-      // Calcular posição considerando o header fixo
-      const headerHeight = 80; // altura do header
+      const headerHeight = 80;
       const targetPosition = targetElement.offsetTop - headerHeight;
 
       window.scrollTo({
@@ -72,7 +62,6 @@ export function Header() {
     >
       <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-12">
         <div className="flex items-center justify-between h-16 lg:h-20">
-          {/* Logo */}
           <Link href="/" className="flex items-center gap-2">
             <Logo
               className={`h-8 w-auto transition-colors duration-300 ${
@@ -81,35 +70,35 @@ export function Header() {
             />
           </Link>
 
-          {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center gap-8">
             {navItems.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
                 onClick={(e) => handleSmoothScroll(e, item.href)}
-                className={`hover:text-foreground transition-colors text-md font-medium cursor-pointer
-                  ${isScrolled ? "text-muted-foreground" : "text-white"}`}
+                className={`hover:text-foreground transition-colors text-md font-medium cursor-pointer ${
+                  isScrolled ? "text-muted-foreground" : "text-white"
+                }`}
               >
                 {item.label}
               </Link>
             ))}
           </nav>
 
-          {/* CTA Button & Theme Toggle */}
           <div className="hidden lg:flex items-center gap-2">
             <ThemeToggle />
             <Button asChild>
               <Link
-                href="#contato"
-                onClick={(e) => handleSmoothScroll(e, "#contato")}
+                href={`#${SECTION_IDS.CONTATO}`}
+                onClick={(e) =>
+                  handleSmoothScroll(e, `#${SECTION_IDS.CONTATO}`)
+                }
               >
                 Contato
               </Link>
             </Button>
           </div>
 
-          {/* Mobile Menu Button & Theme Toggle */}
           <div className="flex lg:hidden items-center gap-1">
             <ThemeToggle />
             <button
@@ -128,7 +117,6 @@ export function Header() {
           </div>
         </div>
 
-        {/* Mobile Navigation */}
         {isMenuOpen && (
           <nav className="lg:hidden py-4 border-t border-border">
             <div className="flex flex-col gap-4">
@@ -142,8 +130,14 @@ export function Header() {
                   {item.label}
                 </Link>
               ))}
+
               <Button asChild className="mt-2">
-                <Link href="#contato" onClick={() => setIsMenuOpen(false)}>
+                <Link
+                  href={`#${SECTION_IDS.CONTATO}`}
+                  onClick={(e) =>
+                    handleSmoothScroll(e, `#${SECTION_IDS.CONTATO}`)
+                  }
+                >
                   Contato
                 </Link>
               </Button>

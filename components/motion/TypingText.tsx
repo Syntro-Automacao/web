@@ -39,9 +39,9 @@ export function TypingText({ text, as = "p", className }: TypingTextProps) {
       viewport={{ once: true, amount: 0.8 }}
     >
       {text.split("").map((char, index) => (
-        <motion.text key={index} variants={letter}>
+        <motion.span key={index} variants={letter}>
           {char}
-        </motion.text>
+        </motion.span>
       ))}
     </MotionComponent>
   );

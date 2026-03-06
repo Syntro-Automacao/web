@@ -10,6 +10,7 @@ import {
   useMotionValueEvent,
 } from "framer-motion";
 import { useMemo, useRef, useState, useCallback, useEffect } from "react";
+import { SECTION_IDS } from "@/components/sections/hooks/section-ids";
 
 type RoboCarrinhoProps = {
   onReachEnd?: () => void;
@@ -120,7 +121,7 @@ export function RoboCarrinho({ onReachEnd, onLeaveEnd }: RoboCarrinhoProps) {
   return (
     <section
       ref={sectionRef}
-      id="carrinho"
+      id={SECTION_IDS.CARRINHO}
       className="relative z-30 mx-auto py-24 lg:py-32 scroll-mt-24 sm:scroll-mt-28 lg:scroll-mt-32 bg-(--background) overflow-x-clip"
     >
       <div className="z-10 max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -161,7 +162,7 @@ export function RoboCarrinho({ onReachEnd, onLeaveEnd }: RoboCarrinhoProps) {
               />
               <TypingText
                 as="p"
-                text="A Syntro Automação é uma empresa brasileira especializada..."
+                text="O Robo Carrinho é um robô industrial de alto desempenho, projetado para automatizar tarefas complexas na indústria. Com sua capacidade de navegação e manipulação de objetos, o Robo Carrinho é uma solução eficiente e flexível para a Indústria 4.0."
                 className="text-muted-foreground text-lg leading-relaxed mb-8"
               />
             </motion.div>

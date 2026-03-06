@@ -1,9 +1,9 @@
 import { FeatureSection } from "@/components/sections/Features/FeatureSection";
-
+import { SECTION_IDS } from "@/components/sections/hooks/section-ids";
 export function RoboBandeja3D() {
   return (
     <FeatureSection
-      id="robo-cartesiano"
+      id={SECTION_IDS.CARTESIANO}
       title="Robô Cartesiano"
       description="O Robô Cartesiano é uma solução de automação industrial que combina a flexibilidade de um robô com a precisão de um manipulador cartesiano. Ideal para operações de movimentação de peças em ambientes industriais."
       imageSrc="/assets/robos/bandeja/M_Synbot20_001.webp"

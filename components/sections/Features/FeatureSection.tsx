@@ -64,7 +64,7 @@ export function FeatureSection({
       id={id}
       className={[
         "max-w-[1920px] mx-auto py-24 lg:py-32 bg-card/30",
-        "scroll-mt-24 sm:scroll-mt-28 lg:scroll-mt-32",
+        "scroll-mt-24 sm:scroll-mt-28 lg:scroll-mt-32 overflow-x-clip",
         minHeightClass,
       ].join(" ")}
     >
