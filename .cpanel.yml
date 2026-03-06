@@ -2,4 +2,5 @@
 deployment:
   tasks:
     - export DEPLOYPATH=/home2/hg544169/public_html/
-    - /bin/cp -R out/* $DEPLOYPATH
+    - /bin/mkdir -p $DEPLOYPATH
+    - /bin/cp -a out/. $DEPLOYPATH
