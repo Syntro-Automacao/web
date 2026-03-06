@@ -121,29 +121,33 @@ export function RoboCarrinho({ onReachEnd, onLeaveEnd }: RoboCarrinhoProps) {
     <section
       ref={sectionRef}
       id="carrinho"
-      className="relative z-30 mx-auto py-24 lg:py-32 scroll-mt-24 sm:scroll-mt-28 lg:scroll-mt-32 bg-(--background)"
+      className="relative z-30 mx-auto py-24 lg:py-32 scroll-mt-24 sm:scroll-mt-28 lg:scroll-mt-32 bg-(--background) overflow-x-clip"
     >
       <div className="z-10 max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-          <motion.div
-            ref={imageWrapRef}
-            className="z-50 pointer-events-none"
-            style={{ x, y, opacity }}
-          >
+          {/* COLUNA VISUAL */}
+          <div className="relative min-h-[420px] lg:min-h-[520px] overflow-visible">
             <motion.div
-              className="relative w-[min(720px,70vw)] h-[min(520px,60vh)] will-change-transform"
-              style={{ scale }}
+              ref={imageWrapRef}
+              className="absolute inset-0 z-50 pointer-events-none"
+              style={{ x, y, opacity }}
             >
-              <Image
-                src="/assets/robos/telemax.webp"
-                alt="Robô Telemax com rodas, da Syntro"
-                fill
-                className="object-contain"
-                sizes="(max-width: 768px) 90vw, (max-width: 1200px) 70vw, 720px"
-              />
+              <motion.div
+                className="relative w-full h-full will-change-transform"
+                style={{ scale }}
+              >
+                <Image
+                  src="/assets/robos/telemax.webp"
+                  alt="Robô Telemax com rodas, da Syntro"
+                  fill
+                  className="object-contain object-center"
+                  sizes="(max-width: 768px) 90vw, (max-width: 1200px) 50vw, 720px"
+                />
+              </motion.div>
             </motion.div>
-          </motion.div>
+          </div>
 
+          {/* COLUNA TEXTO */}
           <div ref={textWrapRef} className="relative min-h-[220px]">
             <motion.div
               initial={false}
