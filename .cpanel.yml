@@ -1,5 +1,5 @@
 ---
 deployment:
   tasks:
-    - export DEPLOYPATH=/home/hg544169/public_html/
-    - /bin/rsync -av --delete --exclude=".git/" ./out/ $DEPLOYPATH
+    - export DEPLOYPATH=/home2/hg544169/public_html/
+    - /bin/cp -R out/* $DEPLOYPATH
