@@ -1,7 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import { TypingText } from "@/components/motion/TypingText";
 import {
   motion,
   useScroll,
