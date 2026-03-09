@@ -47,7 +47,6 @@ export function FeatureSection({
   reverseOnMobile = false,
   imageScaleFrom = 0.85,
   imageDistance = "120%",
-  minHeightClass = "",
 }: FeatureSectionProps) {
   // define ordem no mobile
   const mobileOrder = reverseOnMobile
@@ -66,7 +65,6 @@ export function FeatureSection({
         "max-w-[1920px] mx-auto py-24 lg:py-32 bg-card/30",
         "scroll-mt-24 sm:scroll-mt-28 lg:scroll-mt-32 overflow-x-clip",
         "bg-(--background)",
-        minHeightClass,
       ].join(" ")}
     >
       <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -74,7 +72,7 @@ export function FeatureSection({
           {/* Visual */}
           <ScrollReveal
             className={[
-              "relative w-full aspect-video",
+              "relative w-full max-w-5xl mx-auto lg:mx-0",
               mobileOrder.visual,
               desktopOrder.visual,
             ].join(" ")}
@@ -82,13 +80,17 @@ export function FeatureSection({
             distance={imageDistance}
             scaleFrom={imageScaleFrom}
           >
-            <Image
-              src={imageSrc}
-              alt={imageAlt}
-              fill
-              className="absolute object-contain"
-              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-            />
+            <div className="w-full h-auto">
+              <Image
+                src={imageSrc}
+                alt={imageAlt}
+                width={1200}
+                height={800}
+                className="w-full h-auto object-contain"
+                sizes="(max-width: 768px) 95vw, (max-width: 1200px) 90vw, 85vw"
+                priority
+              />
+            </div>
           </ScrollReveal>
 
           {/* Content */}

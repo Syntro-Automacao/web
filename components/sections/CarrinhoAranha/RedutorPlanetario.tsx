@@ -121,7 +121,7 @@ export function RedutorPlanetario({ onInViewChange }: RoboAranhaProps) {
     >
       <div className="max-w-[1920px] mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-          <div className="relative">
+          <div className="relative lg:mx-0 order-2 lg:order-1">
             <div
               ref={scrubAreaRef}
               className="relative rounded-lg overflow-hidden select-none touch-none cursor-ew-resize"
@@ -155,7 +155,7 @@ export function RedutorPlanetario({ onInViewChange }: RoboAranhaProps) {
               />
             </div>
           </div>
-          <div>
+          <div className="order-1 lg:order-2">
             <p className="text-muted-foreground text-lg leading-relaxed mb-8">
               Nossa engenharia integra mecatrônica, controle avançado de
               movimento e ciência da computação, permitindo a criação de
