@@ -5,4 +5,4 @@
 :HL["/_next/static/media/GalanoGrotesqueAlt_Bold-s.p.4c878b6b.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
 :HL["/_next/static/media/GalanoGrotesqueAlt_Bold-s.p.af58116d.woff","font",{"crossOrigin":"","type":"font/woff"}]
 :HL["/_next/static/chunks/3a23cc601a1d3d74.css","style"]
-0:{"buildId":"ivR8MHdOWDPQ9yF-vFatv","tree":{"name":"","paramType":null,"paramKey":"","hasRuntimePrefetch":false,"slots":{"children":{"name":"__PAGE__","paramType":null,"paramKey":"__PAGE__","hasRuntimePrefetch":false,"slots":null,"isRootLayout":false}},"isRootLayout":true},"staleTime":300}
+0:{"buildId":"kg33hH6SqsN5WGuyuoohW","tree":{"name":"","paramType":null,"paramKey":"","hasRuntimePrefetch":false,"slots":{"children":{"name":"__PAGE__","paramType":null,"paramKey":"__PAGE__","hasRuntimePrefetch":false,"slots":null,"isRootLayout":false}},"isRootLayout":true},"staleTime":300}
