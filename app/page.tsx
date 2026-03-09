@@ -3,7 +3,6 @@
 import { Header } from "@/components/layout/Header/Header";
 import { Footer } from "@/components/layout/Footer/Footer";
 import { Hero } from "@/components/sections/Hero/Hero";
-import { CarrinhoAranhaFlow } from "@/components/sections/CarrinhoAranha/CarrinhoAranhaFlow";
 import { Iot } from "@/components/sections/Iot/Iot";
 import { RoboParallax } from "@/components/sections/Borunte/RoboParalax";
 import { Borunte } from "@/components/sections/Borunte/Borunte";
@@ -19,6 +18,8 @@ import { Differentials } from "@/components/sections/Differentials";
 import { Cases } from "@/components/sections/Cases";
 import { Mission } from "@/components/sections/Mission";
 import { CTA } from "@/components/sections/Cta";
+import { RoboAranha } from "@/components/sections/RoboAranha";
+import { RoboCarrinho } from "@/components/sections/Carrinho/RoboCarrinho";
 
 export default function HomePage() {
   return (
@@ -26,7 +27,8 @@ export default function HomePage() {
       <Header />
       <main className="relative">
         <Hero />
-        <CarrinhoAranhaFlow />
+        <RoboCarrinho />
+        <RoboAranha />
         <Iot />
         <RoboParallax />
         <Borunte />
