@@ -4,7 +4,7 @@ export function RoboBandeja() {
       <div className="max-w-[1920px] max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 ">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
           {/* Visual */}
-          <div className="relative">
+          <div className="relative order-2 lg:order-1">
             <div className="rounded-lg overflow-hidden">
               {/* Robotic Arm Illustration */}
               <video
@@ -17,7 +17,7 @@ export function RoboBandeja() {
             </div>
           </div>
           {/* Content */}
-          <div>
+          <div className="order-1 lg:order-2">
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mt-4 mb-6 leading-tight text-balance">
               Robô Cartesiano
             </h2>

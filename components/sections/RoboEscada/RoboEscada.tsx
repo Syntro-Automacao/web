@@ -12,6 +12,7 @@ export function RoboEscada() {
       imageEnterFrom="left" // entra da esquerda
       imageScaleFrom={0.85}
       imageDistance="110%"
+      reverseOnMobile={true}
     />
   );
 }

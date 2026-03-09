@@ -12,6 +12,7 @@ export function RoboBandeja3D() {
       imageEnterFrom="right" // imagem entra da direita
       imageScaleFrom={0.85}
       imageDistance="110%"
+      reverseOnMobile={true}
     />
   );
 }

@@ -10,7 +10,6 @@ import {
 } from "framer-motion";
 import { useMemo, useRef, useState, useCallback, useEffect } from "react";
 import { SECTION_IDS } from "@/components/sections/hooks/section-ids";
-import "./css/styles.css";
 
 type RoboCarrinhoProps = {
   onReachEnd?: () => void;

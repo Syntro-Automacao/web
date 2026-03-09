@@ -9,8 +9,9 @@ export function Iot() {
       description="Sistemas IOT, da Syntro, mostrando a integração de dispositivos conectados"
       imageSrc="/assets/images/iot.webp"
       imageAlt="Sistemas IoT, da Syntro, mostrando a integração de dispositivos conectados"
-      contentFirst={false} // imagem primeiro (esquerda), texto depois
-      imageEnterFrom="left" // entra da esquerda
+      contentFirst={true} // imagem primeiro (esquerda), texto depois
+      reverseOnMobile={false} // no mobile: texto primeiro, imagem depois
+      imageEnterFrom="right" // entra da esquerda
       imageScaleFrom={0.9}
       imageDistance="110%"
     />

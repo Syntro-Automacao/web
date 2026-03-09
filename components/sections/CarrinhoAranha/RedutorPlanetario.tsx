@@ -21,10 +21,10 @@ function clamp(value: number, min: number, max: number) {
 
 function getFrameSrc(index: number) {
   const num = String(index + 1).padStart(4, "0");
-  return `/assets/aranha-seq/frame-${num}.webp`;
+  return `/assets/redutor-seq/frame-${num}.webp`;
 }
 
-export function RoboAranha({ onInViewChange }: RoboAranhaProps) {
+export function RedutorPlanetario({ onInViewChange }: RoboAranhaProps) {
   const sectionRef = useRef<HTMLElement | null>(null);
   const scrubAreaRef = useRef<HTMLDivElement | null>(null);
 
@@ -121,44 +121,6 @@ export function RoboAranha({ onInViewChange }: RoboAranhaProps) {
     >
       <div className="max-w-[1920px] mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-          <div>
-            <h3 className="sm:text-4xl lg:text-5xl font-bold text-foreground mt-4 mb-6 leading-tight text-balance">
-              Sobre Nós
-            </h3>
-
-            <p className="text-muted-foreground text-lg leading-relaxed mb-8">
-              Se sua indústria busca autonomia, inteligência e modernização
-              dentro dos conceitos da Indústria 4.0, você está no lugar certo.
-              <br />
-              Somos uma empresa de tecnologia dedicada ao desenvolvimento de
-              robôs, manipuladores e sistemas industriais de alta performance,
-              projetados para aplicações que exigem velocidade, precisão e
-              confiabilidade absoluta.
-            </p>
-
-            <p className="text-muted-foreground text-lg leading-relaxed mb-8">
-              Nossa engenharia integra mecatrônica, controle avançado de
-              movimento e ciência da computação, permitindo a criação de
-              máquinas e sistemas inteligentes capazes de transformar processos
-              produtivos em operações mais eficientes, conectadas e
-              automatizadas.
-            </p>
-
-            <p className="text-muted-foreground text-lg leading-relaxed mb-8">
-              Desenvolvemos tecnologia nacional de alto nível, oferecendo
-              soluções inovadoras com excelente relação entre performance, custo
-              e escalabilidade, sempre focadas nas necessidades reais da
-              indústria moderna.
-            </p>
-
-            <p className="text-muted-foreground text-lg leading-relaxed mb-8">
-              Nosso objetivo é impulsionar a evolução da manufatura através de
-              robótica, automação inteligente, sistemas conectados e tecnologias
-              de IoT industrial, levando nossos clientes ao próximo nível de
-              produtividade e competitividade.
-            </p>
-          </div>
-
           <div className="relative">
             <div
               ref={scrubAreaRef}
@@ -192,6 +154,29 @@ export function RoboAranha({ onInViewChange }: RoboAranhaProps) {
                 }}
               />
             </div>
+          </div>
+          <div>
+            <p className="text-muted-foreground text-lg leading-relaxed mb-8">
+              Nossa engenharia integra mecatrônica, controle avançado de
+              movimento e ciência da computação, permitindo a criação de
+              máquinas e sistemas inteligentes capazes de transformar processos
+              produtivos em operações mais eficientes, conectadas e
+              automatizadas.
+            </p>
+
+            <p className="text-muted-foreground text-lg leading-relaxed mb-8">
+              Desenvolvemos tecnologia nacional de alto nível, oferecendo
+              soluções inovadoras com excelente relação entre performance, custo
+              e escalabilidade, sempre focadas nas necessidades reais da
+              indústria moderna.
+            </p>
+
+            <p className="text-muted-foreground text-lg leading-relaxed mb-8">
+              Nosso objetivo é impulsionar a evolução da manufatura através de
+              robótica, automação inteligente, sistemas conectados e tecnologias
+              de IoT industrial, levando nossos clientes ao próximo nível de
+              produtividade e competitividade.
+            </p>
           </div>
         </div>
       </div>
