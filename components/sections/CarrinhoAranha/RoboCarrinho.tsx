@@ -11,6 +11,7 @@ import {
 } from "framer-motion";
 import { useMemo, useRef, useState, useCallback, useEffect } from "react";
 import { SECTION_IDS } from "@/components/sections/hooks/section-ids";
+import "./css/styles.css";
 
 type RoboCarrinhoProps = {
   onReachEnd?: () => void;
@@ -37,7 +38,7 @@ export function RoboCarrinho({ onReachEnd, onLeaveEnd }: RoboCarrinhoProps) {
 
   const spring = useMemo(() => ({ stiffness: 90, damping: 22, mass: 0.8 }), []);
 
-  const xRaw = useTransform(p, [0, 1], ["60vw", "-18vw"]);
+  const xRaw = useTransform(p, [0, 1], ["60vw", "-50vw"]);
   const yRaw = useTransform(p, [0, 1], ["-22vh", "28vh"]);
   const scaleRaw = useTransform(p, [0, 1], [0.55, 1]);
   const opacityRaw = useTransform(p, [0, 0.08, 1], [0, 1, 1]);
@@ -149,23 +150,32 @@ export function RoboCarrinho({ onReachEnd, onLeaveEnd }: RoboCarrinhoProps) {
           </div>
 
           {/* COLUNA TEXTO */}
-          <div ref={textWrapRef} className="relative min-h-[220px]">
-            <motion.div
-              initial={false}
-              animate={showText ? { opacity: 1, y: 0 } : { opacity: 0, y: 24 }}
-              transition={{ duration: 0.35, ease: "easeOut" }}
-            >
-              <TypingText
-                as="h3"
-                text="Pioneiros em Robótica e Automação no Brasil"
-                className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mt-4 mb-6 leading-tight text-balance"
-              />
-              <TypingText
-                as="p"
-                text="O Robo Carrinho é um robô industrial de alto desempenho, projetado para automatizar tarefas complexas na indústria. Com sua capacidade de navegação e manipulação de objetos, o Robo Carrinho é uma solução eficiente e flexível para a Indústria 4.0."
-                className="text-muted-foreground text-lg leading-relaxed mb-8"
-              />
-            </motion.div>
+          <div className="relative min-h-[220px]">
+            <h3>
+              <p>
+                <span className="text-3xl text-primary font-bold">
+                  Software,{" "}
+                </span>
+                <span className="text-2xl font-light">
+                  Robôs, Manipuladores
+                </span>
+              </p>
+              <p>
+                <span className="text-2xl text-primary font-bold">
+                  Automação,{" "}
+                </span>
+                <span className="text-5xl text-primary font-bold">
+                  Industria 4.0
+                </span>
+              </p>
+              <p>
+                <span className="text-2xl font-light">Dispositivos, </span>
+                <span className="text-3xl text-primary font-bold">
+                  Sistemas Autônomos,{" "}
+                </span>
+                <span className="text-2xl font-light">IOT</span>
+              </p>
+            </h3>
           </div>
         </div>
       </div>

@@ -1,6 +1,6 @@
 export const SECTION_IDS = {
   CARRINHO: "carrinho",
-  ARANHA: "aranha",
+  ABOUT: "aranha",
   IOT: "iot",
   BORUNTE: "borunte",
   HD: "hd",

@@ -65,6 +65,7 @@ export function FeatureSection({
       className={[
         "max-w-[1920px] mx-auto py-24 lg:py-32 bg-card/30",
         "scroll-mt-24 sm:scroll-mt-28 lg:scroll-mt-32 overflow-x-clip",
+        "bg-(--background)",
         minHeightClass,
       ].join(" ")}
     >
@@ -97,7 +98,7 @@ export function FeatureSection({
             <TypingText
               as="h3"
               text={title}
-              className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mt-4 mb-6 leading-tight text-balance"
+              className="sm:text-4xl lg:text-5xl font-bold text-foreground mt-4 mb-6 leading-tight text-balance"
             />
             <TypingText
               as="p"

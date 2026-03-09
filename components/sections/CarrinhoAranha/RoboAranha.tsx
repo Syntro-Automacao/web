@@ -1,18 +1,36 @@
 "use client";
 
-import { useEffect, useRef } from "react";
-import { useInView } from "framer-motion";
-import { TypingText } from "@/components/motion/TypingText";
+import { useEffect, useMemo, useRef, useState, useCallback } from "react";
+import {
+  useInView,
+  useScroll,
+  useTransform,
+  useMotionValueEvent,
+} from "framer-motion";
 import { SECTION_IDS } from "@/components/sections/hooks/section-ids";
 
 type RoboAranhaProps = {
-  shouldPlay: boolean;
   onInViewChange?: (inView: boolean) => void;
 };
 
-export function RoboAranha({ shouldPlay, onInViewChange }: RoboAranhaProps) {
+const TOTAL_FRAMES = 61;
+
+function clamp(value: number, min: number, max: number) {
+  return Math.min(Math.max(value, min), max);
+}
+
+function getFrameSrc(index: number) {
+  const num = String(index + 1).padStart(4, "0");
+  return `/assets/aranha-seq/frame-${num}.webp`;
+}
+
+export function RoboAranha({ onInViewChange }: RoboAranhaProps) {
   const sectionRef = useRef<HTMLElement | null>(null);
-  const videoRef = useRef<HTMLVideoElement | null>(null);
+  const scrubAreaRef = useRef<HTMLDivElement | null>(null);
+
+  const [frameIndex, setFrameIndex] = useState(0);
+  const [isDragging, setIsDragging] = useState(false);
+  const [isLoaded, setIsLoaded] = useState(false);
 
   const isInView = useInView(sectionRef, {
     amount: 0.35,
@@ -23,47 +41,155 @@ export function RoboAranha({ shouldPlay, onInViewChange }: RoboAranhaProps) {
     onInViewChange?.(isInView);
   }, [isInView, onInViewChange]);
 
-  useEffect(() => {
-    const video = videoRef.current;
-    if (!video) return;
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "end start"],
+  });
 
-    if (shouldPlay) {
-      video.play().catch(() => {});
-    } else {
-      video.pause();
-      //video.currentTime = 0;
+  const progress = useTransform(scrollYProgress, [0.08, 0.92], [0, 1]);
+
+  useMotionValueEvent(progress, "change", (latest) => {
+    if (isDragging) return;
+
+    const clamped = clamp(latest, 0, 1);
+    const nextIndex = Math.round(clamped * (TOTAL_FRAMES - 1));
+
+    setFrameIndex((prev) => (prev === nextIndex ? prev : nextIndex));
+  });
+
+  const updateFrameByPointer = useCallback((clientX: number) => {
+    const area = scrubAreaRef.current;
+    if (!area) return;
+
+    const rect = area.getBoundingClientRect();
+    const x = clamp(clientX - rect.left, 0, rect.width);
+    const ratio = rect.width > 0 ? x / rect.width : 0;
+    const nextIndex = Math.round(ratio * (TOTAL_FRAMES - 1));
+
+    setFrameIndex((prev) => (prev === nextIndex ? prev : nextIndex));
+  }, []);
+
+  const handlePointerDown = (e: React.PointerEvent<HTMLDivElement>) => {
+    setIsDragging(true);
+    e.currentTarget.setPointerCapture(e.pointerId);
+    updateFrameByPointer(e.clientX);
+  };
+
+  const handlePointerMove = (e: React.PointerEvent<HTMLDivElement>) => {
+    if (!isDragging) return;
+    updateFrameByPointer(e.clientX);
+  };
+
+  const handlePointerUp = (e: React.PointerEvent<HTMLDivElement>) => {
+    setIsDragging(false);
+
+    if (e.currentTarget.hasPointerCapture(e.pointerId)) {
+      e.currentTarget.releasePointerCapture(e.pointerId);
     }
-  }, [shouldPlay]);
+  };
+
+  const currentSrc = useMemo(() => getFrameSrc(frameIndex), [frameIndex]);
+
+  // Pré-carrega todos os frames
+  useEffect(() => {
+    let loadedCount = 0;
+    let isMounted = true;
+
+    for (let i = 0; i < TOTAL_FRAMES; i++) {
+      const img = new Image();
+      img.src = getFrameSrc(i);
+
+      img.onload = () => {
+        loadedCount += 1;
+
+        if (isMounted && loadedCount >= 1) {
+          setIsLoaded(true);
+        }
+      };
+    }
+
+    return () => {
+      isMounted = false;
+    };
+  }, []);
 
   return (
     <section
       ref={sectionRef}
-      id={SECTION_IDS.ARANHA}
+      id={SECTION_IDS.ABOUT}
       className="relative z-20 mx-auto py-24 lg:py-32 scroll-mt-24 sm:scroll-mt-28 lg:scroll-mt-32 bg-(--background)"
     >
       <div className="max-w-[1920px] mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
           <div>
-            <TypingText
-              text="Robo Aranha"
-              className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mt-4 mb-6 leading-tight text-balance"
-            />
-            <TypingText
-              text="O Robo Aranha é um robô industrial de alto desempenho, projetado para automatizar tarefas complexas na indústria. Com sua capacidade de navegação e manipulação de objetos, o Robo Aranha é uma solução eficiente e flexível para a Indústria 4.0."
-              className="text-muted-foreground text-lg leading-relaxed mb-8"
-            />
+            <h3 className="sm:text-4xl lg:text-5xl font-bold text-foreground mt-4 mb-6 leading-tight text-balance">
+              Sobre Nós
+            </h3>
+
+            <p className="text-muted-foreground text-lg leading-relaxed mb-8">
+              Se sua indústria busca autonomia, inteligência e modernização
+              dentro dos conceitos da Indústria 4.0, você está no lugar certo.
+              <br />
+              Somos uma empresa de tecnologia dedicada ao desenvolvimento de
+              robôs, manipuladores e sistemas industriais de alta performance,
+              projetados para aplicações que exigem velocidade, precisão e
+              confiabilidade absoluta.
+            </p>
+
+            <p className="text-muted-foreground text-lg leading-relaxed mb-8">
+              Nossa engenharia integra mecatrônica, controle avançado de
+              movimento e ciência da computação, permitindo a criação de
+              máquinas e sistemas inteligentes capazes de transformar processos
+              produtivos em operações mais eficientes, conectadas e
+              automatizadas.
+            </p>
+
+            <p className="text-muted-foreground text-lg leading-relaxed mb-8">
+              Desenvolvemos tecnologia nacional de alto nível, oferecendo
+              soluções inovadoras com excelente relação entre performance, custo
+              e escalabilidade, sempre focadas nas necessidades reais da
+              indústria moderna.
+            </p>
+
+            <p className="text-muted-foreground text-lg leading-relaxed mb-8">
+              Nosso objetivo é impulsionar a evolução da manufatura através de
+              robótica, automação inteligente, sistemas conectados e tecnologias
+              de IoT industrial, levando nossos clientes ao próximo nível de
+              produtividade e competitividade.
+            </p>
           </div>
 
           <div className="relative">
-            <div className="rounded-lg overflow-hidden">
-              <video
-                ref={videoRef}
-                src="/assets/videos/videoAranha.mp4"
-                muted
-                loop
-                playsInline
-                preload="metadata"
-                className="w-full h-auto object-cover"
+            <div
+              ref={scrubAreaRef}
+              className="relative rounded-lg overflow-hidden select-none touch-none cursor-ew-resize"
+              onPointerDown={handlePointerDown}
+              onPointerMove={handlePointerMove}
+              onPointerUp={handlePointerUp}
+              onPointerCancel={handlePointerUp}
+            >
+              <div className="relative aspect-[3/2] w-full bg-black/5">
+                {isLoaded ? (
+                  <img
+                    src={currentSrc}
+                    alt="Animação interativa do robô aranha"
+                    draggable={false}
+                    className="w-full h-full object-cover pointer-events-none"
+                  />
+                ) : (
+                  <div className="absolute inset-0 flex items-center justify-center text-sm text-muted-foreground">
+                    Carregando animação...
+                  </div>
+                )}
+              </div>
+            </div>
+
+            <div className="mt-4 h-1.5 w-full overflow-hidden rounded-full bg-white/10">
+              <div
+                className="h-full rounded-full bg-white/70 transition-[width] duration-75"
+                style={{
+                  width: `${(frameIndex / (TOTAL_FRAMES - 1)) * 100}%`,
+                }}
               />
             </div>
           </div>
