@@ -1,8 +1,13 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
-.text-lg {
-  font-size: var(--text-xl) !important;
+/* Configurar breakpoints responsivos para Tailwind v4 */
+@theme {
+  --breakpoint-sm: 480px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1280px;
+  --breakpoint-2xl: 1536px;
 }
 
 @custom-variant dark (&:is(.dark *));
