@@ -18,8 +18,9 @@ import { Differentials } from "@/components/sections/Differentials";
 import { Cases } from "@/components/sections/Cases";
 import { Mission } from "@/components/sections/Mission";
 import { CTA } from "@/components/sections/Cta";
-import { CarrinhoAranhaFlow } from "@/components/sections/CarrinhoAranha/CarrinhoAranhaFlow";
 import { RedutorPlanetario } from "@/components/sections/CarrinhoAranha/RedutorPlanetario";
+import { Hexapod } from "@/components/sections/CarrinhoAranha/Hexapod";
+import { RoboCarrinho } from "@/components/sections/CarrinhoAranha/RoboCarrinho";
 
 export default function HomePage() {
   return (
@@ -27,7 +28,8 @@ export default function HomePage() {
       <Header />
       <main className="relative">
         <Hero />
-        <CarrinhoAranhaFlow />
+        <RoboCarrinho />
+        <Hexapod />
         <RedutorPlanetario />
         <Iot />
         <RoboParallax />

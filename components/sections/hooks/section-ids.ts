@@ -7,4 +7,5 @@ export const SECTION_IDS = {
   CARTESIANO: "cartesiano",
   ESCADA: "escada",
   DELTA: "delta",
+  SOBRE: "sobre",
 } as const;

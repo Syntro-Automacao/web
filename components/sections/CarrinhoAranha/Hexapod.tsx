@@ -9,11 +9,11 @@ import {
 } from "framer-motion";
 import { SECTION_IDS } from "@/components/sections/hooks/section-ids";
 
-type RoboAranhaProps = {
+type HexapodProps = {
   onInViewChange?: (inView: boolean) => void;
 };
 
-const TOTAL_FRAMES = 61;
+const TOTAL_FRAMES = 48;
 
 function clamp(value: number, min: number, max: number) {
   return Math.min(Math.max(value, min), max);
@@ -21,10 +21,10 @@ function clamp(value: number, min: number, max: number) {
 
 function getFrameSrc(index: number) {
   const num = String(index + 1).padStart(4, "0");
-  return `/assets/redutor-seq/frame-${num}.webp`;
+  return `/assets/hexapod-seq/frame-${num}.webp`;
 }
 
-export function RedutorPlanetario({ onInViewChange }: RoboAranhaProps) {
+export function Hexapod({ onInViewChange }: HexapodProps) {
   const sectionRef = useRef<HTMLElement | null>(null);
   const scrubAreaRef = useRef<HTMLDivElement | null>(null);
 
@@ -46,7 +46,8 @@ export function RedutorPlanetario({ onInViewChange }: RoboAranhaProps) {
     offset: ["start end", "end start"],
   });
 
-  const progress = useTransform(scrollYProgress, [0.08, 0.92], [0, 1]);
+  // janela menor = animação mais rápida
+  const progress = useTransform(scrollYProgress, [0.18, 0.55], [0, 1]);
 
   useMotionValueEvent(progress, "change", (latest) => {
     if (isDragging) return;
@@ -90,7 +91,6 @@ export function RedutorPlanetario({ onInViewChange }: RoboAranhaProps) {
 
   const currentSrc = useMemo(() => getFrameSrc(frameIndex), [frameIndex]);
 
-  // Pré-carrega todos os frames
   useEffect(() => {
     let loadedCount = 0;
     let isMounted = true;
@@ -116,12 +116,29 @@ export function RedutorPlanetario({ onInViewChange }: RoboAranhaProps) {
   return (
     <section
       ref={sectionRef}
-      id={SECTION_IDS.ABOUT}
+      id={SECTION_IDS.SOBRE}
       className="relative z-20 mx-auto py-24 lg:py-32 scroll-mt-24 sm:scroll-mt-28 lg:scroll-mt-32 bg-(--background)"
     >
       <div className="max-w-[1920px] mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-          <div className="relative lg:mx-0 order-2 lg:order-1">
+          <div className="relative">
+            <h3 className="sm:text-4xl lg:text-5xl font-bold text-foreground mt-4 mb-6 leading-tight text-balance">
+              Sobre Nós
+            </h3>
+            <p className="text-muted-foreground text-lg leading-relaxed mb-8">
+              Se sua indústria busca autonomia, inteligência e modernização
+              dentro dos conceitos da Indústria 4.0, você está no lugar certo.
+            </p>
+
+            <p className="text-muted-foreground text-lg leading-relaxed mb-8">
+              Somos uma empresa de tecnologia dedicada ao desenvolvimento de
+              robôs, manipuladores e sistemas industriais de alta performance,
+              projetados para aplicações que exigem velocidade, precisão e
+              confiabilidade absoluta.
+            </p>
+          </div>
+
+          <div className="relative">
             <div
               ref={scrubAreaRef}
               className="relative rounded-lg overflow-hidden select-none touch-none cursor-ew-resize"
@@ -145,29 +162,6 @@ export function RedutorPlanetario({ onInViewChange }: RoboAranhaProps) {
                 )}
               </div>
             </div>
-          </div>
-          <div className="order-1 lg:order-2">
-            <p className="text-muted-foreground text-lg leading-relaxed mb-8">
-              Nossa engenharia integra mecatrônica, controle avançado de
-              movimento e ciência da computação, permitindo a criação de
-              máquinas e sistemas inteligentes capazes de transformar processos
-              produtivos em operações mais eficientes, conectadas e
-              automatizadas.
-            </p>
-
-            <p className="text-muted-foreground text-lg leading-relaxed mb-8">
-              Desenvolvemos tecnologia nacional de alto nível, oferecendo
-              soluções inovadoras com excelente relação entre performance, custo
-              e escalabilidade, sempre focadas nas necessidades reais da
-              indústria moderna.
-            </p>
-
-            <p className="text-muted-foreground text-lg leading-relaxed mb-8">
-              Nosso objetivo é impulsionar a evolução da manufatura através de
-              robótica, automação inteligente, sistemas conectados e tecnologias
-              de IoT industrial, levando nossos clientes ao próximo nível de
-              produtividade e competitividade.
-            </p>
           </div>
         </div>
       </div>

@@ -2,7 +2,7 @@ import { SECTION_IDS } from "@/components/sections/hooks/section-ids";
 
 export const navItems = [
   { label: "Carrinho", href: `#${SECTION_IDS.CARRINHO}` },
-  { label: "Sobre Nós", href: `#${SECTION_IDS.ABOUT}` },
+  { label: "Sobre Nós", href: `#${SECTION_IDS.SOBRE}` },
   { label: "Sistemas IOT", href: `#${SECTION_IDS.IOT}` },
   { label: "Robô 6 eixos", href: `#${SECTION_IDS.BORUNTE}` },
   { label: "Robô Cartesiano", href: `#${SECTION_IDS.CARTESIANO}` },
