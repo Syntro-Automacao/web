@@ -48,6 +48,10 @@ export function RedutorPlanetario({ onInViewChange }: RedutorPlanetarioProps) {
   const [isLoaded, setIsLoaded] = useState(false);
   const [isDesktop, setIsDesktop] = useState(false);
 
+  const dragStartXRef = useRef(0);
+  const dragStartYRef = useRef(0);
+  const isHorizontalDragRef = useRef(false);
+
   const isInView = useInView(sectionRef, {
     amount: 0.2,
   });
@@ -74,6 +78,7 @@ export function RedutorPlanetario({ onInViewChange }: RedutorPlanetarioProps) {
   const progress = useTransform(scrollYProgress, [0.08, 0.62], [0, 1]);
 
   useMotionValueEvent(scrollYProgress, "change", (latest) => {
+    if (!isDesktop) return;
     setSceneProgress(latest);
   });
 
@@ -100,17 +105,44 @@ export function RedutorPlanetario({ onInViewChange }: RedutorPlanetarioProps) {
 
   const handlePointerDown = (e: React.PointerEvent<HTMLDivElement>) => {
     setIsDragging(true);
+    isHorizontalDragRef.current = false;
+    dragStartXRef.current = e.clientX;
+    dragStartYRef.current = e.clientY;
+
     e.currentTarget.setPointerCapture(e.pointerId);
-    updateFrameByPointer(e.clientX);
+
+    if (isDesktop) {
+      updateFrameByPointer(e.clientX);
+    }
   };
 
   const handlePointerMove = (e: React.PointerEvent<HTMLDivElement>) => {
     if (!isDragging) return;
-    updateFrameByPointer(e.clientX);
+
+    if (isDesktop) {
+      updateFrameByPointer(e.clientX);
+      return;
+    }
+
+    const dx = e.clientX - dragStartXRef.current;
+    const dy = e.clientY - dragStartYRef.current;
+
+    if (!isHorizontalDragRef.current) {
+      if (Math.abs(dx) > 8 && Math.abs(dx) > Math.abs(dy)) {
+        isHorizontalDragRef.current = true;
+      } else if (Math.abs(dy) > 8 && Math.abs(dy) > Math.abs(dx)) {
+        return;
+      }
+    }
+
+    if (isHorizontalDragRef.current) {
+      updateFrameByPointer(e.clientX);
+    }
   };
 
   const handlePointerUp = (e: React.PointerEvent<HTMLDivElement>) => {
     setIsDragging(false);
+    isHorizontalDragRef.current = false;
 
     if (e.currentTarget.hasPointerCapture(e.pointerId)) {
       e.currentTarget.releasePointerCapture(e.pointerId);
@@ -121,10 +153,10 @@ export function RedutorPlanetario({ onInViewChange }: RedutorPlanetarioProps) {
 
   const showHint = isDesktop ? sceneProgress < 0.12 : frameIndex < 8;
 
-  const showFinalText = frameIndex >= 74;
-  const textOpacity = mapRange(frameIndex, 74, 75, 0, 1);
+  const showFinalText = isDesktop ? frameIndex >= 74 : true;
+
+  const textOpacity = isDesktop ? mapRange(frameIndex, 74, 75, 0, 1) : 1;
   const textTranslateX = mapRange(frameIndex, 74, 75, 42, 0);
-  const textTranslateYMobile = mapRange(frameIndex, 74, 75, 24, 0);
 
   const imageScale = isDesktop
     ? mapRange(sceneProgress, 0.6, 0.76, 1, 1.045)
@@ -166,54 +198,62 @@ export function RedutorPlanetario({ onInViewChange }: RedutorPlanetarioProps) {
         <div className="relative overflow-hidden lg:sticky lg:top-0 lg:h-screen">
           <div className="absolute inset-0 bg-gradient-to-b from-background via-background to-background/95" />
 
-          <div
-            ref={scrubAreaRef}
-            className="relative mx-auto flex h-full w-full max-w-[1920px] select-none touch-none items-center justify-center overflow-visible px-4 sm:px-6 lg:px-8 cursor-ew-resize"
-            onPointerDown={handlePointerDown}
-            onPointerMove={handlePointerMove}
-            onPointerUp={handlePointerUp}
-            onPointerCancel={handlePointerUp}
-          >
-            <div className="relative h-full w-full max-w-[1600px] mx-auto">
+          <div className="relative mx-auto flex h-full w-full max-w-[1920px] items-center justify-center overflow-visible px-4 sm:px-6 lg:px-8">
+            <div className="relative mx-auto h-full w-full max-w-[1600px]">
               {/* MOBILE */}
               <div className="lg:hidden">
-                <div>
-                  <div className="mx-auto max-w-xl rounded-[28px]">
-                    <div className="mb-4 h-px w-12 bg-white/20" />
+                <div className="mx-auto max-w-xl rounded-[28px] pt-8">
+                  <div className="mb-4 h-px w-12 bg-white/20" />
 
-                    <h3 className="mt-4 mb-6 text-balance font-bold leading-tight text-foreground xs:text-3xl sm:text-4xl lg:text-5xl">
-                      Redutor planetário
-                    </h3>
+                  <h3 className="mt-4 mb-6 text-balance font-bold leading-tight text-foreground xs:text-3xl sm:text-4xl lg:text-5xl">
+                    Redutor planetário
+                  </h3>
 
-                    <p className="mb-8 text-lg leading-relaxed text-muted-foreground">
-                      Nossa engenharia integra mecatrônica, controle avançado de
-                      movimento e ciência da computação, permitindo a criação de
-                      máquinas e sistemas inteligentes capazes de transformar
-                      processos produtivos em operações mais eficientes,
-                      conectadas e automatizadas.
-                    </p>
+                  <p className="mb-8 text-lg leading-relaxed text-muted-foreground">
+                    Nossa engenharia integra mecatrônica, controle avançado de
+                    movimento e ciência da computação, permitindo a criação de
+                    máquinas e sistemas inteligentes capazes de transformar
+                    processos produtivos em operações mais eficientes,
+                    conectadas e automatizadas.
+                  </p>
 
-                    <p className="mb-8 text-lg leading-relaxed text-muted-foreground">
-                      Desenvolvemos tecnologia nacional de alto nível,
-                      oferecendo soluções inovadoras com excelente relação entre
-                      performance, custo e escalabilidade.
-                    </p>
+                  <p className="mb-8 text-lg leading-relaxed text-muted-foreground">
+                    Desenvolvemos tecnologia nacional de alto nível, oferecendo
+                    soluções inovadoras com excelente relação entre performance,
+                    custo e escalabilidade.
+                  </p>
 
-                    <p className="mb-8 text-lg leading-relaxed text-muted-foreground">
-                      Nosso objetivo é impulsionar a evolução da manufatura
-                      através de robótica, automação inteligente, sistemas
-                      conectados e IoT industrial.
-                    </p>
-                  </div>
+                  <p className="mb-8 text-lg leading-relaxed text-muted-foreground">
+                    Nosso objetivo é impulsionar a evolução da manufatura
+                    através de robótica, automação inteligente, sistemas
+                    conectados e IoT industrial.
+                  </p>
                 </div>
               </div>
-              <div className="relative z-10 flex min-h-[60vh] items-center justify-center lg:h-full lg:justify-start">
+
+              <div
+                ref={scrubAreaRef}
+                className="
+                  relative z-10 flex min-h-[60vh] items-center justify-center
+                  lg:h-full lg:justify-start
+                  select-none
+                  lg:cursor-ew-resize
+                  touch-pan-y
+                "
+                onPointerDown={handlePointerDown}
+                onPointerMove={handlePointerMove}
+                onPointerUp={handlePointerUp}
+                onPointerCancel={handlePointerUp}
+              >
                 {isLoaded ? (
                   <img
                     src={currentSrc}
                     alt="Animação interativa do redutor planetário"
                     draggable={false}
-                    className="pointer-events-none h-auto w-full transition-transform duration-500 ease-out"
+                    className="h-auto w-full transition-transform duration-500 ease-out pointer-events-none"
+                    style={{
+                      transform: `translateX(${imageTranslateX}px) scale(${imageScale})`,
+                    }}
                   />
                 ) : (
                   <div className="flex min-h-[420px] items-center justify-center text-sm text-muted-foreground" />
@@ -232,7 +272,9 @@ export function RedutorPlanetario({ onInViewChange }: RedutorPlanetarioProps) {
                       ? "translateY(-10px)"
                       : "translateX(-50%) translateY(-10px)",
                 }}
-              ></div>
+              >
+                {isDesktop ? "arraste ou role" : "deslize para interagir"}
+              </div>
 
               {/* DESKTOP */}
               <div
