@@ -2,7 +2,6 @@
 
 import { useEffect, useRef } from "react";
 import { useInView } from "framer-motion";
-import { TypingText } from "@/components/motion/TypingText";
 
 type RoboAranhaProps = {
   shouldPlay: boolean;

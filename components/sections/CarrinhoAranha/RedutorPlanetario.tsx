@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useRef, useState, useCallback } from "react";
 import {
+  motion,
   useInView,
   useScroll,
   useTransform,
@@ -9,32 +10,46 @@ import {
 } from "framer-motion";
 import { SECTION_IDS } from "@/components/sections/hooks/section-ids";
 
-type RoboAranhaProps = {
+type RedutorPlanetarioProps = {
   onInViewChange?: (inView: boolean) => void;
 };
 
-const TOTAL_FRAMES = 61;
+const TOTAL_FRAMES = 76;
 
 function clamp(value: number, min: number, max: number) {
   return Math.min(Math.max(value, min), max);
 }
 
-function getFrameSrc(index: number) {
-  const num = String(index + 1).padStart(4, "0");
-  return `/assets/redutor-seq/frame-${num}.webp`;
+function mapRange(
+  value: number,
+  inMin: number,
+  inMax: number,
+  outMin: number,
+  outMax: number,
+) {
+  if (value <= inMin) return outMin;
+  if (value >= inMax) return outMax;
+
+  const progress = (value - inMin) / (inMax - inMin);
+  return outMin + progress * (outMax - outMin);
 }
 
-export function RedutorPlanetario({ onInViewChange }: RoboAranhaProps) {
+function getFrameSrc(index: number) {
+  const num = String(index + 1).padStart(3, "0");
+  return `/assets/redutor-seq/redutor-${num}.webp`;
+}
+
+export function RedutorPlanetario({ onInViewChange }: RedutorPlanetarioProps) {
   const sectionRef = useRef<HTMLElement | null>(null);
   const scrubAreaRef = useRef<HTMLDivElement | null>(null);
 
   const [frameIndex, setFrameIndex] = useState(0);
+  const [sceneProgress, setSceneProgress] = useState(0);
   const [isDragging, setIsDragging] = useState(false);
   const [isLoaded, setIsLoaded] = useState(false);
 
   const isInView = useInView(sectionRef, {
-    amount: 0.35,
-    margin: "0px 0px -10% 0px",
+    amount: 0.2,
   });
 
   useEffect(() => {
@@ -43,10 +58,15 @@ export function RedutorPlanetario({ onInViewChange }: RoboAranhaProps) {
 
   const { scrollYProgress } = useScroll({
     target: sectionRef,
-    offset: ["start end", "end start"],
+    offset: ["start start", "end end"],
   });
 
-  const progress = useTransform(scrollYProgress, [0.08, 0.92], [0, 1]);
+  // deixa a animação terminar antes para sobrar tempo do estado final
+  const progress = useTransform(scrollYProgress, [0.08, 0.62], [0, 1]);
+
+  useMotionValueEvent(scrollYProgress, "change", (latest) => {
+    setSceneProgress(latest);
+  });
 
   useMotionValueEvent(progress, "change", (latest) => {
     if (isDragging) return;
@@ -90,7 +110,18 @@ export function RedutorPlanetario({ onInViewChange }: RoboAranhaProps) {
 
   const currentSrc = useMemo(() => getFrameSrc(frameIndex), [frameIndex]);
 
-  // Pré-carrega todos os frames
+  const showHint = sceneProgress < 0.12;
+
+  // texto aparece quando chega no final da montagem
+  const showFinalText = frameIndex >= 74;
+  const textOpacity = mapRange(frameIndex, 74, 75, 0, 1);
+  const textTranslateX = mapRange(frameIndex, 74, 75, 42, 0);
+  const textTranslateYMobile = mapRange(frameIndex, 74, 75, 24, 0);
+
+  const imageScale = mapRange(sceneProgress, 0.6, 0.76, 1, 1.045);
+  const imageTranslateX = mapRange(sceneProgress, 0.6, 0.76, 0, -140);
+  const glowOpacity = mapRange(sceneProgress, 0, 0.18, 0.18, 0.32);
+
   useEffect(() => {
     let loadedCount = 0;
     let isMounted = true;
@@ -117,57 +148,119 @@ export function RedutorPlanetario({ onInViewChange }: RoboAranhaProps) {
     <section
       ref={sectionRef}
       id={SECTION_IDS.ABOUT}
-      className="relative z-20 mx-auto py-24 lg:py-32 scroll-mt-24 sm:scroll-mt-28 lg:scroll-mt-32 bg-(--background)"
+      className="relative z-20 h-[340vh] bg-(--background)"
     >
-      <div className="max-w-[1920px] mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-          <div className="relative lg:mx-0 order-2 lg:order-1">
-            <div
-              ref={scrubAreaRef}
-              className="relative rounded-lg overflow-hidden select-none touch-none cursor-ew-resize"
-              onPointerDown={handlePointerDown}
-              onPointerMove={handlePointerMove}
-              onPointerUp={handlePointerUp}
-              onPointerCancel={handlePointerUp}
-            >
-              <div className="relative w-full bg-black/5">
+      <div className="relative h-full">
+        <div className="sticky top-0 h-screen overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-to-b from-background via-background to-background/95" />
+
+          <div
+            ref={scrubAreaRef}
+            className="relative mx-auto flex h-full w-full max-w-[1920px] select-none touch-none items-center justify-center overflow-visible px-4 sm:px-6 lg:px-8 cursor-ew-resize"
+            onPointerDown={handlePointerDown}
+            onPointerMove={handlePointerMove}
+            onPointerUp={handlePointerUp}
+            onPointerCancel={handlePointerUp}
+          >
+            <div className="relative h-full w-full max-w-[1600px]">
+              <div className="relative z-10 flex h-full items-center justify-center lg:justify-start">
                 {isLoaded ? (
                   <img
                     src={currentSrc}
-                    alt="Animação interativa do robô aranha"
-                    draggable={false}
-                    className="w-full h-full object-cover pointer-events-none"
+                    alt="Animação interativa do redutor planetário"
+                    draggable={true}
+                    className="pointer-events-none h-auto w-full transition-transform duration-500 ease-out"
                   />
                 ) : (
-                  <div className="absolute inset-0 flex items-center justify-center text-sm text-muted-foreground">
-                    Carregando animação...
-                  </div>
+                  <div className="flex min-h-[420px] items-center justify-center text-sm text-muted-foreground"></div>
                 )}
               </div>
+              {/* DESKTOP / TABLET GRANDE */}
+              <div
+                className="pointer-events-none absolute top-1/2 right-0 z-30 lg:block"
+                style={{
+                  opacity: showFinalText ? textOpacity : 0,
+                  transition: "opacity 260ms ease",
+                }}
+              >
+                <div
+                  style={{
+                    transform: `translateX(${showFinalText ? textTranslateX : 42}px) translateY(-50%)`,
+                    transition: "transform 260ms ease",
+                  }}
+                >
+                  <div className="w-[50vw] max-w-[800px] min-w-[320px]">
+                    <h3 className="sm:text-4xl lg:text-5xl font-bold text-foreground mt-4 mb-6 leading-tight text-balance">
+                      Redutor planetário
+                    </h3>
+
+                    <p className="text-muted-foreground text-lg leading-relaxed mb-8">
+                      Nossa engenharia integra mecatrônica, controle avançado de
+                      movimento e ciência da computação, permitindo a criação de
+                      máquinas e sistemas inteligentes capazes de transformar
+                      processos produtivos em operações mais eficientes,
+                      conectadas e automatizadas.
+                    </p>
+
+                    <p className="text-muted-foreground text-lg leading-relaxed mb-8">
+                      Desenvolvemos tecnologia nacional de alto nível,
+                      oferecendo soluções inovadoras com excelente relação entre
+                      performance, custo e escalabilidade.
+                    </p>
+
+                    <p className="text-muted-foreground text-lg leading-relaxed mb-8">
+                      Nosso objetivo é impulsionar a evolução da manufatura
+                      através de robótica, automação inteligente, sistemas
+                      conectados e IoT industrial.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* MOBILE */}
+              <div
+                className="absolute inset-x-0 bottom-8 z-30 px-4 lg:hidden"
+                style={{
+                  opacity: showFinalText ? textOpacity : 0,
+                  transition: "opacity 260ms ease",
+                }}
+              >
+                <div
+                  style={{
+                    transform: `translateY(${showFinalText ? textTranslateYMobile : 24}px)`,
+                    transition: "transform 260ms ease",
+                  }}
+                >
+                  <div className="mx-auto max-w-xl rounded-[28px] border border-white/10 bg-background/88 p-5 shadow-[0_24px_100px_rgba(0,0,0,0.38)] backdrop-blur-xl">
+                    <div className="mb-4 h-px w-12 bg-white/20" />
+
+                    <p className="mb-4 text-[11px] font-medium uppercase tracking-[0.24em] text-muted-foreground/90">
+                      Redutor planetário
+                    </p>
+
+                    <p className="mb-4 text-sm leading-relaxed text-muted-foreground">
+                      Nossa engenharia integra mecatrônica, controle avançado de
+                      movimento e ciência da computação, permitindo a criação de
+                      máquinas e sistemas inteligentes capazes de transformar
+                      processos produtivos em operações mais eficientes,
+                      conectadas e automatizadas.
+                    </p>
+
+                    <p className="mb-4 text-sm leading-relaxed text-muted-foreground">
+                      Desenvolvemos tecnologia nacional de alto nível,
+                      oferecendo soluções inovadoras com excelente relação entre
+                      performance, custo e escalabilidade.
+                    </p>
+
+                    <p className="text-sm leading-relaxed text-muted-foreground">
+                      Nosso objetivo é impulsionar a evolução da manufatura
+                      através de robótica, automação inteligente, sistemas
+                      conectados e IoT industrial.
+                    </p>
+                  </div>
+                </div>
+              </div>
             </div>
-          </div>
-          <div className="order-1 lg:order-2">
-            <p className="text-muted-foreground text-lg leading-relaxed mb-8">
-              Nossa engenharia integra mecatrônica, controle avançado de
-              movimento e ciência da computação, permitindo a criação de
-              máquinas e sistemas inteligentes capazes de transformar processos
-              produtivos em operações mais eficientes, conectadas e
-              automatizadas.
-            </p>
-
-            <p className="text-muted-foreground text-lg leading-relaxed mb-8">
-              Desenvolvemos tecnologia nacional de alto nível, oferecendo
-              soluções inovadoras com excelente relação entre performance, custo
-              e escalabilidade, sempre focadas nas necessidades reais da
-              indústria moderna.
-            </p>
-
-            <p className="text-muted-foreground text-lg leading-relaxed mb-8">
-              Nosso objetivo é impulsionar a evolução da manufatura através de
-              robótica, automação inteligente, sistemas conectados e tecnologias
-              de IoT industrial, levando nossos clientes ao próximo nível de
-              produtividade e competitividade.
-            </p>
           </div>
         </div>
       </div>

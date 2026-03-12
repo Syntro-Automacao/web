@@ -8,4 +8,5 @@ export const SECTION_IDS = {
   ESCADA: "escada",
   DELTA: "delta",
   SOBRE: "sobre",
+  PLANETARIO: "planetario",
 } as const;

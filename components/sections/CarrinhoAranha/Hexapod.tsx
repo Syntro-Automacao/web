@@ -13,15 +13,16 @@ type HexapodProps = {
   onInViewChange?: (inView: boolean) => void;
 };
 
-const TOTAL_FRAMES = 48;
+const TOTAL_FRAMES = 24;
+const SCROLL_SPEED = 1.8;
 
 function clamp(value: number, min: number, max: number) {
   return Math.min(Math.max(value, min), max);
 }
 
 function getFrameSrc(index: number) {
-  const num = String(index + 1).padStart(4, "0");
-  return `/assets/hexapod-seq/frame-${num}.webp`;
+  const num = String(index + 1).padStart(3, "0");
+  return `/assets/hexapod-seq/hexapod_mk-${num}.webp`;
 }
 
 export function Hexapod({ onInViewChange }: HexapodProps) {
@@ -46,14 +47,13 @@ export function Hexapod({ onInViewChange }: HexapodProps) {
     offset: ["start end", "end start"],
   });
 
-  // janela menor = animação mais rápida
-  const progress = useTransform(scrollYProgress, [0.18, 0.55], [0, 1]);
+  const progress = useTransform(scrollYProgress, [0.08, 0.92], [0, 1]);
 
   useMotionValueEvent(progress, "change", (latest) => {
     if (isDragging) return;
 
-    const clamped = clamp(latest, 0, 1);
-    const nextIndex = Math.round(clamped * (TOTAL_FRAMES - 1));
+    const boosted = clamp(latest * SCROLL_SPEED, 0, 1);
+    const nextIndex = Math.round(boosted * (TOTAL_FRAMES - 1));
 
     setFrameIndex((prev) => (prev === nextIndex ? prev : nextIndex));
   });
@@ -141,24 +141,21 @@ export function Hexapod({ onInViewChange }: HexapodProps) {
           <div className="relative">
             <div
               ref={scrubAreaRef}
-              className="relative rounded-lg overflow-hidden select-none touch-none cursor-ew-resize"
+              className="relative select-none"
               onPointerDown={handlePointerDown}
               onPointerMove={handlePointerMove}
               onPointerUp={handlePointerUp}
               onPointerCancel={handlePointerUp}
             >
-              <div className="relative w-full bg-black/5">
+              <div className="relative w-full">
                 {isLoaded ? (
                   <img
                     src={currentSrc}
                     alt="Animação interativa do robô aranha"
                     draggable={false}
-                    className="w-full h-full object-cover pointer-events-none"
                   />
                 ) : (
-                  <div className="absolute inset-0 flex items-center justify-center text-sm text-muted-foreground">
-                    Carregando animação...
-                  </div>
+                  <div className="absolute inset-0 flex items-center justify-center text-sm text-muted-foreground"></div>
                 )}
               </div>
             </div>

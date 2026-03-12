@@ -8,6 +8,11 @@
   --breakpoint-lg: 1024px;
   --breakpoint-xl: 1280px;
   --breakpoint-2xl: 1536px;
+
+  /* Classes arbitrárias para largura customizada */
+  --width-50vw: 50vw;
+  --max-width-560px: 560px;
+  --min-width-320px: 320px;
 }
 
 @custom-variant dark (&:is(.dark *));

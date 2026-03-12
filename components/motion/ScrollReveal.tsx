@@ -125,7 +125,14 @@ export function ScrollReveal({
     <motion.div
       ref={ref}
       className={className}
-      style={{ x, y, scale, opacity, willChange: "transform" }}
+      style={{
+        x,
+        y,
+        scale,
+        opacity,
+        willChange: "transform",
+        //position: "relative",
+      }}
       viewport={{ once, amount }}
     >
       {children}
