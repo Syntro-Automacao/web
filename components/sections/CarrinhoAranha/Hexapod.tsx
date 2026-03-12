@@ -141,7 +141,7 @@ export function Hexapod({ onInViewChange }: HexapodProps) {
           <div className="relative">
             <div
               ref={scrubAreaRef}
-              className="relative select-none"
+              className="relative rounded-lg overflow-hidden select-none touch-none cursor-ew-resize"
               onPointerDown={handlePointerDown}
               onPointerMove={handlePointerMove}
               onPointerUp={handlePointerUp}
@@ -153,9 +153,12 @@ export function Hexapod({ onInViewChange }: HexapodProps) {
                     src={currentSrc}
                     alt="Animação interativa do robô aranha"
                     draggable={false}
+                    className="w-full h-full object-cover pointer-events-none"
                   />
                 ) : (
-                  <div className="absolute inset-0 flex items-center justify-center text-sm text-muted-foreground"></div>
+                  <div className="absolute inset-0 flex items-center justify-center text-sm text-muted-foreground">
+                    Carregando animação...
+                  </div>
                 )}
               </div>
             </div>

@@ -175,9 +175,9 @@ export function RedutorPlanetario({ onInViewChange }: RedutorPlanetarioProps) {
                   <div className="flex min-h-[420px] items-center justify-center text-sm text-muted-foreground"></div>
                 )}
               </div>
-              {/* DESKTOP / TABLET GRANDE */}
+              {/* DESKTOP */}
               <div
-                className="pointer-events-none absolute top-1/2 right-0 z-30 lg:block"
+                className="pointer-events-none absolute top-1/2 right-0 z-30 hidden lg:block"
                 style={{
                   opacity: showFinalText ? textOpacity : 0,
                   transition: "opacity 260ms ease",
@@ -185,11 +185,11 @@ export function RedutorPlanetario({ onInViewChange }: RedutorPlanetarioProps) {
               >
                 <div
                   style={{
-                    transform: `translateX(${showFinalText ? textTranslateX : 42}px) translateY(-50%)`,
+                    transform: `translateY(-50%) translateX(${showFinalText ? textTranslateX : 42}px)`,
                     transition: "transform 260ms ease",
                   }}
                 >
-                  <div className="w-[50vw] max-w-[800px] min-w-[320px]">
+                  <div className="max-w-[800px] min-w-[320px] pr-8">
                     <h3 className="sm:text-4xl lg:text-5xl font-bold text-foreground mt-4 mb-6 leading-tight text-balance">
                       Redutor planetário
                     </h3>
