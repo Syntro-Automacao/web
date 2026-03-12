@@ -100,7 +100,7 @@ export function FeatureSection({
             <TypingText
               as="h3"
               text={title}
-              className="sm:text-4xl lg:text-5xl font-bold text-foreground mt-4 mb-6 leading-tight text-balance"
+              className="xs:text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mt-4 mb-6 leading-tight text-balance"
             />
             <TypingText
               as="p"

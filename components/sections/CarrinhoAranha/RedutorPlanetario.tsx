@@ -175,51 +175,13 @@ export function RedutorPlanetario({ onInViewChange }: RedutorPlanetarioProps) {
             onPointerCancel={handlePointerUp}
           >
             <div className="relative h-full w-full max-w-[1600px] mx-auto">
-              <div className="relative z-10 flex min-h-[60vh] items-center justify-center lg:h-full lg:justify-start">
-                {isLoaded ? (
-                  <img
-                    src={currentSrc}
-                    alt="Animação interativa do redutor planetário"
-                    draggable={false}
-                    className="pointer-events-none h-auto w-full transition-transform duration-500 ease-out"
-                  />
-                ) : (
-                  <div className="flex min-h-[420px] items-center justify-center text-sm text-muted-foreground" />
-                )}
-              </div>
+              {/* MOBILE */}
+              <div className="lg:hidden">
+                <div>
+                  <div className="mx-auto max-w-xl rounded-[28px]">
+                    <div className="mb-4 h-px w-12 bg-white/20" />
 
-              <div
-                className="absolute top-4 left-1/2 z-30 -translate-x-1/2 rounded-full border border-white/10 bg-background/70 px-4 py-2 text-[11px] uppercase tracking-[0.24em] text-muted-foreground backdrop-blur-md transition-all duration-300 lg:left-auto lg:right-0 lg:translate-x-0"
-                style={{
-                  opacity: showHint ? 1 : 0,
-                  transform: showHint
-                    ? isDesktop
-                      ? "translateY(0)"
-                      : "translateX(-50%) translateY(0)"
-                    : isDesktop
-                      ? "translateY(-10px)"
-                      : "translateX(-50%) translateY(-10px)",
-                }}
-              >
-                {isDesktop ? "Role ou arraste" : "Arraste para explorar"}
-              </div>
-
-              {/* DESKTOP */}
-              <div
-                className="pointer-events-none absolute top-1/2 right-0 z-30 hidden lg:block"
-                style={{
-                  opacity: showFinalText ? textOpacity : 0,
-                  transition: "opacity 260ms ease",
-                }}
-              >
-                <div
-                  style={{
-                    transform: `translateY(-50%) translateX(${showFinalText ? textTranslateX : 42}px)`,
-                    transition: "transform 260ms ease",
-                  }}
-                >
-                  <div className="max-w-[800px] min-w-[320px] pr-8">
-                    <h3 className="mt-4 mb-6 text-balance font-bold leading-tight text-foreground sm:text-4xl lg:text-5xl">
+                    <h3 className="mt-4 mb-6 text-balance font-bold leading-tight text-foreground xs:text-3xl sm:text-4xl lg:text-5xl">
                       Redutor planetário
                     </h3>
 
@@ -245,10 +207,36 @@ export function RedutorPlanetario({ onInViewChange }: RedutorPlanetarioProps) {
                   </div>
                 </div>
               </div>
+              <div className="relative z-10 flex min-h-[60vh] items-center justify-center lg:h-full lg:justify-start">
+                {isLoaded ? (
+                  <img
+                    src={currentSrc}
+                    alt="Animação interativa do redutor planetário"
+                    draggable={false}
+                    className="pointer-events-none h-auto w-full transition-transform duration-500 ease-out"
+                  />
+                ) : (
+                  <div className="flex min-h-[420px] items-center justify-center text-sm text-muted-foreground" />
+                )}
+              </div>
 
-              {/* MOBILE */}
               <div
-                className="absolute inset-x-0 bottom-8 z-30 px-4 lg:hidden"
+                className="absolute top-4 left-1/2 z-30 -translate-x-1/2 rounded-full border border-white/10 bg-background/70 px-4 py-2 text-[11px] uppercase tracking-[0.24em] text-muted-foreground backdrop-blur-md transition-all duration-300 lg:left-auto lg:right-0 lg:translate-x-0"
+                style={{
+                  opacity: showHint ? 1 : 0,
+                  transform: showHint
+                    ? isDesktop
+                      ? "translateY(0)"
+                      : "translateX(-50%) translateY(0)"
+                    : isDesktop
+                      ? "translateY(-10px)"
+                      : "translateX(-50%) translateY(-10px)",
+                }}
+              ></div>
+
+              {/* DESKTOP */}
+              <div
+                className="pointer-events-none absolute top-1/2 right-0 z-30 hidden lg:block"
                 style={{
                   opacity: showFinalText ? textOpacity : 0,
                   transition: "opacity 260ms ease",
@@ -256,18 +244,16 @@ export function RedutorPlanetario({ onInViewChange }: RedutorPlanetarioProps) {
               >
                 <div
                   style={{
-                    transform: `translateY(${showFinalText ? textTranslateYMobile : 24}px)`,
+                    transform: `translateY(-50%) translateX(${showFinalText ? textTranslateX : 42}px)`,
                     transition: "transform 260ms ease",
                   }}
                 >
-                  <div className="mx-auto max-w-xl rounded-[28px] border border-white/10 bg-background/88 p-5 shadow-[0_24px_100px_rgba(0,0,0,0.38)] backdrop-blur-xl">
-                    <div className="mb-4 h-px w-12 bg-white/20" />
-
-                    <p className="mb-4 text-[11px] font-medium uppercase tracking-[0.24em] text-muted-foreground/90">
+                  <div className="max-w-[800px] min-w-[320px] pr-8">
+                    <h3 className="mt-4 mb-6 text-balance font-bold leading-tight text-foreground xs:text-3xl sm:text-4xl lg:text-5xl">
                       Redutor planetário
-                    </p>
+                    </h3>
 
-                    <p className="mb-4 text-sm leading-relaxed text-muted-foreground">
+                    <p className="mb-8 text-lg leading-relaxed text-muted-foreground">
                       Nossa engenharia integra mecatrônica, controle avançado de
                       movimento e ciência da computação, permitindo a criação de
                       máquinas e sistemas inteligentes capazes de transformar
@@ -275,13 +261,13 @@ export function RedutorPlanetario({ onInViewChange }: RedutorPlanetarioProps) {
                       conectadas e automatizadas.
                     </p>
 
-                    <p className="mb-4 text-sm leading-relaxed text-muted-foreground">
+                    <p className="mb-8 text-lg leading-relaxed text-muted-foreground">
                       Desenvolvemos tecnologia nacional de alto nível,
                       oferecendo soluções inovadoras com excelente relação entre
                       performance, custo e escalabilidade.
                     </p>
 
-                    <p className="text-sm leading-relaxed text-muted-foreground">
+                    <p className="mb-8 text-lg leading-relaxed text-muted-foreground">
                       Nosso objetivo é impulsionar a evolução da manufatura
                       através de robótica, automação inteligente, sistemas
                       conectados e IoT industrial.
