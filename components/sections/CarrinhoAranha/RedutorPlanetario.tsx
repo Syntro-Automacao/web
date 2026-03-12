@@ -2,7 +2,6 @@
 
 import { useEffect, useMemo, useRef, useState, useCallback } from "react";
 import {
-  motion,
   useInView,
   useScroll,
   useTransform,
@@ -47,6 +46,7 @@ export function RedutorPlanetario({ onInViewChange }: RedutorPlanetarioProps) {
   const [sceneProgress, setSceneProgress] = useState(0);
   const [isDragging, setIsDragging] = useState(false);
   const [isLoaded, setIsLoaded] = useState(false);
+  const [isDesktop, setIsDesktop] = useState(false);
 
   const isInView = useInView(sectionRef, {
     amount: 0.2,
@@ -56,12 +56,21 @@ export function RedutorPlanetario({ onInViewChange }: RedutorPlanetarioProps) {
     onInViewChange?.(isInView);
   }, [isInView, onInViewChange]);
 
+  useEffect(() => {
+    const media = window.matchMedia("(min-width: 1024px)");
+
+    const update = () => setIsDesktop(media.matches);
+    update();
+
+    media.addEventListener("change", update);
+    return () => media.removeEventListener("change", update);
+  }, []);
+
   const { scrollYProgress } = useScroll({
     target: sectionRef,
     offset: ["start start", "end end"],
   });
 
-  // deixa a animação terminar antes para sobrar tempo do estado final
   const progress = useTransform(scrollYProgress, [0.08, 0.62], [0, 1]);
 
   useMotionValueEvent(scrollYProgress, "change", (latest) => {
@@ -69,7 +78,7 @@ export function RedutorPlanetario({ onInViewChange }: RedutorPlanetarioProps) {
   });
 
   useMotionValueEvent(progress, "change", (latest) => {
-    if (isDragging) return;
+    if (!isDesktop || isDragging) return;
 
     const clamped = clamp(latest, 0, 1);
     const nextIndex = Math.round(clamped * (TOTAL_FRAMES - 1));
@@ -110,17 +119,20 @@ export function RedutorPlanetario({ onInViewChange }: RedutorPlanetarioProps) {
 
   const currentSrc = useMemo(() => getFrameSrc(frameIndex), [frameIndex]);
 
-  const showHint = sceneProgress < 0.12;
+  const showHint = isDesktop ? sceneProgress < 0.12 : frameIndex < 8;
 
-  // texto aparece quando chega no final da montagem
   const showFinalText = frameIndex >= 74;
   const textOpacity = mapRange(frameIndex, 74, 75, 0, 1);
   const textTranslateX = mapRange(frameIndex, 74, 75, 42, 0);
   const textTranslateYMobile = mapRange(frameIndex, 74, 75, 24, 0);
 
-  const imageScale = mapRange(sceneProgress, 0.6, 0.76, 1, 1.045);
-  const imageTranslateX = mapRange(sceneProgress, 0.6, 0.76, 0, -140);
-  const glowOpacity = mapRange(sceneProgress, 0, 0.18, 0.18, 0.32);
+  const imageScale = isDesktop
+    ? mapRange(sceneProgress, 0.6, 0.76, 1, 1.045)
+    : mapRange(frameIndex, 70, 75, 1, 1.02);
+
+  const imageTranslateX = isDesktop
+    ? mapRange(sceneProgress, 0.6, 0.76, 0, -140)
+    : 0;
 
   useEffect(() => {
     let loadedCount = 0;
@@ -148,10 +160,10 @@ export function RedutorPlanetario({ onInViewChange }: RedutorPlanetarioProps) {
     <section
       ref={sectionRef}
       id={SECTION_IDS.ABOUT}
-      className="relative z-20 h-[340vh] bg-(--background)"
+      className="relative z-20 bg-(--background) lg:h-[340vh]"
     >
       <div className="relative h-full">
-        <div className="sticky top-0 h-screen overflow-hidden">
+        <div className="relative overflow-hidden lg:sticky lg:top-0 lg:h-screen">
           <div className="absolute inset-0 bg-gradient-to-b from-background via-background to-background/95" />
 
           <div
@@ -162,19 +174,36 @@ export function RedutorPlanetario({ onInViewChange }: RedutorPlanetarioProps) {
             onPointerUp={handlePointerUp}
             onPointerCancel={handlePointerUp}
           >
-            <div className="relative h-full w-full max-w-[1600px]">
-              <div className="relative z-10 flex h-full items-center justify-center lg:justify-start">
+            <div className="relative h-full w-full max-w-[1600px] mx-auto">
+              <div className="relative z-10 flex min-h-[60vh] items-center justify-center lg:h-full lg:justify-start">
                 {isLoaded ? (
                   <img
                     src={currentSrc}
                     alt="Animação interativa do redutor planetário"
-                    draggable={true}
+                    draggable={false}
                     className="pointer-events-none h-auto w-full transition-transform duration-500 ease-out"
                   />
                 ) : (
-                  <div className="flex min-h-[420px] items-center justify-center text-sm text-muted-foreground"></div>
+                  <div className="flex min-h-[420px] items-center justify-center text-sm text-muted-foreground" />
                 )}
               </div>
+
+              <div
+                className="absolute top-4 left-1/2 z-30 -translate-x-1/2 rounded-full border border-white/10 bg-background/70 px-4 py-2 text-[11px] uppercase tracking-[0.24em] text-muted-foreground backdrop-blur-md transition-all duration-300 lg:left-auto lg:right-0 lg:translate-x-0"
+                style={{
+                  opacity: showHint ? 1 : 0,
+                  transform: showHint
+                    ? isDesktop
+                      ? "translateY(0)"
+                      : "translateX(-50%) translateY(0)"
+                    : isDesktop
+                      ? "translateY(-10px)"
+                      : "translateX(-50%) translateY(-10px)",
+                }}
+              >
+                {isDesktop ? "Role ou arraste" : "Arraste para explorar"}
+              </div>
+
               {/* DESKTOP */}
               <div
                 className="pointer-events-none absolute top-1/2 right-0 z-30 hidden lg:block"
@@ -190,11 +219,11 @@ export function RedutorPlanetario({ onInViewChange }: RedutorPlanetarioProps) {
                   }}
                 >
                   <div className="max-w-[800px] min-w-[320px] pr-8">
-                    <h3 className="sm:text-4xl lg:text-5xl font-bold text-foreground mt-4 mb-6 leading-tight text-balance">
+                    <h3 className="mt-4 mb-6 text-balance font-bold leading-tight text-foreground sm:text-4xl lg:text-5xl">
                       Redutor planetário
                     </h3>
 
-                    <p className="text-muted-foreground text-lg leading-relaxed mb-8">
+                    <p className="mb-8 text-lg leading-relaxed text-muted-foreground">
                       Nossa engenharia integra mecatrônica, controle avançado de
                       movimento e ciência da computação, permitindo a criação de
                       máquinas e sistemas inteligentes capazes de transformar
@@ -202,13 +231,13 @@ export function RedutorPlanetario({ onInViewChange }: RedutorPlanetarioProps) {
                       conectadas e automatizadas.
                     </p>
 
-                    <p className="text-muted-foreground text-lg leading-relaxed mb-8">
+                    <p className="mb-8 text-lg leading-relaxed text-muted-foreground">
                       Desenvolvemos tecnologia nacional de alto nível,
                       oferecendo soluções inovadoras com excelente relação entre
                       performance, custo e escalabilidade.
                     </p>
 
-                    <p className="text-muted-foreground text-lg leading-relaxed mb-8">
+                    <p className="mb-8 text-lg leading-relaxed text-muted-foreground">
                       Nosso objetivo é impulsionar a evolução da manufatura
                       através de robótica, automação inteligente, sistemas
                       conectados e IoT industrial.
