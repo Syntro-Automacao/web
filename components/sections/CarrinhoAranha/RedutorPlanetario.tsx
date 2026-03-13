@@ -272,9 +272,7 @@ export function RedutorPlanetario({ onInViewChange }: RedutorPlanetarioProps) {
                       ? "translateY(-10px)"
                       : "translateX(-50%) translateY(-10px)",
                 }}
-              >
-                {isDesktop ? "arraste ou role" : "deslize para interagir"}
-              </div>
+              ></div>
 
               {/* DESKTOP */}
               <div
