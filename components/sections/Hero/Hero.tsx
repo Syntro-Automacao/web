@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 
 export function Hero() {
   const [isFixed, setIsFixed] = useState(true);
+  const [videoReady, setVideoReady] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -29,13 +30,26 @@ export function Hero() {
           isFixed ? "fixed" : "absolute"
         }`}
       >
+        {!videoReady && (
+          <img
+            src="/assets/videos/syntro_entrada.webp"
+            alt="Preview"
+            className="absolute inset-0 h-full w-full object-cover"
+          />
+        )}
+
         <video
           src="/assets/videos/videoSite.mp4"
           autoPlay
           loop
           muted
           playsInline
-          className="absolute inset-0 w-full h-full object-cover"
+          preload="auto"
+          poster="/assets/videos/syntro_entrada.webp"
+          onLoadedData={() => setVideoReady(true)}
+          className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-700 ${
+            videoReady ? "opacity-100" : "opacity-0"
+          }`}
         />
       </div>
     </section>

@@ -70,14 +70,36 @@ export function Hexapod({ onInViewChange }: HexapodProps) {
     setFrameIndex((prev) => (prev === nextIndex ? prev : nextIndex));
   }, []);
 
+  // 📱 Detecção de movimento horizontal para mobile
+  const [startX, setStartX] = useState(0);
+  const [startY, setStartY] = useState(0);
+  const [isHorizontalScroll, setIsHorizontalScroll] = useState(true);
+
   const handlePointerDown = (e: React.PointerEvent<HTMLDivElement>) => {
     setIsDragging(true);
+    // 📱 Capturar posição inicial do toque
+    setStartX(e.clientX);
+    setStartY(e.clientY);
+    setIsHorizontalScroll(true); // Resetar estado
     e.currentTarget.setPointerCapture(e.pointerId);
     updateFrameByPointer(e.clientX);
   };
 
   const handlePointerMove = (e: React.PointerEvent<HTMLDivElement>) => {
     if (!isDragging) return;
+
+    // 📱 Detectar se é movimento horizontal ou vertical
+    const deltaX = Math.abs(e.clientX - startX);
+    const deltaY = Math.abs(e.clientY - startY);
+
+    // Se o movimento vertical for maior que horizontal, ignorar (não bloquear scroll)
+    if (deltaY > deltaX) {
+      setIsHorizontalScroll(false);
+      return; // 🔥 Não fazer nada - deixar o scroll natural funcionar
+    }
+
+    // Se detectou movimento horizontal, marcar e processar
+    setIsHorizontalScroll(true);
     updateFrameByPointer(e.clientX);
   };
 
