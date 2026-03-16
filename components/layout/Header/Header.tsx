@@ -53,85 +53,50 @@ export function Header() {
   };
 
   return (
-    <header
-      className={`fixed top-0 left-0 right-0 z-50 backdrop-blur-md transition-all duration-300 ${
-        isScrolled
-          ? "border-b border-border bg-background sm:bg-background md:bg-background"
-          : "border-transparent bg-background/0"
-      }`}
-    >
-      <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-12">
-        <div className="flex items-center justify-between h-16 lg:h-20">
-          <Link href="/" className="flex items-center gap-2">
-            <Logo
-              className={`h-8 w-auto transition-colors duration-300 ${
-                isScrolled ? "text-primary" : "text-white"
-              }`}
-            />
-          </Link>
+    <>
+      {/* Overlay escuro quando menu está aberto - COBRE TODA A TELA! */}
+      {isMenuOpen && (
+        <div
+          className="fixed inset-0 bg-black/50 z-40 transition-opacity duration-300"
+          onClick={() => setIsMenuOpen(false)}
+        />
+      )}
 
-          <nav className="hidden lg:flex items-center gap-8">
-            {navItems.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                onClick={(e) => handleSmoothScroll(e, item.href)}
-                className={`hover:text-foreground transition-colors text-md font-medium cursor-pointer ${
-                  isScrolled ? "text-muted-foreground" : "text-white"
+      <header
+        className={`fixed top-0 left-0 right-0 z-50 backdrop-blur-md transition-all duration-300 ${
+          isScrolled
+            ? "border-b border-border bg-background sm:bg-background md:bg-background"
+            : "border-transparent bg-background/0"
+        }`}
+      >
+        <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-12">
+          <div className="flex items-center justify-between h-16 lg:h-20">
+            <Link href="/" className="flex items-center gap-2">
+              <Logo
+                className={`h-8 w-auto transition-colors duration-300 ${
+                  isScrolled ? "text-primary" : "text-white"
                 }`}
-              >
-                {item.label}
-              </Link>
-            ))}
-          </nav>
+              />
+            </Link>
 
-          <div className="hidden lg:flex items-center gap-2">
-            <ThemeToggle />
-            <Button asChild>
-              <Link
-                href={`#${SECTION_IDS.CONTATO}`}
-                onClick={(e) =>
-                  handleSmoothScroll(e, `#${SECTION_IDS.CONTATO}`)
-                }
-              >
-                Contato
-              </Link>
-            </Button>
-          </div>
-
-          <div className="flex lg:hidden items-center gap-1">
-            <ThemeToggle />
-            <button
-              className={`p-2 transition-colors duration-300 ${
-                isScrolled ? "text-foreground" : "text-white"
-              }`}
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-              aria-label={isMenuOpen ? "Fechar menu" : "Abrir menu"}
-            >
-              {isMenuOpen ? (
-                <X className="w-6 h-6" />
-              ) : (
-                <Menu className="w-6 h-6" />
-              )}
-            </button>
-          </div>
-        </div>
-
-        {isMenuOpen && (
-          <nav className="lg:hidden py-4 border-t border-border">
-            <div className="flex flex-col gap-4">
+            <nav className="hidden lg:flex items-center gap-8">
               {navItems.map((item) => (
                 <Link
                   key={item.href}
                   href={item.href}
-                  className="text-muted-foreground hover:text-foreground transition-colors text-sm font-medium py-2 cursor-pointer"
                   onClick={(e) => handleSmoothScroll(e, item.href)}
+                  className={`hover:text-foreground transition-colors text-md font-medium cursor-pointer ${
+                    isScrolled ? "text-muted-foreground" : "text-white"
+                  }`}
                 >
                   {item.label}
                 </Link>
               ))}
+            </nav>
 
-              <Button asChild className="mt-2">
+            <div className="hidden lg:flex items-center gap-2">
+              <ThemeToggle />
+              <Button asChild>
                 <Link
                   href={`#${SECTION_IDS.CONTATO}`}
                   onClick={(e) =>
@@ -142,9 +107,77 @@ export function Header() {
                 </Link>
               </Button>
             </div>
+
+            <div className="flex lg:hidden items-center gap-1">
+              <ThemeToggle />
+              <button
+                className={`p-2 transition-colors duration-300 ${
+                  isScrolled ? "text-foreground" : "text-white"
+                }`}
+                onClick={() => setIsMenuOpen(!isMenuOpen)}
+                aria-label={isMenuOpen ? "Fechar menu" : "Abrir menu"}
+              >
+                {isMenuOpen ? (
+                  <X className="w-6 h-6" />
+                ) : (
+                  <Menu className="w-6 h-6" />
+                )}
+              </button>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      {/* Menu lateral deslizante - FORA do header! */}
+      <div
+        className={`lg:hidden fixed top-0 left-0 h-screen w-72 bg-background shadow-2xl z-50 transform transition-transform duration-300 ease-in-out ${
+          isMenuOpen ? "translate-x-0" : "-translate-x-full"
+        }`}
+      >
+        <div className="flex flex-col h-full">
+          {/* Header do menu com botão fechar */}
+          <div className="flex items-center justify-between p-4 border-b border-border">
+            <Logo className="h-8 w-auto text-primary" />
+            <button
+              onClick={() => setIsMenuOpen(false)}
+              className="p-2 hover:bg-accent rounded-lg transition-colors"
+              aria-label="Fechar menu"
+            >
+              <X className="w-6 h-6" />
+            </button>
+          </div>
+
+          {/* Conteúdo do menu */}
+          <nav className="flex-1 p-4">
+            <div className="flex flex-col gap-2">
+              {navItems.map((item) => (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className="text-muted-foreground hover:text-foreground hover:bg-accent transition-colors text-sm font-medium py-3 px-4 rounded-lg cursor-pointer"
+                  onClick={(e) => handleSmoothScroll(e, item.href)}
+                >
+                  {item.label}
+                </Link>
+              ))}
+            </div>
           </nav>
-        )}
+
+          {/* Rodapé do menu com botão Contato */}
+          <div className="p-4 border-t border-border">
+            <Button asChild className="w-full">
+              <Link
+                href={`#${SECTION_IDS.CONTATO}`}
+                onClick={(e) =>
+                  handleSmoothScroll(e, `#${SECTION_IDS.CONTATO}`)
+                }
+              >
+                Contato
+              </Link>
+            </Button>
+          </div>
+        </div>
       </div>
-    </header>
+    </>
   );
 }
