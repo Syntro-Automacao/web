@@ -9,4 +9,5 @@ export const SECTION_IDS = {
   DELTA: "delta",
   SOBRE: "sobre",
   PLANETARIO: "planetario",
+  CONTATO: "contato",
 } as const;

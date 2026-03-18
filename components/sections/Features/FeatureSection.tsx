@@ -80,14 +80,14 @@ export function FeatureSection({
             distance={imageDistance}
             scaleFrom={imageScaleFrom}
           >
-            <div className="w-full h-auto">
+            <div className="flex justify-center">
               <Image
                 src={imageSrc}
                 alt={imageAlt}
-                width={1200}
+                width={500}
                 height={800}
-                className="w-full h-auto object-contain"
-                sizes="(max-width: 768px) 95vw, (max-width: 1200px) 90vw, 85vw"
+                className="object-contain"
+                sizes="(max-width: 500px) 95vw, (max-width: 500px) 90vw, 85vw"
                 priority
               />
             </div>

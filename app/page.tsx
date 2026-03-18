@@ -1,5 +1,6 @@
 "use client";
-import { useState } from "react";
+
+import { useEffect, useState } from "react";
 import { Header } from "@/components/layout/Header/Header";
 import { Footer } from "@/components/layout/Footer/Footer";
 import { Hero } from "@/components/sections/Hero/Hero";
@@ -24,48 +25,63 @@ import { RoboCarrinho } from "@/components/sections/CarrinhoAranha/RoboCarrinho"
 import { LoaderScreen } from "@/components/loading/LoaderScreen";
 
 export default function HomePage() {
+  const [heroReady, setHeroReady] = useState(false);
   const [loadingFinished, setLoadingFinished] = useState(false);
-  const [showContent, setShowContent] = useState(false);
-  const [debugPhase, setDebugPhase] = useState("inicio");
+  const [contentVisible, setContentVisible] = useState(false);
+
+  useEffect(() => {
+    const fallback = setTimeout(() => {
+      setHeroReady(true);
+    }, 2500);
+
+    return () => clearTimeout(fallback);
+  }, []);
 
   const handleLoadingFinish = () => {
     setLoadingFinished(true);
-    setShowContent(true);
-    setDebugPhase("loading_finalizado");
+
+    requestAnimationFrame(() => {
+      setContentVisible(true);
+    });
   };
 
   return (
     <>
-      {!loadingFinished && <LoaderScreen onFinish={handleLoadingFinish} />}
-
-      {/* Renderização condicional correta - só renderiza após loading */}
-      {showContent && (
-        <div className="transition-opacity duration-1000 opacity-100">
-          <Header />
-          <main className="relative">
-            <Hero />
-            <RoboCarrinho />
-            <Hexapod />
-            <RedutorPlanetario />
-            <Iot />
-            <RoboParallax />
-            <Borunte />
-            <BorunteAplications />
-            <VideoParallax />
-            <RoboHD />
-            <RoboBandeja />
-            <RoboBandeja3D />
-            <RoboEscada />
-            <RoboDelta />
-            <Services />
-            <Differentials />
-            <Cases />
-            <Mission />
-            <CTA />
-          </main>
-          <Footer />
-        </div>
+      {!loadingFinished && (
+        <LoaderScreen canFinish={heroReady} onFinish={handleLoadingFinish} />
       )}
+
+      <Header />
+
+      <main className="relative">
+        <div
+          id="syntro"
+          className={`transition-opacity duration-700 ${
+            contentVisible ? "opacity-100" : "opacity-0 pointer-events-none"
+          }`}
+        >
+          <Hero isVisible={contentVisible} onReady={() => setHeroReady(true)} />
+        </div>
+        <RoboCarrinho />
+        <Hexapod />
+        <RedutorPlanetario />
+        <Iot />
+        <RoboParallax />
+        <Borunte />
+        <BorunteAplications />
+        <VideoParallax />
+        <RoboHD />
+        <RoboBandeja />
+        <RoboBandeja3D />
+        <RoboEscada />
+        <RoboDelta />
+        <Services />
+        <Differentials />
+        <Cases />
+        <Mission />
+        <CTA />
+      </main>
+      <Footer />
     </>
   );
 }
