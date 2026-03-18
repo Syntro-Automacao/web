@@ -23,6 +23,7 @@ import { RedutorPlanetario } from "@/components/sections/CarrinhoAranha/RedutorP
 import { Hexapod } from "@/components/sections/CarrinhoAranha/Hexapod";
 import { RoboCarrinho } from "@/components/sections/CarrinhoAranha/RoboCarrinho";
 import { LoaderScreen } from "@/components/loading/LoaderScreen";
+import { Software } from "@/components/sections/Software/Software";
 
 export default function HomePage() {
   const [heroReady, setHeroReady] = useState(false);
@@ -66,6 +67,7 @@ export default function HomePage() {
         <Hexapod />
         <RedutorPlanetario />
         <Iot />
+        <Software />
         <RoboParallax />
         <Borunte />
         <BorunteAplications />

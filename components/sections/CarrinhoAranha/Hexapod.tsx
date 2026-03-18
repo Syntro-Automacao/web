@@ -73,14 +73,14 @@ export function Hexapod({ onInViewChange }: HexapodProps) {
   // 📱 Detecção de movimento horizontal para mobile
   const [startX, setStartX] = useState(0);
   const [startY, setStartY] = useState(0);
-  const [isHorizontalScroll, setIsHorizontalScroll] = useState(true);
+  const [isHorizontalScroll, setIsHorizontalScroll] = useState(false);
 
   const handlePointerDown = (e: React.PointerEvent<HTMLDivElement>) => {
-    setIsDragging(true);
+    setIsDragging(false);
     // 📱 Capturar posição inicial do toque
     setStartX(e.clientX);
     setStartY(e.clientY);
-    setIsHorizontalScroll(true); // Resetar estado
+    setIsHorizontalScroll(false); // Resetar estado
     e.currentTarget.setPointerCapture(e.pointerId);
     updateFrameByPointer(e.clientX);
   };
@@ -99,7 +99,7 @@ export function Hexapod({ onInViewChange }: HexapodProps) {
     }
 
     // Se detectou movimento horizontal, marcar e processar
-    setIsHorizontalScroll(true);
+    setIsHorizontalScroll(false);
     updateFrameByPointer(e.clientX);
   };
 
@@ -163,7 +163,7 @@ export function Hexapod({ onInViewChange }: HexapodProps) {
           <div className="relative">
             <div
               ref={scrubAreaRef}
-              className="relative rounded-lg overflow-hidden select-none touch-none cursor-ew-resize"
+              className="relative pointer-events-none rounded-lg overflow-hidden select-none touch-none"
               onPointerDown={handlePointerDown}
               onPointerMove={handlePointerMove}
               onPointerUp={handlePointerUp}

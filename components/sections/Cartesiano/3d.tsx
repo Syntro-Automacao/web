@@ -13,6 +13,8 @@ export function RoboBandeja3D() {
       imageScaleFrom={0.85}
       imageDistance="110%"
       reverseOnMobile={true}
+      imageWidth={600}
+      imageHeight={600}
     />
   );
 }

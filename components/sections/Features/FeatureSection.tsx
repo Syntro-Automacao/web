@@ -19,6 +19,8 @@ type FeatureSectionProps = {
 
   imageSrc: string;
   imageAlt: string;
+  imageWidth?: number;
+  imageHeight?: number;
 
   imageEnterFrom?: EnterFrom;
 
@@ -42,6 +44,8 @@ export function FeatureSection({
   description,
   imageSrc,
   imageAlt,
+  imageWidth,
+  imageHeight,
   imageEnterFrom = "right",
   contentFirst = false,
   reverseOnMobile = false,
@@ -84,8 +88,8 @@ export function FeatureSection({
               <Image
                 src={imageSrc}
                 alt={imageAlt}
-                width={500}
-                height={800}
+                width={imageWidth}
+                height={imageHeight}
                 className="object-contain"
                 sizes="(max-width: 500px) 95vw, (max-width: 500px) 90vw, 85vw"
                 priority
