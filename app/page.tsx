@@ -24,6 +24,7 @@ import { Hexapod } from "@/components/sections/CarrinhoAranha/Hexapod";
 import { RoboCarrinho } from "@/components/sections/CarrinhoAranha/RoboCarrinho";
 import { LoaderScreen } from "@/components/loading/LoaderScreen";
 import { Software } from "@/components/sections/Software/Software";
+import Grid from "@/components/sections/Grid/Grid";
 
 export default function HomePage() {
   const [heroReady, setHeroReady] = useState(false);
@@ -67,6 +68,7 @@ export default function HomePage() {
         <Hexapod />
         <RedutorPlanetario />
         <Iot />
+        <Grid />
         <Software />
         <RoboParallax />
         <Borunte />

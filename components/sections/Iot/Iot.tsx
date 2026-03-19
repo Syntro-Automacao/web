@@ -11,11 +11,27 @@ export function Iot() {
           {/* Content */}
           <div className="">
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mt-4 mb-6 text-white text-balance">
-              Sistemas IOT
+              Desenvolvimento de softwares
             </h2>
-            <p className="text-lg leading-relaxed mb-8 text-(--text-h3-dark)">
-              Sistemas IoT, da Syntro, mostrando a integração de dispositivos
-              conectados
+            <p className="text-lg leading-relaxed mb-8 text-(--text-h3-dark)"></p>
+            <p>
+              <span className="text-3xl text-primary font-bold">
+                Sistemas SCADA,{" "}
+              </span>
+              <span className="text-5xl font-light text-white">
+                Internet das coisas (IOT),
+              </span>
+            </p>
+            <p>
+              <span className="text-3xl font-light text-white">
+                Controladores programáveis (PLC),{" "}
+              </span>
+              <span className="text-3xl text-primary font-bold">
+                Interfaces intuitivas, simples e dinâmicas,{" "}
+              </span>
+              <span className="text-3xl font-light text-white">
+                Integração com Inteligência artificiais{" "}
+              </span>
             </p>
           </div>
           {/* Visual */}
