@@ -27,8 +27,13 @@ export function Borunte() {
               demandam agilidade e precisão.
             </p>
           </div>
-          <div className="relative">
-            <img src="/assets/robos/borunte.png" alt="" />
+          <div className="relative flex justify-center">
+            <img
+              src="/assets/robos/borunte.webp"
+              width={369}
+              height={547}
+              alt="Robô Industrial de Seis Eixos Borunte"
+            />
           </div>
         </div>
       </div>

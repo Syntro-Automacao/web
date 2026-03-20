@@ -250,6 +250,8 @@ export function RedutorPlanetario({ onInViewChange }: RedutorPlanetarioProps) {
                     src={currentSrc}
                     alt="Animação interativa do redutor planetário"
                     draggable={false}
+                    width={1655}
+                    height={948}
                     className="h-auto w-full transition-transform duration-500 ease-out pointer-events-none"
                     style={{
                       transform: `translateX(${imageTranslateX}px) scale(${imageScale})`,

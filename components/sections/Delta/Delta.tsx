@@ -13,8 +13,8 @@ export function RoboDelta() {
       imageScaleFrom={0.85}
       imageDistance="110%"
       reverseOnMobile={true}
-      imageWidth={600}
-      imageHeight={600}
+      imageWidth={500}
+      imageHeight={519}
     />
   );
 }

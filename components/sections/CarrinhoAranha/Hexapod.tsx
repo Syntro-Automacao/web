@@ -176,6 +176,8 @@ export function Hexapod({ onInViewChange }: HexapodProps) {
                     alt="Animação interativa do robô aranha"
                     draggable={false}
                     className="w-full h-full object-cover pointer-events-none"
+                    width={770}
+                    height={672}
                   />
                 ) : (
                   <div className="absolute inset-0 flex items-center justify-center text-sm text-muted-foreground">
