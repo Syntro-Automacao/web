@@ -1,26 +1,34 @@
-import path from "path";
+﻿import path from "path";
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   typescript: {
-    ignoreBuildErrors: true,
+    ignoreBuildErrors: false,
   },
 
-  // necessário para deploy estático
   output: "export",
 
-  // evita problemas com next/image no export
   images: {
     unoptimized: true,
+    formats: ["image/webp", "image/avif"],
+    deviceSizes: [640, 750, 828, 1080, 1200, 1920],
+    imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
   },
 
-  // corrige warning de workspace root
   turbopack: {
     root: path.join(process.cwd()),
   },
 
-  // melhora compatibilidade com hosting simples
   trailingSlash: true,
+
+  reactStrictMode: true,
+  compress: true,
+  generateEtags: true,
+  serverExternalPackages: ["three"],
+
+  experimental: {
+    optimizePackageImports: ["@radix-ui/react-*", "lucide-react"],
+  },
 };
 
 export default nextConfig;

@@ -1,5 +1,5 @@
 import React from "react";
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter, Geist_Mono } from "next/font/google";
 import localFont from "next/font/local";
 import { Analytics } from "@vercel/analytics/next";
@@ -42,6 +42,15 @@ export const metadata: Metadata = {
         type: "image/svg+xml",
       },
     ],
+  },
+  // Performance otimizations
+  viewport: {
+    width: "device-width",
+    initialScale: 1,
+    maximumScale: 5,
+  },
+  formatDetection: {
+    telephone: false,
   },
 };
 

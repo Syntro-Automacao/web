@@ -2,9 +2,17 @@ import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import "./GridMotion.css";
 
-const GridMotion = ({ items = [], gradientColor = "black" }) => {
+interface GridMotionProps {
+  items?: string[];
+  gradientColor?: string;
+}
+
+const GridMotion = ({
+  items = [],
+  gradientColor = "black",
+}: GridMotionProps) => {
   const gridRef = useRef(null);
-  const rowRefs = useRef([]);
+  const rowRefs = useRef<(HTMLDivElement | null)[]>([]);
   const mouseXRef = useRef(
     typeof window !== "undefined" ? window.innerWidth / 2 : 800,
   );
@@ -19,22 +27,28 @@ const GridMotion = ({ items = [], gradientColor = "black" }) => {
 
   useEffect(() => {
     if (typeof window === "undefined") return;
-    gsap.ticker.lagSmoothing(0);
+    // Mantém lagSmoothing padrão para melhor performance
+    gsap.ticker.lagSmoothing(0.8);
 
-    const handleMouseMove = (e) => {
+    let isMoving = false;
+
+    const handleMouseMove = (e: MouseEvent) => {
       mouseXRef.current = e.clientX;
+      isMoving = true;
     };
 
     const updateMotion = () => {
+      if (!isMoving) return;
       const maxMoveAmount = 300;
       const baseDuration = 0.8;
       const inertiaFactors = [0.6, 0.4, 0.3, 0.2];
 
+      const windowWidth = window.innerWidth;
       rowRefs.current.forEach((row, index) => {
         if (row) {
           const direction = index % 2 === 0 ? 1 : -1;
           const moveAmount =
-            ((mouseXRef.current / window.innerWidth) * maxMoveAmount -
+            ((mouseXRef.current / windowWidth) * maxMoveAmount -
               maxMoveAmount / 2) *
             direction;
 
@@ -47,15 +61,17 @@ const GridMotion = ({ items = [], gradientColor = "black" }) => {
           });
         }
       });
+      isMoving = false;
     };
 
     const removeAnimationLoop = gsap.ticker.add(updateMotion);
 
-    window.addEventListener("mousemove", handleMouseMove);
+    window.addEventListener("mousemove", handleMouseMove, { passive: true });
 
     return () => {
       window.removeEventListener("mousemove", handleMouseMove);
       removeAnimationLoop();
+      gsap.globalTimeline.clear();
     };
   }, []);
 
@@ -67,7 +83,9 @@ const GridMotion = ({ items = [], gradientColor = "black" }) => {
             <div
               key={rowIndex}
               className="row"
-              ref={(el) => (rowRefs.current[rowIndex] = el)}
+              ref={(el) => {
+                if (el) rowRefs.current[rowIndex] = el;
+              }}
             >
               {[...Array(7)].map((_, itemIndex) => {
                 const content = combinedItems[rowIndex * 6 + itemIndex];

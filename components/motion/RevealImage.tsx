@@ -52,14 +52,14 @@ export function RevealImage({
   };
 
   return (
-    <Reveal className={className} variants={variants}>
+    <Reveal className={className} variants={variants as any}>
       <motion.img
         src={src}
         alt={alt}
         loading="lazy"
         decoding="async"
         className={imgClassName}
-        variants={imgVariants}
+        variants={imgVariants as any}
       />
     </Reveal>
   );

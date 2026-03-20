@@ -100,7 +100,7 @@ export function ScrollReveal({
 
   const { scrollYProgress } = useScroll({
     target: ref,
-    offset,
+    offset: offset as any,
   });
 
   // recorta o progresso (bom pra header fixed)

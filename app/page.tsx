@@ -1,30 +1,121 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, lazy, Suspense } from "react";
+import dynamic from "next/dynamic";
 import { Header } from "@/components/layout/Header/Header";
 import { Footer } from "@/components/layout/Footer/Footer";
 import { Hero } from "@/components/sections/Hero/Hero";
-import { Iot } from "@/components/sections/Iot/Iot";
-import { RoboParallax } from "@/components/sections/Borunte/RoboParalax";
-import { Borunte } from "@/components/sections/Borunte/Borunte";
-import { BorunteAplications } from "@/components/sections/Borunte/BorunteAplications";
-import { VideoParallax } from "@/components/sections/RoboHd/VideoParalax";
-import { RoboHD } from "@/components/sections/RoboHd/RoboHd";
-import { RoboBandeja } from "@/components/sections/Cartesiano/RoboCartesiano";
-import { RoboBandeja3D } from "@/components/sections/Cartesiano/3d";
-import { RoboEscada } from "@/components/sections/RoboEscada/RoboEscada";
-import { RoboDelta } from "@/components/sections/Delta/Delta";
+import { LoaderScreen } from "@/components/loading/LoaderScreen";
+
+// Carregamento estático de componentes críticos
 import { Services } from "@/components/sections/Services";
 import { Differentials } from "@/components/sections/Differentials";
 import { Cases } from "@/components/sections/Cases";
 import { Mission } from "@/components/sections/Mission";
 import { CTA } from "@/components/sections/Cta";
-import { RedutorPlanetario } from "@/components/sections/CarrinhoAranha/RedutorPlanetario";
-import { Hexapod } from "@/components/sections/CarrinhoAranha/Hexapod";
-import { RoboCarrinho } from "@/components/sections/CarrinhoAranha/RoboCarrinho";
-import { LoaderScreen } from "@/components/loading/LoaderScreen";
-import { Software } from "@/components/sections/Software/Software";
-import Grid from "@/components/sections/Grid/Grid";
+
+// Carregamento dinâmico de componentes animados/3D (não críticos)
+const Iot = dynamic(
+  () =>
+    import("@/components/sections/Iot/Iot").then((mod) => ({
+      default: mod.Iot,
+    })),
+  { ssr: true },
+);
+const RoboParallax = dynamic(
+  () =>
+    import("@/components/sections/Borunte/RoboParalax").then((mod) => ({
+      default: mod.RoboParallax,
+    })),
+  { ssr: true },
+);
+const Borunte = dynamic(
+  () =>
+    import("@/components/sections/Borunte/Borunte").then((mod) => ({
+      default: mod.Borunte,
+    })),
+  { ssr: true },
+);
+const BorunteAplications = dynamic(
+  () =>
+    import("@/components/sections/Borunte/BorunteAplications").then((mod) => ({
+      default: mod.BorunteAplications,
+    })),
+  { ssr: true },
+);
+const VideoParallax = dynamic(
+  () =>
+    import("@/components/sections/RoboHd/VideoParalax").then((mod) => ({
+      default: mod.VideoParallax,
+    })),
+  { ssr: true },
+);
+const RoboHD = dynamic(
+  () =>
+    import("@/components/sections/RoboHd/RoboHd").then((mod) => ({
+      default: mod.RoboHD,
+    })),
+  { ssr: true },
+);
+const RoboBandeja = dynamic(
+  () =>
+    import("@/components/sections/Cartesiano/RoboCartesiano").then((mod) => ({
+      default: mod.RoboBandeja,
+    })),
+  { ssr: true },
+);
+const RoboBandeja3D = dynamic(
+  () =>
+    import("@/components/sections/Cartesiano/3d").then((mod) => ({
+      default: mod.RoboBandeja3D,
+    })),
+  { ssr: true },
+);
+const RoboEscada = dynamic(
+  () =>
+    import("@/components/sections/RoboEscada/RoboEscada").then((mod) => ({
+      default: mod.RoboEscada,
+    })),
+  { ssr: true },
+);
+const RoboDelta = dynamic(
+  () =>
+    import("@/components/sections/Delta/Delta").then((mod) => ({
+      default: mod.RoboDelta,
+    })),
+  { ssr: true },
+);
+const RedutorPlanetario = dynamic(
+  () =>
+    import("@/components/sections/CarrinhoAranha/RedutorPlanetario").then(
+      (mod) => ({ default: mod.RedutorPlanetario }),
+    ),
+  { ssr: true },
+);
+const Hexapod = dynamic(
+  () =>
+    import("@/components/sections/CarrinhoAranha/Hexapod").then((mod) => ({
+      default: mod.Hexapod,
+    })),
+  { ssr: true },
+);
+const RoboCarrinho = dynamic(
+  () =>
+    import("@/components/sections/CarrinhoAranha/RoboCarrinho").then((mod) => ({
+      default: mod.RoboCarrinho,
+    })),
+  { ssr: true },
+);
+const Software = dynamic(
+  () =>
+    import("@/components/sections/Software/Software").then((mod) => ({
+      default: mod.Software,
+    })),
+  { ssr: true },
+);
+const Grid = dynamic(() => import("@/components/sections/Grid/Grid"), {
+  ssr: true,
+});
 
 export default function HomePage() {
   const [heroReady, setHeroReady] = useState(false);

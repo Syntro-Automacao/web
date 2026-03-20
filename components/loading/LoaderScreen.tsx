@@ -1,6 +1,6 @@
-"use client";
+﻿"use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState, useCallback } from "react";
 import { useTheme } from "next-themes";
 
 type LoaderScreenProps = {
@@ -8,7 +8,8 @@ type LoaderScreenProps = {
   onFinish?: () => void;
 };
 
-const DEBUG_MIN_DURATION = 1000;
+// Reduzido de 1000ms para 400ms - mais rápido
+const DEBUG_MIN_DURATION = 400;
 
 export function LoaderScreen({ canFinish, onFinish }: LoaderScreenProps) {
   const { resolvedTheme } = useTheme();
@@ -26,51 +27,9 @@ export function LoaderScreen({ canFinish, onFinish }: LoaderScreenProps) {
   const isDark = mounted ? resolvedTheme === "dark" : true;
   const minDuration = useMemo(() => DEBUG_MIN_DURATION, []);
 
+  // Otimizado: Reduzir interval de 60ms para 50ms
   useEffect(() => {
     const start = Date.now();
-
-    const preloadAssets = () => {
-      // Poster (rápido)
-      const heroPoster = new Image();
-      heroPoster.src = "/assets/videos/syntro_entrada.webp";
-
-      const criticalAssets = [
-        // "/assets/videos/videoSite.mp4", // 🔥 REMOVIDO: permite início imediato
-        "/models/industrial_robot_arm.glb",
-      ];
-
-      const createdLinks: HTMLLinkElement[] = [];
-
-      criticalAssets.forEach((asset) => {
-        const link = document.createElement("link");
-
-        if (asset.endsWith(".mp4")) {
-          link.rel = "preload";
-          link.as = "video";
-          link.type = "video/mp4";
-        } else if (asset.endsWith(".glb")) {
-          link.rel = "preload";
-          link.as = "fetch";
-          link.crossOrigin = "anonymous";
-        } else {
-          link.rel = "prefetch";
-        }
-
-        link.href = asset;
-        document.head.appendChild(link);
-        createdLinks.push(link);
-      });
-
-      return () => {
-        createdLinks.forEach((link) => {
-          if (document.head.contains(link)) {
-            document.head.removeChild(link);
-          }
-        });
-      };
-    };
-
-    const cleanupPreloads = preloadAssets();
 
     const interval = setInterval(() => {
       const elapsed = Date.now() - start;
@@ -82,33 +41,32 @@ export function LoaderScreen({ canFinish, onFinish }: LoaderScreenProps) {
         clearInterval(interval);
         setMinTimeReached(true);
       }
-    }, 60);
+    }, 50); // Reduzido de 60ms
 
-    return () => {
-      clearInterval(interval);
-      cleanupPreloads();
-    };
+    return () => clearInterval(interval);
   }, [minDuration]);
 
-  // animação suave
+  // Animação suave com interval reduzido
   useEffect(() => {
     const interval = setInterval(() => {
       setDisplayProgress((prev) => {
         const target = minTimeReached ? 100 : realProgress;
         if (prev >= target) return prev;
-        return Math.min(prev + 1, target);
+        // Incremento maior para animação mais rápida
+        return Math.min(prev + 2, target);
       });
-    }, 30);
+    }, 20); // Reduzido de 30ms para 20ms
 
     return () => clearInterval(interval);
   }, [realProgress, minTimeReached]);
 
-  // saída do loader
+  // Saída otimizada do loader
   useEffect(() => {
     if (!minTimeReached || displayProgress < 100 || !canFinish) return;
 
-    const exitTimer = setTimeout(() => setIsLeaving(true), 150);
-    const finishTimer = setTimeout(() => onFinish?.(), 700);
+    // Reduzido de 150ms + 700ms = 850ms para 80ms + 250ms = 330ms
+    const exitTimer = setTimeout(() => setIsLeaving(true), 80);
+    const finishTimer = setTimeout(() => onFinish?.(), 250);
 
     return () => {
       clearTimeout(exitTimer);
@@ -118,7 +76,7 @@ export function LoaderScreen({ canFinish, onFinish }: LoaderScreenProps) {
 
   return (
     <div
-      className={`fixed inset-0 z-[9999] overflow-hidden transition-opacity duration-700 ${
+      className={`fixed inset-0 z-[9999] overflow-hidden transition-opacity duration-500 ${
         isLeaving ? "opacity-0 pointer-events-none" : "opacity-100"
       } ${isDark ? "bg-[#050816] text-white" : "bg-[#038ad0] text-white"}`}
     >
@@ -173,7 +131,7 @@ export function LoaderScreen({ canFinish, onFinish }: LoaderScreenProps) {
           }`}
         >
           <div
-            className={`h-full rounded-full transition-[width] duration-150 ${
+            className={`h-full rounded-full transition-[width] duration-100 ${
               isDark ? "bg-[#038ad0]" : "bg-black"
             }`}
             style={{ width: `${displayProgress}%` }}
