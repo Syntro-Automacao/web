@@ -28,12 +28,13 @@ export function Borunte() {
             </p>
           </div>
           <div className="relative flex justify-center">
-            <img
-              src="/assets/robos/borunte.webp"
-              width={369}
-              height={547}
-              alt="Robô Industrial de Seis Eixos Borunte"
-            />
+            <video
+              src="/assets/videos/borunte.mp4"
+              autoPlay
+              loop
+              muted
+              className="object-cover"
+            ></video>
           </div>
         </div>
       </div>
