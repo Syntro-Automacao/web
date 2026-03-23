@@ -33,7 +33,7 @@ export function Borunte() {
               autoPlay
               loop
               muted
-              className="object-cover"
+              className="object-cover syntro"
             ></video>
           </div>
         </div>
