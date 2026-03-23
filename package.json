@@ -6,8 +6,9 @@
     "build": "next build",
     "dev": "next dev",
     "lint": "eslint .",
-    "export": "next export",
-    "start": "next start"
+    "export": "next build",
+    "start": "next start",
+    "deploy": "next build && echo 'Build concluído! Pasta out/ pronta para deploy.'"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.10.0",
