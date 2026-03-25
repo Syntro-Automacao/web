@@ -101,15 +101,19 @@ export function FeatureSection({
           <div
             className={[mobileOrder.content, desktopOrder.content].join(" ")}
           >
-            <TypingText
-              as="h3"
-              text={title}
-              className="xs:text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mt-4 mb-6 leading-tight text-balance"
-            />
+            {title && (
+              <TypingText
+                as="h3"
+                text={title}
+                className="xs:text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mt-4 mb-6 leading-tight text-balance"
+              />
+            )}
+
             <TypingText
               as="p"
               text={description}
-              className="text-muted-foreground text-lg leading-relaxed mb-8"
+              className="indent-8 text-muted-foreground text-lg leading-relaxed mb-8"
+              //style={{ textIndent: "2rem" }}
             />
           </div>
         </div>

@@ -147,12 +147,18 @@ export function Hexapod({ onInViewChange }: HexapodProps) {
             <h3 className="xs:text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mt-4 mb-6 leading-tight text-balance">
               Sobre Nós
             </h3>
-            <p className="text-muted-foreground text-lg leading-relaxed mb-8">
-              Se sua indústria busca autonomia, inteligência e modernização
-              dentro dos conceitos da Indústria 4.0, você está no lugar certo.
+            <p
+              className="indent-4 text-muted-foreground text-lg leading-relaxed mb-8"
+              style={{ textIndent: "2rem" }}
+            >
+              Se sua empresa busca autonomia, inteligência e modernização dentro
+              dos conceitos da Indústria 4.0, você está no lugar certo.
             </p>
 
-            <p className="text-muted-foreground text-lg leading-relaxed mb-8">
+            <p
+              className="text-muted-foreground text-lg leading-relaxed mb-8"
+              style={{ textIndent: "2rem" }}
+            >
               Somos uma empresa de tecnologia dedicada ao desenvolvimento de
               robôs, manipuladores e sistemas industriais de alta performance,
               projetados para aplicações que exigem velocidade, precisão e

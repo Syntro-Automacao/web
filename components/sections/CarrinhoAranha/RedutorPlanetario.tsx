@@ -237,7 +237,6 @@ export function RedutorPlanetario({ onInViewChange }: RedutorPlanetarioProps) {
                   relative z-10 flex min-h-[60vh] items-center justify-center
                   lg:h-full lg:justify-start
                   select-none
-                  lg:cursor-ew-resize
                   touch-pan-y
                 "
                 onPointerDown={handlePointerDown}
@@ -278,10 +277,11 @@ export function RedutorPlanetario({ onInViewChange }: RedutorPlanetarioProps) {
 
               {/* DESKTOP */}
               <div
-                className="pointer-events-none absolute top-1/2 right-0 z-30 hidden lg:block"
+                className="pointer-events-none absolute right-0 z-30 hidden lg:block"
                 style={{
                   opacity: showFinalText ? textOpacity : 0,
                   transition: "opacity 260ms ease",
+                  top: showFinalText ? "40%" : "calc(50% - 10px)",
                 }}
               >
                 <div
@@ -290,29 +290,33 @@ export function RedutorPlanetario({ onInViewChange }: RedutorPlanetarioProps) {
                     transition: "transform 260ms ease",
                   }}
                 >
-                  <div className="max-w-[800px] min-w-[320px] pr-8">
-                    <h3 className="mt-4 mb-6 text-balance font-bold leading-tight text-foreground xs:text-3xl sm:text-4xl lg:text-5xl">
-                      Redutor planetário
-                    </h3>
-
-                    <p className="mb-8 text-lg leading-relaxed text-muted-foreground">
-                      Nossa engenharia integra mecatrônica, controle avançado de
-                      movimento e ciência da computação, permitindo a criação de
-                      máquinas e sistemas inteligentes capazes de transformar
-                      processos produtivos em operações mais eficientes,
-                      conectadas e automatizadas.
+                  <div className="max-w-[750px] min-w-[320px] pr-8">
+                    <p
+                      className="mb-8 text-lg leading-relaxed text-muted-foreground"
+                      style={{ textIndent: "2rem" }}
+                    >
+                      Nossa engenharia integra controle avançado de movimento e
+                      ciência da computação, permitindo a criação de máquinas e
+                      sistemas inteligentes capazes de permitir operações mais
+                      eficientes, conectadas e automatizadas.
                     </p>
 
-                    <p className="mb-8 text-lg leading-relaxed text-muted-foreground">
+                    <p
+                      className="mb-8 text-lg leading-relaxed text-muted-foreground"
+                      style={{ textIndent: "2rem" }}
+                    >
                       Desenvolvemos tecnologia nacional de alto nível,
                       oferecendo soluções inovadoras com excelente relação entre
                       performance, custo e escalabilidade.
                     </p>
 
-                    <p className="mb-8 text-lg leading-relaxed text-muted-foreground">
+                    <p
+                      className="mb-8 text-lg leading-relaxed text-muted-foreground"
+                      style={{ textIndent: "2rem" }}
+                    >
                       Nosso objetivo é impulsionar a evolução da manufatura
-                      através de robótica, automação inteligente, sistemas
-                      conectados e IoT industrial.
+                      através de robótica, automação, sistemas conectados (IoT)
+                      e inteligencia artificial.
                     </p>
                   </div>
                 </div>

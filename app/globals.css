@@ -189,8 +189,14 @@
 }
 
 @layer base {
-  * {
-    @apply border-border outline-ring/50;
+  *,
+  *::before,
+  *::after {
+    @apply border-border;
+  }
+
+  *:focus {
+    @apply outline-ring/50;
   }
   body {
     @apply bg-background text-foreground;
