@@ -148,7 +148,7 @@ export function Hexapod({ onInViewChange }: HexapodProps) {
               Sobre Nós
             </h3>
             <p
-              className="indent-4 text-muted-foreground text-lg leading-relaxed mb-8"
+              className="indent-4 text-muted-foreground 2xl:text-2xl text-lg leading-relaxed mb-8"
               style={{ textIndent: "2rem" }}
             >
               Se sua empresa busca autonomia, inteligência e modernização dentro
@@ -156,7 +156,7 @@ export function Hexapod({ onInViewChange }: HexapodProps) {
             </p>
 
             <p
-              className="text-muted-foreground text-lg leading-relaxed mb-8"
+              className="text-muted-foreground 2xl:text-2xl text-lg leading-relaxed mb-8"
               style={{ textIndent: "2rem" }}
             >
               Somos uma empresa de tecnologia dedicada ao desenvolvimento de

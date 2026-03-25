@@ -37,10 +37,10 @@ export function BorunteAplications() {
                 alt={aplication.title}
                 className="w-full object-cover rounded-md mb-4"
               />
-              <h3 className="text-xl font-semibold text-foreground mb-3">
+              <h3 className="2xl:text-2xl text-xl font-semibold text-foreground mb-3">
                 {aplication.title}
               </h3>
-              <p className="text-muted-foreground leading-relaxed">
+              <p className="text-muted-foreground 2xl:text-2xl text-lg leading-relaxed">
                 {aplication.description}
               </p>
             </div>

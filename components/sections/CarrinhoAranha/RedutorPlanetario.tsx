@@ -292,7 +292,7 @@ export function RedutorPlanetario({ onInViewChange }: RedutorPlanetarioProps) {
                 >
                   <div className="max-w-[750px] min-w-[320px] pr-8">
                     <p
-                      className="mb-8 text-lg leading-relaxed text-muted-foreground"
+                      className="mb-8 2xl:text-2xl text-lg leading-relaxed text-muted-foreground"
                       style={{ textIndent: "2rem" }}
                     >
                       Nossa engenharia integra controle avançado de movimento e
@@ -302,7 +302,7 @@ export function RedutorPlanetario({ onInViewChange }: RedutorPlanetarioProps) {
                     </p>
 
                     <p
-                      className="mb-8 text-lg leading-relaxed text-muted-foreground"
+                      className="mb-8 2xl:text-2xl text-lg leading-relaxed text-muted-foreground"
                       style={{ textIndent: "2rem" }}
                     >
                       Desenvolvemos tecnologia nacional de alto nível,
@@ -311,7 +311,7 @@ export function RedutorPlanetario({ onInViewChange }: RedutorPlanetarioProps) {
                     </p>
 
                     <p
-                      className="mb-8 text-lg leading-relaxed text-muted-foreground"
+                      className="mb-8 2xl:text-2xl text-lg leading-relaxed text-muted-foreground"
                       style={{ textIndent: "2rem" }}
                     >
                       Nosso objetivo é impulsionar a evolução da manufatura

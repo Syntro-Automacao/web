@@ -151,27 +151,29 @@ export function RoboCarrinho({ onReachEnd, onLeaveEnd }: RoboCarrinhoProps) {
           <div className="relative min-h-[220px]">
             <h3>
               <p>
-                <span className="text-3xl text-primary font-bold">
+                <span className="2xl:text-4xl text-3xl text-primary font-bold">
                   Software,{" "}
                 </span>
-                <span className="text-2xl font-light">
+                <span className="2xl:text-3xl text-2xl font-light">
                   Robôs, Manipuladores
                 </span>
               </p>
               <p>
-                <span className="text-2xl text-primary font-bold">
+                <span className="2xl:text-3xl text-2xl text-primary font-bold">
                   Automação,{" "}
                 </span>
-                <span className="text-5xl text-primary font-bold">
+                <span className="2xl:text-6xl text-5xl text-primary font-bold">
                   Industria 4.0
                 </span>
               </p>
               <p>
-                <span className="text-2xl font-light">Dispositivos, </span>
-                <span className="text-3xl text-primary font-bold">
+                <span className="2xl:text-3xl text-2xl font-light">
+                  Dispositivos,{" "}
+                </span>
+                <span className="2xl:text-4xl text-3xl text-primary font-bold">
                   Sistemas Autônomos,{" "}
                 </span>
-                <span className="text-2xl font-light">IOT</span>
+                <span className="2xl:text-3xl text-2xl font-light">IOT</span>
               </p>
             </h3>
           </div>

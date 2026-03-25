@@ -112,7 +112,7 @@ export function FeatureSection({
             <TypingText
               as="p"
               text={description}
-              className="indent-8 text-muted-foreground text-lg leading-relaxed mb-8"
+              className="indent-8 text-muted-foreground 2xl:text-2xl text-lg leading-relaxed mb-8"
               //style={{ textIndent: "2rem" }}
             />
           </div>

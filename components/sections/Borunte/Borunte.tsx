@@ -13,12 +13,12 @@ export function Borunte() {
               Robô Industrial de Seis Eixos
             </h3>
 
-            <p className="text-muted-foreground text-lg leading-relaxed mb-8">
+            <p className="text-muted-foreground 2xl:text-2xl text-lg leading-relaxed mb-8">
               Nosso Robô Industrial de 6 Eixos foi desenvolvido para oferecer
               alta precisão, velocidade e flexibilidade em aplicações
               industriais que exigem desempenho e confiabilidade.
             </p>
-            <p className="text-muted-foreground text-lg leading-relaxed mb-8">
+            <p className="text-muted-foreground 2xl:text-2xl text-lg leading-relaxed mb-8">
               Com arquitetura avançada e controle de movimento de alta
               performance, o robô é capaz de executar tarefas complexas com
               movimentos suaves, repetibilidade elevada e grande liberdade de

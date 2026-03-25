@@ -21,7 +21,7 @@ export function RoboBandeja() {
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mt-4 mb-6 text-(--color-blue) text-balance">
               Robô Cartesiano
             </h2>
-            <p className="text-lg leading-relaxed text-(--color-black) mb-8">
+            <p className="2xl:text-2xl text-lg leading-relaxed text-(--color-black) mb-8">
               Solução de automação industrial para operações repetitivas e de
               alta precisão. Ideal para montagem, pintura, polimento e
               manipulação de peças, com confiabilidade em ambientes industriais
