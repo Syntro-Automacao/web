@@ -3,6 +3,8 @@ export const SECTION_IDS = {
   ABOUT: "aranha",
   IOT: "iot",
   SOFTWARE: "software",
+  MULTIPLATAFORMA: "multiplataforma",
+  CRIATIVIDADE: "criatividade",
   BORUNTE: "borunte",
   HD: "hd",
   CARTESIANO: "cartesiano",

@@ -8,11 +8,13 @@ import { Hero } from "@/components/sections/Hero/Hero";
 import { LoaderScreen } from "@/components/loading/LoaderScreen";
 
 // Carregamento estático de componentes críticos
+import { Multiplataforma } from "@/components/sections/Software/Multiplataforma";
 import { Services } from "@/components/sections/Services";
 import { Differentials } from "@/components/sections/Differentials";
 import { Cases } from "@/components/sections/Cases";
 import { Mission } from "@/components/sections/Mission";
 import { CTA } from "@/components/sections/Cta";
+import { Criatividade } from "@/components/sections/Software/Criatividade";
 
 // Carregamento dinâmico de componentes animados/3D (não críticos)
 const Iot = dynamic(
@@ -161,6 +163,8 @@ export default function HomePage() {
         <Iot />
         <Grid />
         <Software />
+        <Multiplataforma />
+        <Criatividade />
         <RoboParallax />
         <Borunte />
         <BorunteAplications />

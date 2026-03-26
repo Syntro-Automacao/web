@@ -16,6 +16,7 @@ type FeatureSectionProps = {
   id: string;
   title: string;
   description: string;
+  description2?: string;
 
   imageSrc: string;
   imageAlt: string;
@@ -34,7 +35,10 @@ type FeatureSectionProps = {
   imageScaleFrom?: number;
   imageDistance?: string | number;
 
-  /** Sensação de “controle” no scroll */
+  /** Desabilitar ScrollReveal nas imagens */
+  disableImageScrollReveal?: boolean;
+
+  /** Sensação de "controle" no scroll */
   minHeightClass?: string; // ex: "min-h-[110vh]"
 };
 
@@ -42,6 +46,7 @@ export function FeatureSection({
   id,
   title,
   description,
+  description2,
   imageSrc,
   imageAlt,
   imageWidth,
@@ -51,6 +56,7 @@ export function FeatureSection({
   reverseOnMobile = false,
   imageScaleFrom = 0.85,
   imageDistance = "120%",
+  disableImageScrollReveal = false,
 }: FeatureSectionProps) {
   // define ordem no mobile
   const mobileOrder = reverseOnMobile
@@ -74,28 +80,50 @@ export function FeatureSection({
       <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
           {/* Visual */}
-          <ScrollReveal
-            className={[
-              "relative w-full max-w-5xl mx-auto lg:mx-0",
-              mobileOrder.visual,
-              desktopOrder.visual,
-            ].join(" ")}
-            direction={imageEnterFrom}
-            distance={imageDistance}
-            scaleFrom={imageScaleFrom}
-          >
-            <div className="flex justify-center">
-              <Image
-                src={imageSrc}
-                alt={imageAlt}
-                width={imageWidth}
-                height={imageHeight}
-                className="object-contain"
-                sizes="(max-width: 500px) 95vw, (max-width: 500px) 90vw, 85vw"
-                priority
-              />
+          {disableImageScrollReveal ? (
+            <div
+              className={[
+                "relative w-full max-w-5xl mx-auto lg:mx-0",
+                mobileOrder.visual,
+                desktopOrder.visual,
+              ].join(" ")}
+            >
+              <div className="flex justify-center">
+                <Image
+                  src={imageSrc}
+                  alt={imageAlt}
+                  width={imageWidth}
+                  height={imageHeight}
+                  className="object-contain"
+                  sizes="(max-width: 500px) 95vw, (max-width: 500px) 90vw, 85vw"
+                  priority
+                />
+              </div>
             </div>
-          </ScrollReveal>
+          ) : (
+            <ScrollReveal
+              className={[
+                "relative w-full max-w-5xl mx-auto lg:mx-0",
+                mobileOrder.visual,
+                desktopOrder.visual,
+              ].join(" ")}
+              direction={imageEnterFrom}
+              distance={imageDistance}
+              scaleFrom={imageScaleFrom}
+            >
+              <div className="flex justify-center">
+                <Image
+                  src={imageSrc}
+                  alt={imageAlt}
+                  width={imageWidth}
+                  height={imageHeight}
+                  className="object-contain"
+                  sizes="(max-width: 500px) 95vw, (max-width: 500px) 90vw, 85vw"
+                  priority
+                />
+              </div>
+            </ScrollReveal>
+          )}
 
           {/* Content */}
           <div
@@ -115,6 +143,15 @@ export function FeatureSection({
               className="indent-8 text-muted-foreground 2xl:text-2xl text-lg leading-relaxed mb-8"
               //style={{ textIndent: "2rem" }}
             />
+
+            {description2 && (
+              <TypingText
+                as="p"
+                text={description2}
+                className="indent-8 text-muted-foreground 2xl:text-2xl text-lg leading-relaxed mb-8"
+                //style={{ textIndent: "2rem" }}
+              />
+            )}
           </div>
         </div>
       </div>
