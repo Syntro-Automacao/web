@@ -10,12 +10,34 @@ export function RoboHD() {
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
           {/* Content */}
           <div className="">
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mt-4 mb-6 text-balance">
-              Robô Industrial HD
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mt-4 mb-8 text-balance">
+              Desenvolvimento de equipamentos especializados
             </h2>
-            <p className="2xl:text-2xl text-lg leading-relaxed mb-8">
-              Solução de automação industrial para operações repetitivas e de
-              alta precisão.
+            <p className="indent-8 2xl:text-2xl text-lg leading-relaxed mb-8">
+              A Syntro Automação atua no desenvolvimento de máquinas especiais,
+              com soluções que atendem as necessidades específicas de cada
+              empresa.
+            </p>
+            <p className="indent-8 2xl:text-2xl text-lg leading-relaxed mb-8">
+              O nosso departamento de engenharia faz uma avaliação criteriosa no
+              processo fabril, identificando a melhor solução a ser
+              desenvolvida. Junto ao orçamento, elaboramos um croqui intuitivo
+              com desenhos 3D, com objetivo de mostrar ao cliente uma visão
+              detalhada do equipamento, possibilitando sugestões de melhorias
+              antes da fabricação e garantindo o sucesso na entrega do
+              projeto.{" "}
+            </p>
+            <p className="indent-8 2xl:text-2xl text-lg leading-relaxed mb-8">
+              Equipamentos robustos, resistentes com tolerâncias ajustadas para
+              melhor montagem, escolha de material de forma inteligente e
+              tratamentos químicos nas peças para maior durabilidade.
+            </p>
+            <p className="indent-8 2xl:text-2xl text-lg leading-relaxed mb-8">
+              Através dessa Landing Page pode-se verificar que estamos
+              preparados para a segurança e ergonomia operacional da máquina,
+              qualidade em projetos elétricos, softwares e periféricos bem
+              diferenciados para que o equipamento tenha a melhor dinâmica e
+              desempenho em sua produção.
             </p>
           </div>
           {/* Visual */}

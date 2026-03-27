@@ -2,13 +2,13 @@ import { Bot, Wrench, Code2, Boxes, Network, Cog } from "lucide-react";
 
 const aplications = [
   {
-    title: "Operação simples e resposta rápida",
+    title: "Robustes e agilidade com precisao",
     image: "/assets/robos/borunte/borunte-soldando.webp",
     description:
-      "Interface amigável e movimentos ágeis para ciclos curtos e maior produtividade.",
+      "O robo possio robustes para para trabalhos industriais, muito utilizado para soldas e manuseio de ferramentas.",
   },
   {
-    title: "Alta precisão e consistência",
+    title: "Articulacoes e repetibilidade",
     image: "/assets/robos/borunte/borunte-pintando.webp",
     description:
       "Repetibilidade de ±0,03 mm para processos que exigem qualidade e padronização.",

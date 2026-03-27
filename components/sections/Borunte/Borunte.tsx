@@ -10,7 +10,7 @@ export function Borunte() {
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
           <div>
             <h3 className="xs:text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mt-4 mb-6 leading-tight text-balance">
-              Robô Industrial de Seis Eixos
+              Robô Industrial
             </h3>
 
             <p className="text-muted-foreground 2xl:text-2xl text-lg leading-relaxed mb-8">
