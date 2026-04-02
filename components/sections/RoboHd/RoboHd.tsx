@@ -14,7 +14,7 @@ export function RoboHD() {
               Desenvolvimento de equipamentos especializados
             </h2>
             <p className="indent-8 2xl:text-2xl text-lg leading-relaxed mb-8">
-              A Syntro Automação atua no desenvolvimento de máquinas especiais,
+              Atuamos no desenvolvimento de máquinas especiais,
               com soluções que atendem as necessidades específicas de cada
               empresa.
             </p>
@@ -26,18 +26,6 @@ export function RoboHD() {
               detalhada do equipamento, possibilitando sugestões de melhorias
               antes da fabricação e garantindo o sucesso na entrega do
               projeto.{" "}
-            </p>
-            <p className="indent-8 2xl:text-2xl text-lg leading-relaxed mb-8">
-              Equipamentos robustos, resistentes com tolerâncias ajustadas para
-              melhor montagem, escolha de material de forma inteligente e
-              tratamentos químicos nas peças para maior durabilidade.
-            </p>
-            <p className="indent-8 2xl:text-2xl text-lg leading-relaxed mb-8">
-              Através dessa Landing Page pode-se verificar que estamos
-              preparados para a segurança e ergonomia operacional da máquina,
-              qualidade em projetos elétricos, softwares e periféricos bem
-              diferenciados para que o equipamento tenha a melhor dinâmica e
-              desempenho em sua produção.
             </p>
           </div>
           {/* Visual */}

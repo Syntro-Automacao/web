@@ -5,19 +5,19 @@ const aplications = [
     title: "Robustes e agilidade com precisao",
     image: "/assets/robos/borunte/borunte-soldando.webp",
     description:
-      "O robo possio robustes para para trabalhos industriais, muito utilizado para soldas e manuseio de ferramentas.",
+      "O robô possui robustez para trabalhar em aplicações industriais, muito utilizado para soldas e manuseio de ferramentas.",
   },
   {
     title: "Articulacoes e repetibilidade",
     image: "/assets/robos/borunte/borunte-pintando.webp",
     description:
-      "Repetibilidade de ±0,03 mm para processos que exigem qualidade e padronização.",
+      "Retibilidade com precisão de ±0,03 mm para processos que exigem qualidade e padronização, com articulações possibilitando movimentos complexos.",
   },
   {
     title: "Baixa taxa de falhas e longa vida útil",
     image: "/assets/robos/borunte/borunte-caixa.webp",
     description:
-      "Projeto voltado para uso contínuo, reduzindo paradas e custos de manutenção.",
+      "Projeto voltado para uso contínuo, reduzindo paradas e executando diretamente o comando vindo do sistema, sem falhas operacionais.",
   },
 ];
 
@@ -40,7 +40,7 @@ export function BorunteAplications() {
               <h3 className="2xl:text-2xl text-xl font-semibold text-foreground mb-3">
                 {aplication.title}
               </h3>
-              <p className="text-muted-foreground 2xl:text-2xl text-lg leading-relaxed">
+              <p className="indent-8 text-muted-foreground 2xl:text-2xl text-lg leading-relaxed">
                 {aplication.description}
               </p>
             </div>

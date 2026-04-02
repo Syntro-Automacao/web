@@ -8,9 +8,9 @@ export function RoboEscada() {
       description="Robô tipo escada da Syntro, para automação de processos verticais, como montagem, pintura, polimento e manipulação de peças, com confiabilidade em ambientes industriais exigentes."
       imageSrc="/assets/robos/escada.webp"
       imageAlt="Robô Escada da Syntro para automação de processos verticais"
-      contentFirst={false} // imagem à esquerda
+      contentFirst={true} // imagem à esquerda
       imageEnterFrom="left" // entra da esquerda
-      imageScaleFrom={0.85}
+      imageScaleFrom={1}
       imageDistance="110%"
       reverseOnMobile={true}
       imageWidth={600}

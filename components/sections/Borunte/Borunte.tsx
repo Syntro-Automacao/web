@@ -1,4 +1,3 @@
-import { FeatureSection } from "@/components/sections/Features/FeatureSection";
 import { SECTION_IDS } from "@/components/sections/hooks/section-ids";
 export function Borunte() {
   return (
@@ -13,12 +12,12 @@ export function Borunte() {
               Robô Industrial
             </h3>
 
-            <p className="text-muted-foreground 2xl:text-2xl text-lg leading-relaxed mb-8">
+            <p className="indent-8 text-muted-foreground 2xl:text-2xl text-lg leading-relaxed mb-8">
               Nosso Robô Industrial de 6 Eixos foi desenvolvido para oferecer
               alta precisão, velocidade e flexibilidade em aplicações
               industriais que exigem desempenho e confiabilidade.
             </p>
-            <p className="text-muted-foreground 2xl:text-2xl text-lg leading-relaxed mb-8">
+            <p className="indent-8 text-muted-foreground 2xl:text-2xl text-lg leading-relaxed mb-8">
               Com arquitetura avançada e controle de movimento de alta
               performance, o robô é capaz de executar tarefas complexas com
               movimentos suaves, repetibilidade elevada e grande liberdade de

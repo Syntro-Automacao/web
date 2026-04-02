@@ -5,12 +5,12 @@ export function Criatividade() {
     <FeatureSection
       id={SECTION_IDS.CRIATIVIDADE}
       title=""
-      description="Somos criativos em nossos desenvolvimento, estudando melhor recurso para comunicação e transparência das informação técnica, com a inteligência artificial em jogo podemos criar chats no qual pudesse se comunicar com os sistemas automatizados."
+      description="Somos criativos em nossos desenvolvimentos, buscando constantemente os melhores recursos para comunicação e transparência das informações técnicas. Com a inteligência artificial em evidência, podemos criar chats com agentes inteligentes capazes de se comunicar com sistemas automatizados, permitindo interações por meio de perguntas e respostas de forma natural, como em uma conversa com um humano. Além disso, todas as interações podem ser registradas no WhatsApp, criando um histórico acessível e organizado das conversas."
       imageSrc="/assets/images/criatividade.webp"
       imageAlt="Syntro Software para automação industrial, mostrando programação de CLP"
       contentFirst={false} // imagem à esquerda
       imageEnterFrom="right" // entra da esquerda
-      imageScaleFrom={0.85}
+      imageScaleFrom={1}
       imageDistance="110%"
       imageWidth={800}
       imageHeight={600}

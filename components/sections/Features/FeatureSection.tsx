@@ -54,7 +54,7 @@ export function FeatureSection({
   imageEnterFrom = "right",
   contentFirst = false,
   reverseOnMobile = false,
-  imageScaleFrom = 0.85,
+  imageScaleFrom = 1,
   imageDistance = "120%",
   disableImageScrollReveal = false,
 }: FeatureSectionProps) {

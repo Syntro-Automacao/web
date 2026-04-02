@@ -15,6 +15,10 @@ import { Cases } from "@/components/sections/Cases";
 import { Mission } from "@/components/sections/Mission";
 import { CTA } from "@/components/sections/Cta";
 import { Criatividade } from "@/components/sections/Software/Criatividade";
+import { RoboHDVideo } from "@/components/sections/RoboHd/RoboHdVideo";
+import { RoboBandeja3D2 } from "@/components/sections/Cartesiano/3d2";
+import { Ferramental } from "@/components/sections/Cartesiano/Ferramental";
+import { SistemaVisao } from "@/components/sections/Cartesiano/SistemaVisao";
 
 // Carregamento dinâmico de componentes animados/3D (não críticos)
 const Iot = dynamic(
@@ -170,8 +174,12 @@ export default function HomePage() {
         <BorunteAplications />
         <VideoParallax />
         <RoboHD />
+        <RoboHDVideo />
         <RoboBandeja />
         <RoboBandeja3D />
+        <RoboBandeja3D2 />
+        <SistemaVisao />
+        <Ferramental />
         <RoboEscada />
         <RoboDelta />
         <Services />

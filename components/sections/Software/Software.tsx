@@ -5,12 +5,12 @@ export function Software() {
     <FeatureSection
       id={SECTION_IDS.SOFTWARE}
       title=""
-      description="Somos especialistas no desenvolvimento de softwares avançados para diversas indústrias, química, biologia, segurança, medicina entre outras. nossos desenvolvimento tem duas frentes, sendo uma programacao de maquinas e equipamentos, como programação de PLCs, HMIs, Sistemas Scadas, robos e dispositivos industriais, outra frente é relacionado as desenvolvimento de sistemas webs, aplicativos e aplicacoes para servidores, conectando máquinas, manipulando dados e tomada de decisões em um único ecossistema inteligente."
+      description="Somos especialistas no desenvolvimento de softwares avançados para diversas indústrias, como química, biologia, segurança e medicina, entre outras. Nossos desenvolvimentos possuem duas frentes principais: a primeira é voltada para a programação de máquinas e equipamentos, incluindo PLCs, HMIs, sistemas SCADA, robôs e dispositivos industriais; a segunda está relacionada ao desenvolvimento de sistemas web e aplicativos, conectando servidores a equipamentos, manipulando dados e apoiando a tomada de decisões em um único ecossistema inteligente."
       imageSrc="/assets/images/programacaoCLP.webp"
       imageAlt="Syntro Software para automação industrial, mostrando programação de CLP"
       contentFirst={false} // imagem à esquerda
       imageEnterFrom="left" // entra da esquerda
-      imageScaleFrom={0.85}
+      imageScaleFrom={1}
       imageDistance="110%"
       imageWidth={800}
       imageHeight={600}

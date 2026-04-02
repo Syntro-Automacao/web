@@ -79,7 +79,7 @@ export function ScrollReveal({
   direction = "right",
   distance = "120%",
 
-  scaleFrom = 0.85,
+  scaleFrom = 1,
   scaleTo = 1,
 
   opacityFrom = 0,
