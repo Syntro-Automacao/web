@@ -1,6 +1,10 @@
+import { SECTION_IDS } from "@/components/sections/hooks/section-ids";
 export function Ferramental() {
   return (
-    <section id="ferramental" className="mx-auto bg-(--background-darky)">
+    <section
+      id={SECTION_IDS.FERRAMENTAL}
+      className="mx-auto bg-(--background-darky)"
+    >
       <div className="max-w-[1920px] max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 ">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
           {/* Content */}

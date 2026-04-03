@@ -17,8 +17,9 @@ import { CTA } from "@/components/sections/Cta";
 import { Criatividade } from "@/components/sections/Software/Criatividade";
 import { RoboHDVideo } from "@/components/sections/RoboHd/RoboHdVideo";
 import { RoboBandeja3D2 } from "@/components/sections/Cartesiano/3d2";
-import { Ferramental } from "@/components/sections/Cartesiano/Ferramental";
+import { Ferramental } from "@/components/sections/Ferramental/Ferramental";
 import { SistemaVisao } from "@/components/sections/Cartesiano/SistemaVisao";
+import { Ferramental3D } from "@/components/sections/Ferramental/Ferramental3D";
 
 // Carregamento dinâmico de componentes animados/3D (não críticos)
 const Iot = dynamic(
@@ -180,6 +181,7 @@ export default function HomePage() {
         <RoboBandeja3D2 />
         <SistemaVisao />
         <Ferramental />
+        <Ferramental3D />
         <RoboEscada />
         <RoboDelta />
         <Services />
