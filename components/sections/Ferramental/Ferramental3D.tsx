@@ -71,11 +71,11 @@ export function Ferramental3D() {
                 <motion.li
                   key={index}
                   className={`
-                    cursor-pointer list-decimal transition-colors duration-150
+                    list-decimal list-inside cursor-pointer transition-colors duration-150 bg-transparent hover:bg-blue-500 text-blue-500 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded
                     ${
                       currentFrame === index + 1 // +1 porque começamos do frame 002
-                        ? "text-blue-600"
-                        : "text-gray-700 hover:text-blue-500"
+                        ? "text-blue-500"
+                        : "hover:text-blue-500"
                     }
                   `}
                   onClick={() => handlePartClick(index)}
