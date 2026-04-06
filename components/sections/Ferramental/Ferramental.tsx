@@ -1,4 +1,5 @@
 import { SECTION_IDS } from "@/components/sections/hooks/section-ids";
+import { UltraLoadingGears } from "@/components/ui/ultra-loading-gears";
 export function Ferramental() {
   return (
     <section
@@ -35,12 +36,15 @@ export function Ferramental() {
           </div>
           {/* Visual */}
           <div className="relative">
-            <div className="rounded-lg overflow-hidden flex justify-center">
-              <img
+            <div className="rounded-lg overflow-hidden">
+              <UltraLoadingGears
                 src="/assets/images/ferramental.webp"
                 alt="Robô industrial HD, integrado pela Syntro"
-                className="h-auto object-contain"
-                sizes="(max-width: 500px) 95vw, (max-width: 500px) 90vw, 85vw"
+                className="max-w-[600px] mx-auto"
+                minHeight={400}
+                spinnerSize={80}
+                spinnerText="Carregando robô..."
+                objectFit="contain"
               />
             </div>
           </div>

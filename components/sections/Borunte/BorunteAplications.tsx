@@ -1,4 +1,5 @@
 import { Bot, Wrench, Code2, Boxes, Network, Cog } from "lucide-react";
+import { UltraLoadingGears } from "@/components/ui/ultra-loading-gears";
 
 const aplications = [
   {
@@ -32,10 +33,14 @@ export function BorunteAplications() {
               key={index}
               className="group p-6 lg:p-8 bg-card/50 rounded-lg hover:border-primary/50 transition-all duration-300"
             >
-              <img
+              <UltraLoadingGears
                 src={aplication.image}
                 alt={aplication.title}
-                className="w-full object-cover rounded-md mb-4"
+                className="w-full mb-4"
+                minHeight={200}
+                spinnerSize={40}
+                spinnerText=""
+                objectFit="cover"
               />
               <h3 className="2xl:text-2xl text-xl font-semibold text-foreground mb-3">
                 {aplication.title}

@@ -1,4 +1,4 @@
-import Image from "next/image";
+import { UltraLoadingGears } from "@/components/ui/ultra-loading-gears";
 
 type FeatureSectionProps = {
   id: string;
@@ -60,14 +60,14 @@ export function FeatureSection({
             ].join(" ")}
           >
             <div className="flex justify-center">
-              <Image
+              <UltraLoadingGears
                 src={imageSrc}
                 alt={imageAlt}
-                width={imageWidth}
-                height={imageHeight}
-                className="object-contain max-w-[600px]"
-                sizes="(max-width: 500px) 95vw, (max-width: 500px) 90vw, 85vw"
-                priority
+                className="max-w-[600px]"
+                minHeight={400}
+                spinnerSize={80}
+                spinnerText="Carregando imagem..."
+                objectFit="contain"
               />
             </div>
           </div>
