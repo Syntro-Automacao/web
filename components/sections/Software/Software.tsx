@@ -9,9 +9,6 @@ export function Software() {
       imageSrc="/assets/images/programacaoCLP.webp"
       imageAlt="Syntro Software para automação industrial, mostrando programação de CLP"
       contentFirst={false} // imagem à esquerda
-      imageEnterFrom="left" // entra da esquerda
-      imageScaleFrom={1}
-      imageDistance="110%"
       imageWidth={800}
       imageHeight={600}
       reverseOnMobile={true}

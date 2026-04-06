@@ -9,9 +9,6 @@ export function Multiplataforma() {
       imageSrc="/assets/images/sistema-iot.webp"
       imageAlt="Syntro Software para automação industrial, mostrando programação de CLP"
       contentFirst={true} // imagem à esquerda
-      imageEnterFrom="right" // entra da esquerda
-      imageScaleFrom={1}
-      imageDistance="110%"
       imageWidth={800}
       imageHeight={600}
       reverseOnMobile={true}

@@ -15,11 +15,9 @@ import { Cases } from "@/components/sections/Cases";
 import { Mission } from "@/components/sections/Mission";
 import { CTA } from "@/components/sections/Cta";
 import { Criatividade } from "@/components/sections/Software/Criatividade";
-import { RoboHDVideo } from "@/components/sections/RoboHd/RoboHdVideo";
-import { RoboBandeja3D2 } from "@/components/sections/Cartesiano/3d2";
-import { Ferramental } from "@/components/sections/Ferramental/Ferramental";
-import { SistemaVisao } from "@/components/sections/Cartesiano/SistemaVisao";
-import { Ferramental3D } from "@/components/sections/Ferramental/Ferramental3D";
+import { RoboHdIndex } from "@/components/sections/RoboHd/RoboHdIndex";
+import { CartesianoIndex } from "@/components/sections/Cartesiano/CartesianoIndex";
+import { FerramentalIndex } from "@/components/sections/Ferramental/FerramentalIndex";
 
 // Carregamento dinâmico de componentes animados/3D (não críticos)
 const Iot = dynamic(
@@ -47,34 +45,6 @@ const BorunteAplications = dynamic(
   () =>
     import("@/components/sections/Borunte/BorunteAplications").then((mod) => ({
       default: mod.BorunteAplications,
-    })),
-  { ssr: true },
-);
-const VideoParallax = dynamic(
-  () =>
-    import("@/components/sections/RoboHd/VideoParalax").then((mod) => ({
-      default: mod.VideoParallax,
-    })),
-  { ssr: true },
-);
-const RoboHD = dynamic(
-  () =>
-    import("@/components/sections/RoboHd/RoboHd").then((mod) => ({
-      default: mod.RoboHD,
-    })),
-  { ssr: true },
-);
-const RoboBandeja = dynamic(
-  () =>
-    import("@/components/sections/Cartesiano/RoboCartesiano").then((mod) => ({
-      default: mod.RoboBandeja,
-    })),
-  { ssr: true },
-);
-const RoboBandeja3D = dynamic(
-  () =>
-    import("@/components/sections/Cartesiano/3d").then((mod) => ({
-      default: mod.RoboBandeja3D,
     })),
   { ssr: true },
 );
@@ -173,15 +143,9 @@ export default function HomePage() {
         <RoboParallax />
         <Borunte />
         <BorunteAplications />
-        <VideoParallax />
-        <RoboHD />
-        <RoboHDVideo />
-        <RoboBandeja />
-        <RoboBandeja3D />
-        <RoboBandeja3D2 />
-        <SistemaVisao />
-        <Ferramental />
-        <Ferramental3D />
+        <RoboHdIndex />
+        <CartesianoIndex />
+        <FerramentalIndex />
         <RoboEscada />
         <RoboDelta />
         <Services />

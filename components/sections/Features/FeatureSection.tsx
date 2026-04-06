@@ -1,16 +1,4 @@
 import Image from "next/image";
-import { ScrollReveal } from "@/components/motion/ScrollReveal";
-import { TypingText } from "@/components/motion/TypingText";
-
-type EnterFrom =
-  | "left"
-  | "right"
-  | "up"
-  | "down"
-  | "topRight"
-  | "topLeft"
-  | "bottomRight"
-  | "bottomLeft";
 
 type FeatureSectionProps = {
   id: string;
@@ -23,23 +11,11 @@ type FeatureSectionProps = {
   imageWidth?: number;
   imageHeight?: number;
 
-  imageEnterFrom?: EnterFrom;
-
   /** Desktop: true = texto primeiro (col 1), imagem depois (col 2) */
   contentFirst?: boolean;
 
   /** Mobile: inverte ordem (bom p/ padronizar visual) */
   reverseOnMobile?: boolean;
-
-  /** Ajustes de animação */
-  imageScaleFrom?: number;
-  imageDistance?: string | number;
-
-  /** Desabilitar ScrollReveal nas imagens */
-  disableImageScrollReveal?: boolean;
-
-  /** Sensação de "controle" no scroll */
-  minHeightClass?: string; // ex: "min-h-[110vh]"
 };
 
 export function FeatureSection({
@@ -51,12 +27,8 @@ export function FeatureSection({
   imageAlt,
   imageWidth,
   imageHeight,
-  imageEnterFrom = "right",
   contentFirst = false,
   reverseOnMobile = false,
-  imageScaleFrom = 1,
-  imageDistance = "120%",
-  disableImageScrollReveal = false,
 }: FeatureSectionProps) {
   // define ordem no mobile
   const mobileOrder = reverseOnMobile
@@ -79,78 +51,45 @@ export function FeatureSection({
     >
       <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-          {/* Visual */}
-          {disableImageScrollReveal ? (
-            <div
-              className={[
-                "relative w-full max-w-5xl mx-auto lg:mx-0",
-                mobileOrder.visual,
-                desktopOrder.visual,
-              ].join(" ")}
-            >
-              <div className="flex justify-center">
-                <Image
-                  src={imageSrc}
-                  alt={imageAlt}
-                  width={imageWidth}
-                  height={imageHeight}
-                  className="object-contain"
-                  sizes="(max-width: 500px) 95vw, (max-width: 500px) 90vw, 85vw"
-                  priority
-                />
-              </div>
+          {/* Visual - Imagem estática sem animação */}
+          <div
+            className={[
+              "relative w-full max-w-5xl mx-auto lg:mx-0",
+              mobileOrder.visual,
+              desktopOrder.visual,
+            ].join(" ")}
+          >
+            <div className="flex justify-center">
+              <Image
+                src={imageSrc}
+                alt={imageAlt}
+                width={imageWidth}
+                height={imageHeight}
+                className="object-contain"
+                sizes="(max-width: 500px) 95vw, (max-width: 500px) 90vw, 85vw"
+                priority
+              />
             </div>
-          ) : (
-            <ScrollReveal
-              className={[
-                "relative w-full max-w-5xl mx-auto lg:mx-0",
-                mobileOrder.visual,
-                desktopOrder.visual,
-              ].join(" ")}
-              direction={imageEnterFrom}
-              distance={imageDistance}
-              scaleFrom={imageScaleFrom}
-            >
-              <div className="flex justify-center">
-                <Image
-                  src={imageSrc}
-                  alt={imageAlt}
-                  width={imageWidth}
-                  height={imageHeight}
-                  className="object-contain"
-                  sizes="(max-width: 500px) 95vw, (max-width: 500px) 90vw, 85vw"
-                  priority
-                />
-              </div>
-            </ScrollReveal>
-          )}
+          </div>
 
           {/* Content */}
           <div
             className={[mobileOrder.content, desktopOrder.content].join(" ")}
           >
             {title && (
-              <TypingText
-                as="h3"
-                text={title}
-                className="xs:text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mt-4 mb-6 leading-tight text-balance"
-              />
+              <h3 className="xs:text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mt-4 mb-6 leading-tight text-balance">
+                {title}
+              </h3>
             )}
 
-            <TypingText
-              as="p"
-              text={description}
-              className="indent-8 text-muted-foreground 2xl:text-2xl text-lg leading-relaxed mb-8"
-              //style={{ textIndent: "2rem" }}
-            />
+            <p className="indent-8 text-muted-foreground 2xl:text-2xl text-lg leading-relaxed mb-8">
+              {description}
+            </p>
 
             {description2 && (
-              <TypingText
-                as="p"
-                text={description2}
-                className="indent-8 text-muted-foreground 2xl:text-2xl text-lg leading-relaxed mb-8"
-                //style={{ textIndent: "2rem" }}
-              />
+              <p className="indent-8 text-muted-foreground 2xl:text-2xl text-lg leading-relaxed mb-8">
+                {description2}
+              </p>
             )}
           </div>
         </div>

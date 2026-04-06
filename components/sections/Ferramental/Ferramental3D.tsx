@@ -18,17 +18,10 @@ const generateFrameUrls = (basePath: string) => {
 export function Ferramental3D() {
   const [currentFrame, setCurrentFrame] = useState(0); // Inicia com ferramental_001.webp (não aparece na lista)
   const [isHovered, setIsHovered] = useState<number | null>(null);
-  const [hoverTimeout, setHoverTimeout] = useState<NodeJS.Timeout | null>(null);
+  const [touchedIndex, setTouchedIndex] = useState<number | null>(null);
 
   const frameUrls = useMemo(() => generateFrameUrls("/assets/ferramental"), []);
-  // Limpar timeout na desmontagem do componente
-  useEffect(() => {
-    return () => {
-      if (hoverTimeout) {
-        clearTimeout(hoverTimeout);
-      }
-    };
-  }, [hoverTimeout]);
+  // useEffect removido - não precisa mais de cleanup
 
   const partNames = [
     "Base Estrutural",
@@ -43,6 +36,9 @@ export function Ferramental3D() {
 
   const handlePartClick = (partIndex: number) => {
     setCurrentFrame(partIndex + 1);
+    // Feedback visual para mobile
+    setTouchedIndex(partIndex);
+    setTimeout(() => setTouchedIndex(null), 200); // Remove após 200ms
   };
 
   const handlePartHover = (partIndex: number) => {
@@ -71,16 +67,17 @@ export function Ferramental3D() {
                 <motion.li
                   key={index}
                   className={`
-                    list-decimal list-inside cursor-pointer transition-colors duration-150 bg-transparent hover:bg-blue-500 text-blue-500 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded
+                    list-decimal list-inside cursor-pointer transition-colors duration-150 font-semibold py-2 px-4 border rounded
                     ${
                       currentFrame === index + 1 // +1 porque começamos do frame 002
-                        ? "text-blue-500"
-                        : "hover:text-blue-500"
+                        ? "bg-blue-500 text-white border-blue-500"
+                        : "bg-transparent text-blue-500 border-blue-500 hover:bg-blue-500 hover:text-white hover:border-transparent"
                     }
                   `}
                   onClick={() => handlePartClick(index)}
                   onMouseEnter={() => handlePartHover(index)}
                   onMouseLeave={handlePartLeave}
+                  onTouchStart={() => handlePartClick(index)}
                   initial={{ opacity: 0, x: 0 }}
                   animate={{ opacity: 1, x: 0 }}
                 >

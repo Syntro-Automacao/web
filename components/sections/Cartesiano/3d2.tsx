@@ -1,21 +1,44 @@
-import { FeatureSection } from "@/components/sections/Features/FeatureSection";
-import { SECTION_IDS } from "@/components/sections/hooks/section-ids";
 export function RoboBandeja3D2() {
   return (
-    <FeatureSection
-      id="cartesiano3D"
-      title=""
-      description="Na ponta do eixo Z é possível desenvolver uma ferramenta de trabalho, seja essa ferramenta um conjunto de ventosas para manipular componentes com vácuo, um uma garra mecânica, tambem pode ser incrementado dispositivos de dispensar para executar aplicação de resina, cola entre outros materiais em um determinado produto, com tambem pode ser incrementado uma pistola de pintura ou tocha para soldas, esse robô cartesiano pode ser aplicado em diversas atividades."
-      description2="Esses equipamentos são de fácil manutenção, com os componentes projetado e instalado em locais com fácil acesso, cabos de movimentação para maior durabilidade, projetos elétricos e mecânico padronizados e organizados de forma inteligentes para melhor entendimento."
-      imageSrc="/assets/images/symbotxyz.webp"
-      imageAlt="Renderização 3D do Robô Cartesiano da Syntro"
-      contentFirst={true} // texto à esquerda
-      imageEnterFrom="right" // imagem entra da direita
-      imageScaleFrom={1}
-      imageDistance="110%"
-      reverseOnMobile={true}
-      imageWidth={600}
-      imageHeight={600}
-    />
+    <section
+      id="cartesiano3d2"
+      className="relative z-20 mx-auto py-24 lg:py-32 scroll-mt-24 sm:scroll-mt-28 lg:scroll-mt-32 bg-(--background)"
+    >
+      <div className="max-w-[1920px] max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 ">
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+          {/* Content */}
+          <div className="">
+            <p className="indent-8 2xl:text-2xl text-lg leading-relaxed mb-8">
+              Esses equipamentos são de fácil manutenção, com os componentes
+              projetado e instalado em locais com fácil acesso, cabos de
+              movimentação para maior durabilidade, projetos elétricos e
+              mecânico padronizados e organizados de forma inteligentes para
+              melhor entendimento e agilidade durante a manutenção.
+            </p>
+            <p className="indent-8 2xl:text-2xl text-lg leading-relaxed mb-8">
+              O equipamento consta tambem com sistema de{" "}
+              <span className="text-3xl text-primary font-bold">
+                segurança operacional,{" "}
+              </span>
+              conforme normas{" "}
+              <span className="text-3xl text-primary font-bold">NR12</span>, com
+              barreiras de luz e botões de emergência, com parada imediata
+              conforme o acionamento da segurança.
+            </p>
+          </div>
+          {/* Visual */}
+          <div className="relative">
+            <div className="rounded-lg overflow-hidden flex justify-center">
+              <img
+                src="/assets/images/symbotxyz.webp"
+                alt="Robô industrial HD, integrado pela Syntro"
+                className="h-auto object-contain"
+                sizes="(max-width: 500px) 95vw, (max-width: 500px) 90vw, 85vw"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
   );
 }

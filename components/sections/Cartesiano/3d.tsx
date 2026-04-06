@@ -9,9 +9,6 @@ export function RoboBandeja3D() {
       imageSrc="/assets/robos/bandeja/M_Synbot20_001.webp"
       imageAlt="Renderização 3D do Robô Cartesiano da Syntro"
       contentFirst={false} // texto à esquerda
-      imageEnterFrom="right" // imagem entra da direita
-      imageScaleFrom={1}
-      imageDistance="110%"
       reverseOnMobile={true}
       imageWidth={600}
       imageHeight={600}

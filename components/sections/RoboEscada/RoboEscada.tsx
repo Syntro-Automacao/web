@@ -9,9 +9,6 @@ export function RoboEscada() {
       imageSrc="/assets/robos/escada.webp"
       imageAlt="Robô Escada da Syntro para automação de processos verticais"
       contentFirst={true} // imagem à esquerda
-      imageEnterFrom="left" // entra da esquerda
-      imageScaleFrom={1}
-      imageDistance="110%"
       reverseOnMobile={true}
       imageWidth={600}
       imageHeight={600}
