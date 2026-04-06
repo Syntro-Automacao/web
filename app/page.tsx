@@ -5,16 +5,15 @@ import dynamic from "next/dynamic";
 import { Header } from "@/components/layout/Header/Header";
 import { Footer } from "@/components/layout/Footer/Footer";
 import { Hero } from "@/components/sections/Hero/Hero";
+import { SobreIndex } from "@/components/sections/Sobre/SobreIndex";
 import { LoaderScreen } from "@/components/loading/LoaderScreen";
-
-// Carregamento estático de componentes críticos
-import { Multiplataforma } from "@/components/sections/Software/Multiplataforma";
+import { SoftwareIndex } from "@/components/sections/Software/SoftwareIndex";
 import { Services } from "@/components/sections/Services";
 import { Differentials } from "@/components/sections/Differentials";
 import { Cases } from "@/components/sections/Cases";
 import { Mission } from "@/components/sections/Mission";
 import { CTA } from "@/components/sections/Cta";
-import { Criatividade } from "@/components/sections/Software/Criatividade";
+import { BorunteIndex } from "@/components/sections/Borunte/BorunteIndex";
 import { RoboHdIndex } from "@/components/sections/RoboHd/RoboHdIndex";
 import { CartesianoIndex } from "@/components/sections/Cartesiano/CartesianoIndex";
 import { FerramentalIndex } from "@/components/sections/Ferramental/FerramentalIndex";
@@ -24,27 +23,6 @@ const Iot = dynamic(
   () =>
     import("@/components/sections/Iot/Iot").then((mod) => ({
       default: mod.Iot,
-    })),
-  { ssr: true },
-);
-const RoboParallax = dynamic(
-  () =>
-    import("@/components/sections/Borunte/RoboParalax").then((mod) => ({
-      default: mod.RoboParallax,
-    })),
-  { ssr: true },
-);
-const Borunte = dynamic(
-  () =>
-    import("@/components/sections/Borunte/Borunte").then((mod) => ({
-      default: mod.Borunte,
-    })),
-  { ssr: true },
-);
-const BorunteAplications = dynamic(
-  () =>
-    import("@/components/sections/Borunte/BorunteAplications").then((mod) => ({
-      default: mod.BorunteAplications,
     })),
   { ssr: true },
 );
@@ -62,31 +40,10 @@ const RoboDelta = dynamic(
     })),
   { ssr: true },
 );
-const RedutorPlanetario = dynamic(
-  () =>
-    import("@/components/sections/CarrinhoAranha/RedutorPlanetario").then(
-      (mod) => ({ default: mod.RedutorPlanetario }),
-    ),
-  { ssr: true },
-);
-const Hexapod = dynamic(
-  () =>
-    import("@/components/sections/CarrinhoAranha/Hexapod").then((mod) => ({
-      default: mod.Hexapod,
-    })),
-  { ssr: true },
-);
 const RoboCarrinho = dynamic(
   () =>
-    import("@/components/sections/CarrinhoAranha/RoboCarrinho").then((mod) => ({
+    import("@/components/sections/Carrinho/RoboCarrinho").then((mod) => ({
       default: mod.RoboCarrinho,
-    })),
-  { ssr: true },
-);
-const Software = dynamic(
-  () =>
-    import("@/components/sections/Software/Software").then((mod) => ({
-      default: mod.Software,
     })),
   { ssr: true },
 );
@@ -133,16 +90,11 @@ export default function HomePage() {
           <Hero isVisible={contentVisible} onReady={() => setHeroReady(true)} />
         </div>
         <RoboCarrinho />
-        <Hexapod />
-        <RedutorPlanetario />
+        <SobreIndex />
         <Iot />
         <Grid />
-        <Software />
-        <Multiplataforma />
-        <Criatividade />
-        <RoboParallax />
-        <Borunte />
-        <BorunteAplications />
+        <SoftwareIndex />
+        <BorunteIndex />
         <RoboHdIndex />
         <CartesianoIndex />
         <FerramentalIndex />

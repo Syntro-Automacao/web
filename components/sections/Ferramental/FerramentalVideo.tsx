@@ -26,7 +26,7 @@ export function FerramentalVideo() {
           </div>
           <div className="relative flex justify-center">
             <video
-              src="/assets/videos/roboSistemaDeVisaoPegaObjeto.mp4"
+              src="/assets/videos/robo_sistema_de_visao_pega_objeto.mp4"
               autoPlay
               loop
               muted
