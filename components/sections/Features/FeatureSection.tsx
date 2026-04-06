@@ -65,7 +65,7 @@ export function FeatureSection({
                 alt={imageAlt}
                 width={imageWidth}
                 height={imageHeight}
-                className="object-contain"
+                className="object-contain max-w-[600px]"
                 sizes="(max-width: 500px) 95vw, (max-width: 500px) 90vw, 85vw"
                 priority
               />
