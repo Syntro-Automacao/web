@@ -5,9 +5,9 @@ import { VideoParallax } from "./VideoParalax";
 export function RoboHdIndex() {
   return (
     <>
+      <VideoParallax />
       <RoboHD />
       <RoboHDVideo />
-      <VideoParallax />
     </>
   );
 }

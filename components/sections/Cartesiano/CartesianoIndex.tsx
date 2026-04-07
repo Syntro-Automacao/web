@@ -7,11 +7,11 @@ import { SistemaVisao } from "./SistemaVisao";
 export function CartesianoIndex() {
   return (
     <>
+      <RoboBandeja />
       <RoboBandeja3D />
       <RoboBandeja3D2 />
-      <RoboBandeja />
       <Simulacao />
-      <SistemaVisao />
+      {/* <SistemaVisao /> */}
     </>
   );
 }

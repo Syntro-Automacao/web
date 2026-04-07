@@ -6,8 +6,8 @@ export function SoftwareIndex() {
   return (
     <>
       <Software />
-      <Criatividade />
       <Multiplataforma />
+      <Criatividade />
     </>
   );
 }

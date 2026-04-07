@@ -5,9 +5,9 @@ import { RoboParallax } from "./RoboParalax";
 export function BorunteIndex() {
   return (
     <>
+      <RoboParallax />
       <Borunte />
       <BorunteAplications />
-      <RoboParallax />
     </>
   );
 }
