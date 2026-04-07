@@ -12,9 +12,9 @@ export function SoftwareIndex() {
         direction="left"
         rotateStart={18}
         rotateEnd={0}
+        //depthStart={-40}
         yStart={60}
         scaleStart={0.995}
-        duration={0.7}
       >
         <Software />
       </RevealIf>
@@ -22,11 +22,11 @@ export function SoftwareIndex() {
         enabled
         once={false}
         direction="left"
-        rotateStart={35}
+        rotateStart={18}
         rotateEnd={0}
-        yStart={100}
-        scaleStart={0.98}
-        duration={0.85}
+        //depthStart={-40}
+        yStart={60}
+        scaleStart={0.995}
       >
         <Multiplataforma />
       </RevealIf>
@@ -36,7 +36,7 @@ export function SoftwareIndex() {
         direction="left"
         rotateStart={18}
         rotateEnd={0}
-        depthStart={-40}
+        //depthStart={-40}
         yStart={60}
         scaleStart={0.995}
       >
