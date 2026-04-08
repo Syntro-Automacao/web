@@ -8,20 +8,12 @@ export function FerramentalVideo() {
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
           <div>
             <p className="indent-8 text-muted-foreground 2xl:text-2xl text-lg leading-relaxed mb-8">
-              Na ponta do eixo Z, é possível desenvolver diversas ferramentas de
-              trabalho, como conjuntos de ventosas para manipulação de
-              componentes por vácuo, garras mecânicas ou dispositivos de
-              dispensação para aplicação de resina, cola e outros materiais em
-              um determinado produto; também é possível integrar uma pistola de
-              pintura ou uma tocha para soldagem, ampliando ainda mais as
-              possibilidades de aplicação. Esse robô cartesiano pode ser
-              utilizado em diversas atividades industriais e, além disso,
-              contamos com um software CAD próprio, no qual simulamos e
-              analisamos os movimentos dos eixos, avaliando aspectos como
-              inércia, precisão e velocidade de operação, bem como as condições
-              reais do ambiente e do processo, garantindo maior confiabilidade
-              nas aplicações; o software também permite o envio de comandos
-              complexos de movimentação diretamente para o robô.
+              O sistema de visão é o que orienta o robô quanto à coordenada de
+              um objeto para executar a sua pega ou definir o sentido de um
+              movimento. No vídeo, é possível verificar a leitura da caixa e seu
+              movimento entrando sobre a colmeia da caixa para requisitar o que
+              há em seu interior. Trabalhamos com o desenvolvimento de softwares
+              para análise de imagens.
             </p>
           </div>
           <div className="relative flex justify-center">

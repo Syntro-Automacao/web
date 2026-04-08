@@ -2,6 +2,7 @@ import { Software } from "./Software";
 import { Criatividade } from "./Criatividade";
 import { Multiplataforma } from "./Multiplataforma";
 import { RevealIf } from "@/components/motion/RevealIf";
+import { SupervisoryControl } from "./SupervisoryControl";
 
 export function SoftwareIndex() {
   return (
@@ -12,7 +13,6 @@ export function SoftwareIndex() {
         direction="left"
         rotateStart={18}
         rotateEnd={0}
-        //depthStart={-40}
         yStart={60}
         scaleStart={0.995}
       >
@@ -24,7 +24,6 @@ export function SoftwareIndex() {
         direction="left"
         rotateStart={18}
         rotateEnd={0}
-        //depthStart={-40}
         yStart={60}
         scaleStart={0.995}
       >
@@ -36,7 +35,17 @@ export function SoftwareIndex() {
         direction="left"
         rotateStart={18}
         rotateEnd={0}
-        //depthStart={-40}
+        yStart={60}
+        scaleStart={0.995}
+      >
+        <SupervisoryControl />
+      </RevealIf>
+      <RevealIf
+        enabled
+        once={false}
+        direction="left"
+        rotateStart={18}
+        rotateEnd={0}
         yStart={60}
         scaleStart={0.995}
       >

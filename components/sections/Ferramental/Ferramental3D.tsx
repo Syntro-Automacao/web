@@ -56,6 +56,18 @@ export function Ferramental3D() {
       className="max-w-[1920px] mx-auto py-24 lg:py-32 scroll-mt-24 sm:scroll-mt-28 lg:scroll-mt-32 overflow-x-clip bg-(--background)"
     >
       <div className="max-w-[1920px] max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 ">
+        <div className="grid lg:gap-20 text-center mb-8">
+          <p className="indent-8 text-muted-foreground 2xl:text-2xl text-lg leading-relaxed mb-8">
+            O ferramental pode ser simples ou complexo; isso varia conforme a
+            aplicação. Vamos, aqui, apresentar uma ferramenta intermediária como
+            exemplo: um ferramental que possibilita a pega de componentes por
+            vácuo ou por sistema magnético. Essa ferramenta também possui
+            câmeras para sistema de visão, no qual será realizada a orientação
+            das coordenadas para o robô executar a manipulação, e sensores a
+            laser, que transferem alguns dados para o sistema, sendo essa
+            ferramenta específica para robôs cartesianos.
+          </p>
+        </div>
         <div className="grid lg:grid-cols-4 gap-12 lg:gap-20 items-center">
           {/* Content - Lista de partes (1/4 da largura) */}
           <div className="lg:col-span-1 space-y-4">
