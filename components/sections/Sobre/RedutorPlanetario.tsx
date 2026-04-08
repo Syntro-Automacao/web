@@ -204,11 +204,6 @@ export function RedutorPlanetario({ onInViewChange }: RedutorPlanetarioProps) {
               <div className="lg:hidden">
                 <div className="mx-auto max-w-xl rounded-[28px] pt-8">
                   <div className="mb-4 h-px w-12 bg-white/20" />
-
-                  <h3 className="mt-4 mb-6 text-balance font-bold leading-tight text-foreground xs:text-3xl sm:text-4xl lg:text-5xl">
-                    Redutor planetário
-                  </h3>
-
                   <p className="mb-8 text-lg leading-relaxed text-muted-foreground">
                     Nossa engenharia integra mecatrônica, controle avançado de
                     movimento e ciência da computação, permitindo a criação de
@@ -286,7 +281,7 @@ export function RedutorPlanetario({ onInViewChange }: RedutorPlanetarioProps) {
               >
                 <div
                   style={{
-                    transform: `translateY(-50%) translateX(${showFinalText ? textTranslateX : 42}px)`,
+                    transform: `translateY(-30%) translateX(${showFinalText ? textTranslateX : 42}px)`,
                     transition: "transform 260ms ease",
                   }}
                 >

@@ -98,13 +98,13 @@ export default function HomePage() {
         <RoboHdIndex />
         <CartesianoIndex />
         <FerramentalIndex />
-        <RoboEscada />
+        {/* <RoboEscada />
         <RoboDelta />
         <Services />
         <Differentials />
         <Cases />
         <Mission />
-        <CTA />
+        <CTA /> */}
       </main>
       <Footer />
     </>
