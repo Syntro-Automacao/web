@@ -96,7 +96,7 @@ export function Header() {
 
             <div className="hidden lg:flex items-center gap-2">
               <ThemeToggle />
-              <Button asChild>
+              {/*  <Button asChild>
                 <Link
                   href={`#${SECTION_IDS.CONTATO}`}
                   onClick={(e) =>
@@ -105,7 +105,7 @@ export function Header() {
                 >
                   Contato
                 </Link>
-              </Button>
+              </Button> */}
             </div>
 
             <div className="flex lg:hidden items-center gap-1">

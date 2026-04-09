@@ -1,8 +1,8 @@
 import { Software } from "./Software";
 import { Criatividade } from "./Criatividade";
 import { Multiplataforma } from "./Multiplataforma";
-import { RevealIf } from "@/components/motion/RevealIf";
 import { SupervisoryControl } from "./SupervisoryControl";
+import { RevealIf } from "@/components/motion/RevealIf";
 
 export function SoftwareIndex() {
   return (
