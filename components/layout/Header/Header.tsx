@@ -96,16 +96,6 @@ export function Header() {
 
             <div className="hidden lg:flex items-center gap-2">
               <ThemeToggle />
-              {/*  <Button asChild>
-                <Link
-                  href={`#${SECTION_IDS.CONTATO}`}
-                  onClick={(e) =>
-                    handleSmoothScroll(e, `#${SECTION_IDS.CONTATO}`)
-                  }
-                >
-                  Contato
-                </Link>
-              </Button> */}
             </div>
 
             <div className="flex lg:hidden items-center gap-1">
@@ -164,18 +154,7 @@ export function Header() {
           </nav>
 
           {/* Rodapé do menu com botão Contato */}
-          <div className="p-4 border-t border-border">
-            <Button asChild className="w-full">
-              <Link
-                href={`#${SECTION_IDS.CONTATO}`}
-                onClick={(e) =>
-                  handleSmoothScroll(e, `#${SECTION_IDS.CONTATO}`)
-                }
-              >
-                Contato
-              </Link>
-            </Button>
-          </div>
+          <div className="p-4 border-t border-border"></div>
         </div>
       </div>
     </>
