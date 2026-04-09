@@ -101,7 +101,7 @@ export function Ferramental3D() {
 
           {/* Visual - Frame do ferramental (3/4 da largura) */}
           <div className="lg:col-span-3 relative">
-            <div className="rounded-lg overflow-hidden flex justify-center p-8 min-h-[400px] items-center">
+            <div className="rounded-lg overflow-hidden flex justify-center p-8 min-h-[400px] items-center relative">
               <AnimatePresence mode="wait">
                 <Image
                   src={frameUrls[currentFrame]}

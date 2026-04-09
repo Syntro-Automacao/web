@@ -4,7 +4,7 @@ import { Inter, Geist_Mono } from "next/font/google";
 import localFont from "next/font/local";
 import { Analytics } from "@vercel/analytics/next";
 import { ThemeProvider } from "@/components/providers/Theme-provider";
-import "./globals.css";
+import "@/styles/globals.css";
 import { WhatsAppFloat } from "@/components/floating/WhatsappFloat";
 import BackToTopButton from "@/components/floating/BackToTop";
 
@@ -30,27 +30,37 @@ const galano = localFont({
   variable: "--font-galano", // Cria uma variável CSS
 });
 
+// app/layout.tsx
 export const metadata: Metadata = {
-  title: "Syntro Automação | Robótica e Automação Industrial",
-  description:
-    "Empresa brasileira especializada em robótica, automação industrial e Indústria 4.0. Desenvolvemos robôs industriais, projetos turnkey e integramos sistemas com tecnologia 100% nacional.",
-  generator: "v0.app",
-  icons: {
-    icon: [
+  title: "Syntro Automação Industrial",
+  description: "Soluções completas em automação industrial",
+  // Preconecte a domínios importantes
+  metadataBase: new URL("https://syntro.com.br"),
+  alternates: {
+    canonical: "/",
+  },
+  // Resource hints críticas
+  other: {
+    preconnect: "https://fonts.googleapis.com",
+    "preconnect-dns": "https://fonts.gstatic.com",
+    prefetch: "/assets/fonts/*",
+  },
+  // Open Graph otimizado
+  openGraph: {
+    title: "Syntro Automação Industrial",
+    description: "Soluções completas em automação industrial",
+    url: "https://syntro.com.br",
+    siteName: "Syntro",
+    images: [
       {
-        url: "/assets/favicon.svg",
-        type: "image/svg+xml",
+        url: "https://syntro.com.br/og-image.webp",
+        width: 1200,
+        height: 630,
+        alt: "Syntro Automação Industrial",
       },
     ],
-  },
-  // Performance otimizations
-  viewport: {
-    width: "device-width",
-    initialScale: 1,
-    maximumScale: 5,
-  },
-  formatDetection: {
-    telephone: false,
+    locale: "pt_BR",
+    type: "website",
   },
 };
 
