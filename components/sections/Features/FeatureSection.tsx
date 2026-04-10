@@ -25,12 +25,9 @@ export function FeatureSection({
   description2,
   imageSrc,
   imageAlt,
-  imageWidth,
-  imageHeight,
   contentFirst = false,
   reverseOnMobile = false,
 }: FeatureSectionProps) {
-  // define ordem no mobile
   const mobileOrder = reverseOnMobile
     ? { visual: "order-2", content: "order-1" }
     : { visual: "order-1", content: "order-2" };
@@ -59,11 +56,11 @@ export function FeatureSection({
               desktopOrder.visual,
             ].join(" ")}
           >
-            <div className="flex justify-center">
+            <div className="flex justify-center w-full">
               <UltraLoadingGears
                 src={imageSrc}
                 alt={imageAlt}
-                className="max-w-[600px]"
+                className="max-w-[600px] w-full h-auto"
                 minHeight={400}
                 spinnerSize={80}
                 spinnerText="Carregando imagem..."

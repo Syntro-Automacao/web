@@ -6,7 +6,7 @@ export function Simulacao() {
     >
       <div className="max-w-[1920px] mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-          <div className="relative flex justify-center">
+          <div className="relative flex justify-center lg:mx-0 order-2 lg:order-1">
             <video
               src="/assets/videos/SistemaroboxyzR.mp4"
               autoPlay
@@ -15,7 +15,7 @@ export function Simulacao() {
               className="object-cover syntro"
             ></video>
           </div>
-          <div>
+          <div className="order-1 lg:order-2">
             <p className="indent-8 text-muted-foreground 2xl:text-2xl text-lg leading-relaxed mb-8">
               Na ponta do eixo Z, é possível desenvolver diversas ferramentas de
               trabalho, como conjuntos de ventosas para manipulação de

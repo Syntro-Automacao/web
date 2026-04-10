@@ -40,7 +40,7 @@ export function Ferramental() {
               <UltraLoadingGears
                 src="/assets/images/ferramental.webp"
                 alt="Robô industrial HD, integrado pela Syntro"
-                className="max-w-[600px] mx-auto"
+                className="w-full lg:max-w-[600px] mx-auto"
                 minHeight={400}
                 spinnerSize={80}
                 spinnerText="Carregando robô..."

@@ -6,15 +6,17 @@ module.exports = {
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/**/*.{js,ts,jsx,tsx,mdx}",
   ],
+  safelist: [
+    // Garantir que as classes order sejam geradas
+    "order-1",
+    "order-2",
+    "sm:order-1",
+    "sm:order-2",
+    "lg:order-1",
+    "lg:order-2",
+  ],
   theme: {
     extend: {
-      screens: {
-        sm: "640px",
-        md: "768px",
-        lg: "1024px",
-        xl: "1280px",
-        "2xl": "1536px",
-      },
       fontSize: {
         xs: ["0.75rem", { lineHeight: "1rem" }],
         sm: ["0.875rem", { lineHeight: "1.25rem" }],

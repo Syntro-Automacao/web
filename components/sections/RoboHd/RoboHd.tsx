@@ -34,7 +34,7 @@ export function RoboHD() {
               <UltraLoadingGears
                 src="/assets/robos/robo-hd.webp"
                 alt="Robô industrial HD, integrado pela Syntro"
-                className="max-w-[600px] mx-auto"
+                className="w-full lg:max-w-[600px] mx-auto"
                 minHeight={400}
                 spinnerSize={80}
                 spinnerText="Carregando robô..."

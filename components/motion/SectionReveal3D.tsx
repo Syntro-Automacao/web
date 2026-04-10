@@ -2,6 +2,7 @@
 
 import { ReactNode, useEffect, useState } from "react";
 import { motion, useReducedMotion } from "framer-motion";
+import { useIsMobile } from "@/hooks/useIsMobile";
 
 type SectionReveal3DProps = {
   children: ReactNode;
@@ -37,16 +38,17 @@ export function SectionReveal3D({
   once = false,
 }: SectionReveal3DProps) {
   const prefersReducedMotion = useReducedMotion();
-  const [isMobile, setIsMobile] = useState(false);
+  const isMobile = useIsMobile();
+
+  // Estado para controlar se o componente está montado (evita hydration mismatch)
+  const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
-    const checkViewport = () => setIsMobile(window.innerWidth < 768);
-    checkViewport();
-    window.addEventListener("resize", checkViewport);
-    return () => window.removeEventListener("resize", checkViewport);
+    setIsMounted(true);
   }, []);
 
-  const simpleMode = prefersReducedMotion || (mobileDisabled && isMobile);
+  const simpleMode =
+    prefersReducedMotion || (mobileDisabled && isMounted && isMobile);
 
   const initialX =
     typeof xStart === "number"
@@ -56,6 +58,19 @@ export function SectionReveal3D({
         : direction === "right"
           ? 24
           : 0;
+
+  // Aguardar montagem completa para evitar hydration mismatch
+  if (!isMounted) {
+    return (
+      <section
+        id={id}
+        className={`relative overflow-visible ${className}`}
+        style={{ perspective: "none" }}
+      >
+        <div style={{ opacity: 0 }}>{children}</div>
+      </section>
+    );
+  }
 
   return (
     <section
