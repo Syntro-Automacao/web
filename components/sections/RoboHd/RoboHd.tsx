@@ -12,20 +12,23 @@ export function RoboHD() {
           {/* Content */}
           <div className="">
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mt-4 mb-8 text-balance">
-              Desenvolvimento de equipamentos especializados
+              Desenvolvimento de equipamentos
             </h2>
             <p className="indent-8 2xl:text-2xl text-lg leading-relaxed mb-8">
-              Atuamos no desenvolvimento de máquinas especiais, com soluções que
-              atendem as necessidades específicas de cada empresa.
+              Atuamos no desenvolvimento de equipamentos especiais, com soluções
+              que atendem as necessidades específicas de cada empresa.
             </p>
             <p className="indent-8 2xl:text-2xl text-lg leading-relaxed mb-8">
-              O nosso departamento de engenharia faz uma avaliação criteriosa no
-              processo fabril, identificando a melhor solução a ser
-              desenvolvida. Junto ao orçamento, elaboramos um croqui intuitivo
-              com desenhos 3D, com objetivo de mostrar ao cliente uma visão
-              detalhada do equipamento, possibilitando sugestões de melhorias
-              antes da fabricação e garantindo o sucesso na entrega do
-              projeto.{" "}
+              Fazemos uma avaliação criteriosa no processo fabril, identificando
+              a melhor solução a ser desenvolvida. Junto ao orçamento,
+              elaboramos um croqui intuitivo com{" "}
+              <span className="text-2xl text-primary font-bold">
+                {" "}
+                desenhos 3D
+              </span>
+              , com objetivo de mostrar ao cliente uma visão detalhada do
+              equipamento, possibilitando sugestões de melhorias antes da
+              fabricação e garantindo o sucesso na entrega do projeto.{" "}
             </p>
           </div>
           {/* Visual */}
@@ -33,7 +36,7 @@ export function RoboHD() {
             <div className="rounded-lg overflow-hidden">
               <UltraLoadingGears
                 src="/assets/robos/robo-hd.webp"
-                alt="Robô industrial HD, integrado pela Syntro"
+                alt="Desenvolvimento de máquinas especiais"
                 className="w-full lg:max-w-[600px] mx-auto"
                 minHeight={400}
                 spinnerSize={80}

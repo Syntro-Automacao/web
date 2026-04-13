@@ -7,17 +7,7 @@ export function FerramentalIndex() {
     <>
       <Ferramental />
       <Ferramental3D />
-      <RevealIf
-        enabled
-        once={false}
-        direction="left"
-        rotateStart={18}
-        rotateEnd={0}
-        yStart={60}
-        scaleStart={0.995}
-      >
-        <FerramentalVideo />
-      </RevealIf>
+      <FerramentalVideo />
     </>
   );
 }

@@ -12,25 +12,26 @@ export function Simulacao() {
               autoPlay
               loop
               muted
+              aria-label="Software CAD, simulacao robo, planejamento de trajetoria"
               className="object-cover syntro"
             ></video>
           </div>
           <div className="order-1 lg:order-2">
             <p className="indent-8 text-muted-foreground 2xl:text-2xl text-lg leading-relaxed mb-8">
-              Na ponta do eixo Z, é possível desenvolver diversas ferramentas de
-              trabalho, como conjuntos de ventosas para manipulação de
-              componentes por vácuo, garras mecânicas ou dispositivos de
-              dispensação para aplicação de resina, cola e outros materiais em
-              um determinado produto; também é possível integrar uma pistola de
-              pintura ou uma tocha para soldagem, ampliando ainda mais as
-              possibilidades de aplicação. Esse robô cartesiano pode ser
-              utilizado em diversas atividades industriais e, além disso,
-              contamos com um software CAD próprio, no qual simulamos e
-              analisamos os movimentos dos eixos, avaliando aspectos como
-              inércia, precisão e velocidade de operação, bem como as condições
-              reais do ambiente e do processo, garantindo maior confiabilidade
-              nas aplicações; o software também permite o envio de comandos
-              complexos de movimentação diretamente para o robô.
+              Os robôs podem ser utilizados em diversas atividades industriais.
+              Para isso, contamos com um{" "}
+              <span className="text-2xl text-primary font-bold">
+                software CAD{" "}
+              </span>
+              próprio, no qual{" "}
+              <span className="text-2xl text-primary font-bold">
+                simulamos e analisamos os movimentos dos eixos
+              </span>
+              , avaliando aspectos como inércia, precisão e velocidade de
+              operação, bem como as condições reais do ambiente e do processo,
+              garantindo maior confiabilidade nas aplicações. O software também
+              permite o envio de comandos complexos de movimentação diretamente
+              para o robô.
             </p>
           </div>
         </div>

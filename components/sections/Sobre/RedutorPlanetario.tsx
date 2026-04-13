@@ -219,9 +219,8 @@ export function RedutorPlanetario({ onInViewChange }: RedutorPlanetarioProps) {
                   </p>
 
                   <p className="mb-8 text-lg leading-relaxed text-muted-foreground">
-                    Nosso objetivo é impulsionar a evolução da manufatura
-                    através de robótica, automação inteligente, sistemas
-                    conectados e IoT industrial.
+                    Inpulsionamos a evolução da manufatura através de robótica,
+                    automação inteligente, sistemas conectados e IoT industrial.
                   </p>
                 </div>
               </div>
@@ -309,9 +308,9 @@ export function RedutorPlanetario({ onInViewChange }: RedutorPlanetarioProps) {
                       className="mb-8 2xl:text-2xl text-lg leading-relaxed text-muted-foreground"
                       style={{ textIndent: "2rem" }}
                     >
-                      Nosso objetivo é impulsionar a evolução da manufatura
-                      através de robótica, automação, sistemas conectados (IoT)
-                      e inteligencia artificial.
+                      Inpulsionamos a evolução da manufatura através de
+                      robótica, automação inteligente, sistemas conectados e IoT
+                      industrial.
                     </p>
                   </div>
                 </div>

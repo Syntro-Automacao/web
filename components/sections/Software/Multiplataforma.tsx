@@ -5,9 +5,9 @@ export function Multiplataforma() {
     <FeatureSection
       id={SECTION_IDS.MULTIPLATAFORMA}
       title=""
-      description="Nossas soluções são multiplataforma, operando de forma integrada entre servidores, dispositivos móveis e smartwatches, com projetos escaláveis que acompanham a evolução da tecnologia, além de interfaces modernas, dinâmicas e intuitivas, alinhadas à aplicação; o sistema também conta com o auxílio de inteligência artificial para análise e tomada de decisão em tempo real."
+      description="Nossas soluções são multiplataforma, operando de forma integrada entre servidores, dispositivos móveis e smartwatches, com projetos escaláveis que acompanham a evolução da tecnologia. Além disso, contamos com interfaces modernas, dinâmicas e intuitivas, alinhadas às aplicações, e com o apoio de inteligência artificial para análise e tomada de decisão em tempo real."
       imageSrc="/assets/images/sistema-iot.webp"
-      imageAlt="Syntro Software para automação industrial, mostrando programação de CLP"
+      imageAlt="Desenvolvimento de sistemdas multplataforma, servidores, dipositivos moveis, APP, smartwatch, servidores, etc."
       contentFirst={true} // imagem à esquerda
       imageWidth={800}
       imageHeight={600}

@@ -9,10 +9,18 @@ export function RoboBandeja() {
               Robô Cartesiano
             </h2>
             <p className="indent-8 2xl:text-2xl text-lg leading-relaxed text-(--color-black) mb-8">
-              Projetados para máxima precisão, repetibilidade e eficiência.
-              Ideais para aplicações industriais como pick and place, montagem,
-              paletização e manipulação de peças, esses sistemas garantem
-              desempenho consistente e redução de custos operacionais.
+              Utilizado em locais com pouco espaço lateral, o robô cartesiano
+              possui uma estrutura elevada e opera acima da área de trabalho.
+              Diferentemente dos robôs de 6 eixos, que exigem base lateral e
+              área livre para movimentação, o robô cartesiano oferece alta
+              repetibilidade e eficiência, sendo ideal para aplicações
+              industriais como{" "}
+              <span className="text-2xl text-primary font-bold">
+                pick and place, montagem, paletização e manipulação de peças,
+                garantindo desempenho consistente e redução de custos
+                operacionais
+              </span>
+              .
             </p>
           </div>
           {/* Visual */}
@@ -24,6 +32,7 @@ export function RoboBandeja() {
                 autoPlay
                 loop
                 muted
+                aria-label="robô cartesiano, pick and place, montagem, paletização"
                 className="object-cover"
               ></video>
             </div>

@@ -9,21 +9,33 @@ export function Borunte() {
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
           <div>
             <h3 className="xs:text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mt-4 mb-6 leading-tight text-balance">
-              Robô Industrial
+              Robôs Industriais
             </h3>
 
             <p className="indent-8 text-muted-foreground 2xl:text-2xl text-lg leading-relaxed mb-8">
-              Nosso Robô Industrial de 6 Eixos foi desenvolvido para oferecer
-              alta precisão, velocidade e flexibilidade em aplicações
-              industriais que exigem desempenho e confiabilidade.
+              Nosso{" "}
+              <span className="text-2xl text-primary font-bold">
+                {" "}
+                robô Industrial{" "}
+              </span>{" "}
+              de 6 Eixos foi desenvolvido para oferecer alta{" "}
+              <span className="text-2xl text-primary font-bold">
+                {" "}
+                precisão, velocidade e flexibilidade{" "}
+              </span>{" "}
+              em aplicações industriais que exigem desempenho e confiabilidade.
             </p>
             <p className="indent-8 text-muted-foreground 2xl:text-2xl text-lg leading-relaxed mb-8">
               Com arquitetura avançada e controle de movimento de alta
               performance, o robô é capaz de executar tarefas complexas com
-              movimentos suaves, repetibilidade elevada e grande liberdade de
-              posicionamento. Seus seis eixos permitem alcançar diferentes
-              orientações e trajetórias, tornando-o ideal para operações que
-              demandam agilidade e precisão.
+              <span className="text-2xl text-primary font-bold">
+                {" "}
+                movimentos suaves
+              </span>
+              , repetibilidade elevada e grande liberdade de posicionamento.
+              Seus seis eixos permitem alcançar diferentes orientações e
+              trajetórias, tornando-o ideal para operações que demandam
+              agilidade e precisão.
             </p>
           </div>
           <div className="relative flex justify-center">
@@ -32,6 +44,7 @@ export function Borunte() {
               autoPlay
               loop
               muted
+              aria-label="Robo industrial"
               className="object-cover syntro"
             ></video>
           </div>

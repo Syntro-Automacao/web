@@ -5,9 +5,26 @@ export function RoboBandeja3D() {
     <FeatureSection
       id={SECTION_IDS.CARTESIANO}
       title=""
-      description="Os robôs cartesianos oferecem precisão milimétrica, garantindo operações altamente confiáveis e consistentes em toda a linha de produção. Com movimentos suaves e controlados nos eixos X, Y e Z, proporcionam estabilidade e repetibilidade mesmo nas aplicações mais exigentes. Além disso, sua fácil integração com diversos sistemas, seja sistemas de visão, sistemas ERP entre outros sistemas que possam enviar instrução para executar um determinado processo."
+      description={
+        <>
+          Os robôs cartesianos oferecem precisão milimétrica, garantindo
+          operações altamente confiáveis e consistentes em toda a linha de
+          produção. Com{" "}
+          <span className="text-2xl text-primary font-bold">
+            movimentos suaves{" "}
+          </span>{" "}
+          e controlados nos eixos X, Y e Z, proporcionam estabilidade e
+          repetibilidade mesmo nas aplicações mais exigentes. Além disso,
+          permitem{" "}
+          <span className="text-2xl text-primary font-bold">
+            fácil integração com diversos sistemas
+          </span>
+          , como sistemas de visão, ERPs e outras plataformas capazes de enviar
+          instruções para a execução de processos específicos."
+        </>
+      }
       imageSrc="/assets/robos/bandeja/M_Synbot20_001.webp"
-      imageAlt="Renderização 3D do Robô Cartesiano da Syntro"
+      imageAlt="Robo cartesiano"
       contentFirst={false} // texto à esquerda
       reverseOnMobile={true}
       imageWidth={600}

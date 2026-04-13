@@ -151,8 +151,8 @@ export function Hexapod({ onInViewChange }: HexapodProps) {
               className="indent-4 text-muted-foreground 2xl:text-2xl text-lg leading-relaxed mb-8"
               style={{ textIndent: "2rem" }}
             >
-              Se sua empresa busca autonomia, inteligência e modernização dentro
-              dos conceitos da Indústria 4.0, você está no lugar certo.
+              Se a sua empresa busca autonomia, inteligência e modernização
+              dentro dos conceitos da Indústria 4.0, você está no lugar certo.
             </p>
 
             <p

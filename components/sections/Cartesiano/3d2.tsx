@@ -9,19 +9,26 @@ export function RoboBandeja3D2() {
           {/* Content */}
           <div className="">
             <p className="indent-8 2xl:text-2xl text-lg leading-relaxed mb-8">
-              Esses equipamentos são de fácil manutenção, com os componentes
-              projetado e instalado em locais com fácil acesso, cabos de
-              movimentação para maior durabilidade, projetos elétricos e
-              mecânico padronizados e organizados de forma inteligentes para
-              melhor entendimento e agilidade durante a manutenção.
+              Esses equipamentos são de{" "}
+              <span className="text-2xl text-primary font-bold">
+                fácil manutenção
+              </span>
+              , com os componentes projetado e instalado em locais com fácil
+              acesso, cabos de movimentação para maior durabilidade, projetos
+              elétricos e mecânico{" "}
+              <span className="text-2xl text-primary font-bold">
+                padronizados e organizados{" "}
+              </span>{" "}
+              de forma inteligentes para melhor entendimento e agilidade durante
+              a manutenção.
             </p>
             <p className="indent-8 2xl:text-2xl text-lg leading-relaxed mb-8">
               O equipamento consta tambem com sistema de{" "}
-              <span className="text-3xl text-primary font-bold">
+              <span className="text-2xl text-primary font-bold">
                 segurança operacional,{" "}
               </span>
               conforme normas{" "}
-              <span className="text-3xl text-primary font-bold">NR12</span>, com
+              <span className="text-2xl text-primary font-bold">NR12</span>, com
               barreiras de luz e botões de emergência, com parada imediata
               conforme o acionamento da segurança.
             </p>
@@ -31,7 +38,7 @@ export function RoboBandeja3D2() {
             <div className="rounded-lg overflow-hidden flex justify-center">
               <img
                 src="/assets/images/symbotxyz.webp"
-                alt="Robô industrial HD, integrado pela Syntro"
+                alt="Robo cartesiano economico"
                 className="h-auto object-contain"
                 sizes="(max-width: 500px) 95vw, (max-width: 500px) 90vw, 85vw"
               />

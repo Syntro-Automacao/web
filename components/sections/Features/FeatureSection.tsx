@@ -1,15 +1,17 @@
 import { UltraLoadingGears } from "@/components/ui/ultra-loading-gears";
+import { ReactNode } from "react";
 
 type FeatureSectionProps = {
   id: string;
   title: string;
-  description: string;
-  description2?: string;
+  description: ReactNode;
+  description2?: ReactNode;
 
   imageSrc: string;
   imageAlt: string;
   imageWidth?: number;
   imageHeight?: number;
+  maxImageWidth?: string;
 
   /** Desktop: true = texto primeiro (col 1), imagem depois (col 2) */
   contentFirst?: boolean;
@@ -25,6 +27,7 @@ export function FeatureSection({
   description2,
   imageSrc,
   imageAlt,
+  maxImageWidth,
   contentFirst = false,
   reverseOnMobile = false,
 }: FeatureSectionProps) {
@@ -60,8 +63,8 @@ export function FeatureSection({
               <UltraLoadingGears
                 src={imageSrc}
                 alt={imageAlt}
-                className="max-w-[600px] w-full h-auto"
-                minHeight={400}
+                className={`max-w-[${maxImageWidth || "600px"}] h-auto`}
+                //minHeight={400}
                 spinnerSize={80}
                 spinnerText="Carregando imagem..."
                 objectFit="contain"

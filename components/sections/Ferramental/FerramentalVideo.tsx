@@ -8,12 +8,19 @@ export function FerramentalVideo() {
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
           <div>
             <p className="indent-8 text-muted-foreground 2xl:text-2xl text-lg leading-relaxed mb-8">
-              O sistema de visão é o que orienta o robô quanto à coordenada de
-              um objeto para executar a sua pega ou definir o sentido de um
-              movimento. No vídeo, é possível verificar a leitura da caixa e seu
-              movimento entrando sobre a colmeia da caixa para requisitar o que
-              há em seu interior. Trabalhamos com o desenvolvimento de softwares
-              para análise de imagens.
+              O{" "}
+              <span className="text-2xl text-primary font-bold">
+                sistema de visão é o que orienta o robô
+              </span>{" "}
+              quanto à coordenada de um objeto para executar a sua pega ou
+              definir o sentido de um movimento. No vídeo, é possível verificar
+              a leitura da caixa e seu movimento entrando sobre a colmeia da
+              caixa para requisitar o que há em seu interior. Trabalhamos com o
+              <span className="text-2xl text-primary font-bold">
+                {" "}
+                desenvolvimento de softwares para análise de imagens
+              </span>
+              .
             </p>
           </div>
           <div className="relative flex justify-center">
@@ -22,6 +29,7 @@ export function FerramentalVideo() {
               autoPlay
               loop
               muted
+              aria-label="Sistema de visao para robo"
               className="object-cover syntro"
             ></video>
           </div>
