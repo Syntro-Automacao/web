@@ -1,10 +1,12 @@
+import { SECTION_IDS } from "../hooks/section-ids";
+
 export function RoboBandeja() {
   return (
-    <section id="sobre" className="mx-auto bg-(--bg-cinza)">
+    <section id={SECTION_IDS.CARTESIANO} className="mx-auto bg-(--bg-cinza)">
       <div className="max-w-[1920px] max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 ">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
           {/* Content */}
-          <div className="order-1 lg:order-2">
+          <div className="order-2 lg:order-2">
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mt-4 mb-6 text-(--color-blue) text-balance">
               Robô Cartesiano
             </h2>
@@ -24,7 +26,7 @@ export function RoboBandeja() {
             </p>
           </div>
           {/* Visual */}
-          <div className="relative order-2 lg:order-2">
+          <div className="relative order-1 lg:order-2">
             <div className="rounded-lg overflow-hidden">
               {/* Robotic Arm Illustration */}
               <video

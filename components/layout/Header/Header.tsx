@@ -3,11 +3,9 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { Menu, X } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/layout/Header/ThemeToggle";
 import { Logo } from "@/components/icons/logo";
 import { navItems } from "@/components/layout/Header/hooks/nav-items";
-import { SECTION_IDS } from "@/components/sections/hooks/section-ids";
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);

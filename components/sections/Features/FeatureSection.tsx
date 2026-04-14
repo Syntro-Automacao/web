@@ -63,8 +63,7 @@ export function FeatureSection({
               <UltraLoadingGears
                 src={imageSrc}
                 alt={imageAlt}
-                className={`max-w-[${maxImageWidth || "600px"}] h-auto`}
-                //minHeight={400}
+                className={`max-w-[${maxImageWidth || "600px"}] h-auto w-full`}
                 spinnerSize={80}
                 spinnerText="Carregando imagem..."
                 objectFit="contain"

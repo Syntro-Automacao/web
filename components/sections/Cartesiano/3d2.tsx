@@ -7,7 +7,7 @@ export function RoboBandeja3D2() {
       <div className="max-w-[1920px] max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 ">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
           {/* Content */}
-          <div className="">
+          <div className="order-2 lg:order-1">
             <p className="indent-8 2xl:text-2xl text-lg leading-relaxed mb-8">
               Esses equipamentos são de{" "}
               <span className="text-2xl text-primary font-bold">
@@ -34,7 +34,7 @@ export function RoboBandeja3D2() {
             </p>
           </div>
           {/* Visual */}
-          <div className="relative">
+          <div className="relative order-1 lg:order-2">
             <div className="rounded-lg overflow-hidden flex justify-center">
               <img
                 src="/assets/images/symbotxyz.webp"

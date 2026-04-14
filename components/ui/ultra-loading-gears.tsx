@@ -15,7 +15,7 @@ export function UltraLoadingGears({
   src,
   alt,
   className = "",
-  minHeight = 400,
+  minHeight = 100,
   spinnerSize = 80,
   spinnerText = "Carregando...",
   objectFit = "contain",

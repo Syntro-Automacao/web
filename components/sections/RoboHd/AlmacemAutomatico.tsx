@@ -27,7 +27,7 @@ export function AlmacemAutomatico() {
       imageSrc="/assets/images/almacem_automatico.webp"
       imageAlt="Renderização 3D do Robô Cartesiano da Syntro"
       contentFirst={false} // texto à esquerda
-      reverseOnMobile={true}
+      reverseOnMobile={false}
       imageWidth={600}
       imageHeight={600}
     />

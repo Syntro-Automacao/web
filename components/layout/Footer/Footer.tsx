@@ -1,11 +1,13 @@
 import Link from "next/link";
-import { Linkedin, Instagram, Youtube } from "lucide-react";
+import { Instagram } from "lucide-react";
 import { Logo } from "@/components/icons/logo";
 
 const socialLinks = [
-  { icon: Linkedin, href: "https://linkedin.com", label: "LinkedIn" },
-  { icon: Instagram, href: "https://instagram.com", label: "Instagram" },
-  { icon: Youtube, href: "https://youtube.com", label: "YouTube" },
+  {
+    icon: Instagram,
+    href: "https://www.instagram.com/syntro.com.br",
+    label: "Instagram",
+  },
 ];
 
 export function Footer() {
@@ -45,32 +47,18 @@ export function Footer() {
             <h3 className="text-foreground font-semibold mb-4">Contato</h3>
             <ul className="space-y-3 text-sm text-muted-foreground">
               <li>contato@syntro.com.br</li>
-              <li>+55 (19) 9819-05607</li>
+              <li>+55 (19) 9 9636-2101</li>
               <li>Campinas, SP - Brasil</li>
             </ul>
           </div>
         </div>
 
         {/* Bottom Bar */}
-        <div className="py-6 border-t border-border flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div className="py-6 border-t border-border flex justify-center sm:flex-row items-center justify-between gap-4">
           <p className="text-sm text-muted-foreground">
             © {new Date().getFullYear()} Syntro Automação. Todos os direitos
             reservados.
           </p>
-          <div className="flex items-center gap-6">
-            <Link
-              href="#"
-              className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-            >
-              Política de Privacidade
-            </Link>
-            <Link
-              href="#"
-              className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-            >
-              Termos de Uso
-            </Link>
-          </div>
         </div>
       </div>
     </footer>

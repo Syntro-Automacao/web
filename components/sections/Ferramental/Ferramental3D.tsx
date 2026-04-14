@@ -24,14 +24,14 @@ export function Ferramental3D() {
   // useEffect removido - não precisa mais de cleanup
 
   const partNames = [
-    "Base Estrutural",
-    "Sistema de Fixação",
-    "Mecanismo de Travamento",
-    "Placa de Apoio",
-    "Conector Principal",
-    "Sistema de Ajuste",
-    "Elemento de Segurança",
-    "Componentes Internos",
+    "Sensor de vácuo",
+    "Cam Light",
+    "Sensor laser",
+    "Câmara (System Vision)",
+    "Ferramenta magnética articulada",
+    "Apalpador",
+    "Ventosa",
+    "Engate de tomada eletrônica e pneumática",
   ];
 
   const handlePartClick = (partIndex: number) => {

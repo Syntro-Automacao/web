@@ -22,7 +22,7 @@ export function ConteudoRouter() {
       imageSrc="/assets/images/ferramental_spencer.webp"
       imageAlt="Robo para inserção de fluidos"
       contentFirst={true} // texto à esquerda
-      reverseOnMobile={true}
+      reverseOnMobile={false}
       imageWidth={600}
       imageHeight={600}
     />

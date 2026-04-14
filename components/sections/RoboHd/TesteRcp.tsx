@@ -4,7 +4,7 @@ export function TesteRcp() {
       <div className="max-w-[1920px] max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 ">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
           {/* Visual */}
-          <div className="relative flex justify-center lg:mx-0 order-2 lg:order-1">
+          <div className="relative flex justify-center lg:mx-0 order-1 lg:order-2">
             <video
               src="/assets/videos/Servo_Motor_otm.mp4"
               autoPlay
@@ -16,7 +16,7 @@ export function TesteRcp() {
             ></video>
           </div>
           {/* Content */}
-          <div className="order-1 lg:order-2">
+          <div className="order-2 lg:order-2">
             <p className="indent-8 2xl:text-2xl text-lg leading-relaxed mb-8">
               Para obtermos{" "}
               <span className="text-2xl text-primary font-bold">

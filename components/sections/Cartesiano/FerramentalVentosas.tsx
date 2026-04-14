@@ -22,7 +22,7 @@ export function FerramentalVentosas() {
       imageSrc="/assets/images/ferramental_ventosas.webp"
       imageAlt="Ferramental de trabalho para robos"
       contentFirst={false} // texto à esquerda
-      reverseOnMobile={true}
+      reverseOnMobile={false}
       imageWidth={300}
       imageHeight={200}
       maxImageWidth="400px"

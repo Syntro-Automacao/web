@@ -3,7 +3,7 @@ import { SECTION_IDS } from "@/components/sections/hooks/section-ids";
 export function RoboBandeja3D() {
   return (
     <FeatureSection
-      id={SECTION_IDS.CARTESIANO}
+      id="cartesiano-3d"
       title=""
       description={
         <>
@@ -26,7 +26,7 @@ export function RoboBandeja3D() {
       imageSrc="/assets/robos/bandeja/M_Synbot20_001.webp"
       imageAlt="Robo cartesiano"
       contentFirst={false} // texto à esquerda
-      reverseOnMobile={true}
+      reverseOnMobile={false}
       imageWidth={600}
       imageHeight={600}
     />
