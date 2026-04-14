@@ -1,6 +1,7 @@
 ---
 deployment:
   tasks:
-    - export DEPLOYPATH=/home2/hg544169/public_html/
+    #- export DEPLOYPATH=/home2/hg544169/public_html/
+    - export DEPLOYPATH=/home/syntrocom/public_html/
     - /bin/mkdir -p $DEPLOYPATH
     - /bin/cp -a out/. $DEPLOYPATH
