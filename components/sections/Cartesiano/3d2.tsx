@@ -13,7 +13,7 @@ export function RoboBandeja3D2() {
               <span className="text-2xl text-primary font-bold">
                 fácil manutenção
               </span>
-              , com os componentes projetado e instalado em locais com fácil
+              , com os componentes projetados e instalados em locais de fácil
               acesso, cabos de movimentação para maior durabilidade, projetos
               elétricos e mecânico{" "}
               <span className="text-2xl text-primary font-bold">

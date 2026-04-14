@@ -8,21 +8,20 @@ export function AlmacemAutomatico() {
       description={
         <>
           Podemos aplicar automatização em diversas áreas, obtendo muitos
-          ganhos, um exemplo é um{" "}
+          ganhos. Um exemplo é um{" "}
           <span className="text-2xl text-primary font-bold">
             armazenamento automatizado
           </span>
           , fazendo com que o controle seja{" "}
           <span className="text-2xl text-primary font-bold">
-            totalmente automatizado sem interversão humana
+            totalmente automatizado sem interversão humana.{" "}
           </span>
-          , isso faz com que o equipamento possa ser de grande alturas
-          verticais, obtendo menor espaço de ocupação no local, e com a maior
-          quantidade de itens por metro quadrado, com uma certa inteligência de
-          pesagem e sistemas de visão, sobre os itens da caixa podemos fazer o
-          inventário de forma automática, e com uma biblioteca cadastrada de
-          itens com fotos em tempo real, agiliza a procura de itens e ajuda em
-          diversos fatores administrativos."
+          Isso faz com que o equipamento possa armazenar de forma vertical,
+          ocupando assim, menor espaço no local, com maior quantidade de itens
+          por metro quadrado. Com um software inteligente de pesagem e sistemas
+          de visão, o inventário é feito de forma automática, e com uma
+          biblioteca cadastrada de itens com fotos em tempo real, agilizando a
+          procura de itens e ajudando em diversos fatores administrativos."
         </>
       }
       imageSrc="/assets/images/almacem_automatico.webp"

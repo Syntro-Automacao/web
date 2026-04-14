@@ -205,11 +205,10 @@ export function RedutorPlanetario({ onInViewChange }: RedutorPlanetarioProps) {
                 <div className="mx-auto max-w-xl rounded-[28px] pt-8">
                   <div className="mb-4 h-px w-12 bg-white/20" />
                   <p className="mb-8 text-lg leading-relaxed text-muted-foreground">
-                    Nossa engenharia integra mecatrônica, controle avançado de
-                    movimento e ciência da computação, permitindo a criação de
-                    máquinas e sistemas inteligentes capazes de transformar
-                    processos produtivos em operações mais eficientes,
-                    conectadas e automatizadas.
+                    Nossa engenharia integra controle avançado de movimento e
+                    ciência da computação, permitindo a criação de máquinas e
+                    sistemas inteligentes capazes de permitir operações mais
+                    eficientes, conectadas e automatizadas.
                   </p>
 
                   <p className="mb-8 text-lg leading-relaxed text-muted-foreground">
@@ -219,7 +218,7 @@ export function RedutorPlanetario({ onInViewChange }: RedutorPlanetarioProps) {
                   </p>
 
                   <p className="mb-8 text-lg leading-relaxed text-muted-foreground">
-                    Inpulsionamos a evolução da manufatura através de robótica,
+                    Impulsionamos a evolução da manufatura através de robótica,
                     automação inteligente, sistemas conectados e IoT industrial.
                   </p>
                 </div>
@@ -308,7 +307,7 @@ export function RedutorPlanetario({ onInViewChange }: RedutorPlanetarioProps) {
                       className="mb-8 2xl:text-2xl text-lg leading-relaxed text-muted-foreground"
                       style={{ textIndent: "2rem" }}
                     >
-                      Inpulsionamos a evolução da manufatura através de
+                      Impulsionamos a evolução da manufatura através de
                       robótica, automação inteligente, sistemas conectados e IoT
                       industrial.
                     </p>

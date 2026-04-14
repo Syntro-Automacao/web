@@ -12,7 +12,7 @@ export function ConteudoRouter() {
           dos casos mais comuns é o uso de{" "}
           <span className="text-2xl text-primary font-bold">
             {" "}
-            dispensers de fluidos{" "}
+            dispensers de fluídos{" "}
           </span>{" "}
           para aplicação de resinas, colas e outros tipos de materiais. Esse
           tipo de equipamento também é utilizado na automação de experimentos em

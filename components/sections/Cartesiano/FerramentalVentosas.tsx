@@ -12,10 +12,10 @@ export function FerramentalVentosas() {
             desenvolver diversas ferramentas{" "}
           </span>{" "}
           de trabalho, como conjuntos de ventosas para manipulação de
-          componentes por vácuo, garras mecânicas e dispositivos de dispensação
-          para aplicação de resina, cola e outros materiais em um determinado
-          produto. Também é possível integrar uma pistola de pintura ou uma
-          tocha de soldagem, ampliando ainda mais as possibilidades de
+          componentes por vácuo; garras mecânicas e dispositivos de dispenser de
+          fluidos para aplicação de resina, cola e outros materiais em um
+          determinado produto. Também é possível integrar uma pistola de pintura
+          ou uma tocha de solda, ampliando ainda mais as possibilidades de
           aplicação.
         </>
       }

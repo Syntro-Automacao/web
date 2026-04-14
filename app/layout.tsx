@@ -7,6 +7,7 @@ import { ThemeProvider } from "@/components/providers/Theme-provider";
 import "@/styles/globals.css";
 import { WhatsAppFloat } from "@/components/floating/WhatsappFloat";
 import BackToTopButton from "@/components/floating/BackToTop";
+import { StructuredData } from "@/components/seo/StructuredData";
 
 const _inter = Inter({ subsets: ["latin"] });
 const _geistMono = Geist_Mono({ subsets: ["latin"] });
@@ -32,25 +33,22 @@ const galano = localFont({
 
 // app/layout.tsx
 export const metadata: Metadata = {
-  title: "Syntro Automação Industrial",
-  description: "Soluções completas em automação industrial",
-  // Preconecte a domínios importantes
+  title: {
+    default: "Syntro Automação Industrial | Robôs Cartesianos, SCADA e IoT",
+    template: "%s | Syntro Automação",
+  },
+  description:
+    "Especialistas em automação industrial com robôs cartesianos, sistemas SCADA, IoT industrial e CLP. Soluções completas para indústrias em São Paulo e Brasil.",
   metadataBase: new URL("https://syntro.com.br"),
-  alternates: {
-    canonical: "/",
-  },
-  // Resource hints críticas
-  other: {
-    preconnect: "https://fonts.googleapis.com",
-    "preconnect-dns": "https://fonts.gstatic.com",
-    prefetch: "/assets/fonts/*",
-  },
-  // Open Graph otimizado
+  alternates: { canonical: "https://syntro.com.br" },
   openGraph: {
-    title: "Syntro Automação Industrial",
-    description: "Soluções completas em automação industrial",
+    type: "website",
+    locale: "pt_BR",
     url: "https://syntro.com.br",
-    siteName: "Syntro",
+    siteName: "Syntro Automação Industrial",
+    title: "Syntro Automação Industrial | Robôs Cartesianos, SCADA e IoT",
+    description:
+      "Especialistas em automação industrial com robôs cartesianos, sistemas SCADA, IoT industrial e CLP. Soluções completas para indústrias em São Paulo e Brasil.",
     images: [
       {
         url: "https://syntro.com.br/og-image.webp",
@@ -59,18 +57,19 @@ export const metadata: Metadata = {
         alt: "Syntro Automação Industrial",
       },
     ],
-    locale: "pt_BR",
-    type: "website",
   },
-  // Configuração de ícones
+  twitter: {
+    card: "summary_large_image",
+    title: "Syntro Automação Industrial | Robôs Cartesianos, SCADA e IoT",
+    description:
+      "Especialistas em automação industrial com robôs cartesianos, sistemas SCADA, IoT industrial e CLP. Soluções completas para indústrias em São Paulo e Brasil.",
+    images: ["https://syntro.com.br/twitter-image.webp"],
+  },
   icons: {
-    icon: [
-      { url: "/favicon.svg", type: "image/svg+xml" },
-      { url: "/favicon.ico", sizes: "32x32", type: "image/x-icon" },
-    ],
-    shortcut: "/favicon.svg",
-    apple: [{ url: "/favicon.svg", type: "image/svg+xml" }],
+    icon: [{ url: "/favicon.ico", sizes: "any" }],
+    apple: [{ url: "/apple-touch-icon.png", sizes: "180x180" }],
   },
+  manifest: "/manifest.json",
 };
 
 export default function RootLayout({
@@ -81,6 +80,7 @@ export default function RootLayout({
   return (
     <html lang="pt-BR" suppressHydrationWarning>
       <body className={`${galano.variable} font-sans antialiased`}>
+        <StructuredData />
         <ThemeProvider
           attribute="class"
           defaultTheme="light"

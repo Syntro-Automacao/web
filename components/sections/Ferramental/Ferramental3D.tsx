@@ -62,16 +62,15 @@ export function Ferramental3D() {
             <span className="text-2xl text-primary font-bold">
               simples ou complexo
             </span>
-            ; isso varia conforme a aplicação. Vamos, aqui, apresentar uma
-            ferramenta intermediária como exemplo: um ferramental que
-            possibilita a pega de componentes por vácuo ou por sistema
-            magnético. Essa{" "}
+            , variando conforme a aplicação. Vamos apresentar uma ferramental
+            intermediário como exemplo: um ferramental que possibilita a pega de
+            componentes por vácuo ou por sistema magnético. Essa{" "}
             <span className="text-2xl text-primary font-bold">
               ferramenta também possui câmeras para sistema de visão
             </span>
-            , no qual será realizada a orientação das coordenadas para o robô
-            executar a manipulação, e sensores a laser, que transferem alguns
-            dados para o sistema, sendo essa ferramenta específica para robôs
+            , onde será realizada a orientação das coordenadas para que o robô
+            execute a manipulação e, sensores à laser, que transferem alguns
+            dados para o sistema. Esse ferramental é específico para robôs
             cartesianos.
           </p>
         </div>

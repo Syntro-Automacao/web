@@ -17,21 +17,21 @@ export function Ferramental() {
               </span>
               Sistemas de análise{" "}
               <span className="text-3xl font-light text-white">
-                que auxiliar robôs
+                que auxilia robôs
               </span>
             </h2>
             <p className="indent-8 2xl:text-2xl text-lg leading-relaxed text-white mb-8">
-              Ferramental de robôs, são componentes desenvolvidos para realizar
-              alguma tarefa para o robô, o robô em si só tem como objetivos
+              Ferramental de robôs são componentes desenvolvidos para realizar
+              alguma tarefa para o robô. O robô em si só tem como objetivos a
               movimentação, no qual posiciona as ferramental para executar uma
               tarefa, assim como um humano manipulado uma ferramenta.
             </p>
             <p className="indent-8 2xl:text-2xl text-lg leading-relaxed text-white mb-8">
               Já os sistemas de análises, são sensores, câmeras e outros
-              softwares / recursos, no qual orienta o robô a fazer um movimento,
-              muito utilizado são os sensores de visão, que permitem análise
-              visuais das situações, para possibilitar o robô reconhecer o atual
-              senário.
+              softwares/recursos, que orientam o robô a fazer um movimento. Os
+              mais utilizados são os sistemas de visão, que permitem análises
+              visuais das situações, possibilitando ao robô, reconhecer o atual
+              cenário.
             </p>
           </div>
           {/* Visual */}
