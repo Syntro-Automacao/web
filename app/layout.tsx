@@ -93,6 +93,10 @@ export const metadata: Metadata = {
     apple: [{ url: "/apple-touch-icon.png", sizes: "180x180" }],
   },
   manifest: "/manifest.json",
+  // Verificação do Google Search Console
+  verification: {
+    google: "hhLt_Q3V0h9c0w3o1-Xx0CioZ5y99YdS88uNhpP6Bns",
+  },
 };
 
 export default function RootLayout({
