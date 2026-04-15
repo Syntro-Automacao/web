@@ -1,0 +1,8 @@
+User-Agent: *
+Allow: /
+Disallow: /api/
+Disallow: /_next/
+Disallow: /private/
+
+Host: https://syntro.com.br
+Sitemap: https://syntro.com.br/sitemap.xml

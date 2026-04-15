@@ -1,5 +1,5 @@
 import { SECTION_IDS } from "@/components/sections/hooks/section-ids";
-export function Borunte() {
+export function RoboArm() {
   return (
     <section
       id={SECTION_IDS.BORUNTE}

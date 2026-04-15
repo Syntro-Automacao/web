@@ -31,7 +31,7 @@ const aplications: Application[] = [
   },
 ];
 
-export function BorunteAplications() {
+export function RoboArmAplications() {
   return (
     <section id="servicos" className="py-24 lg:py-32 ">
       <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-4">

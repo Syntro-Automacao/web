@@ -8,6 +8,8 @@ import "@/styles/globals.css";
 import { WhatsAppFloat } from "@/components/floating/WhatsappFloat";
 import BackToTopButton from "@/components/floating/BackToTop";
 import { StructuredData } from "@/components/seo/StructuredData";
+import { Header } from "@/components/layout/Header/Header";
+import { Footer } from "@/components/layout/Footer/Footer";
 
 const _inter = Inter({ subsets: ["latin"] });
 const _geistMono = Geist_Mono({ subsets: ["latin"] });
@@ -39,8 +41,29 @@ export const metadata: Metadata = {
   },
   description:
     "Especialistas em automação industrial com robôs cartesianos, sistemas SCADA, IoT industrial e CLP. Soluções completas para indústrias em São Paulo e Brasil.",
+  keywords: [
+    "automação industrial",
+    "robôs cartesianos",
+    "scada",
+    "iot industrial",
+    "clp",
+    "indústria 4.0",
+    "automação industrial são paulo",
+    "syntro",
+  ],
   metadataBase: new URL("https://syntro.com.br"),
   alternates: { canonical: "https://syntro.com.br" },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+  },
   openGraph: {
     type: "website",
     locale: "pt_BR",
@@ -87,7 +110,9 @@ export default function RootLayout({
           enableSystem={false}
           disableTransitionOnChange
         >
-          {children}
+          <Header />
+          <main className="min-h-screen">{children}</main>
+          <Footer />
         </ThemeProvider>
         <Analytics />
         <BackToTopButton />

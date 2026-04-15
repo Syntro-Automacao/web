@@ -2,14 +2,20 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
 import { ThemeToggle } from "@/components/layout/Header/ThemeToggle";
 import { Logo } from "@/components/icons/logo";
 import { navItems } from "@/components/layout/Header/hooks/nav-items";
+import { SECTION_IDS } from "@/components/sections/hooks/section-ids";
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const pathname = usePathname();
+
+  // Detecta se está na página inicial (home)
+  const isHomePage = pathname === "/";
 
   useEffect(() => {
     const handleScroll = () => {
@@ -50,6 +56,15 @@ export function Header() {
     }
   };
 
+  // Menu para páginas internas (com links para outras páginas)
+  const internalNavItems = [
+    { label: "Home", href: "/" },
+    { label: "Robô Arm", href: "/robo-arm" },
+    { label: "Robôs Cartesianos", href: "/robos-cartesianos" },
+    { label: "Sobre", href: "/#sobre" },
+    { label: "Contato", href: "/contato" },
+  ];
+
   return (
     <>
       {/* Overlay escuro quando menu está aberto - COBRE TODA A TELA! */}
@@ -78,18 +93,32 @@ export function Header() {
             </Link>
 
             <nav className="hidden lg:flex items-center gap-8">
-              {navItems.map((item) => (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  onClick={(e) => handleSmoothScroll(e, item.href)}
-                  className={`hover:text-foreground transition-colors text-md font-medium cursor-pointer ${
-                    isScrolled ? "text-muted-foreground" : "text-white"
-                  }`}
-                >
-                  {item.label}
-                </Link>
-              ))}
+              {isHomePage
+                ? // Menu da Landing Page (scroll para seções)
+                  navItems.map((item) => (
+                    <Link
+                      key={item.href}
+                      href={item.href}
+                      onClick={(e) => handleSmoothScroll(e, item.href)}
+                      className={`hover:text-foreground transition-colors text-md font-medium cursor-pointer ${
+                        isScrolled ? "text-muted-foreground" : "text-white"
+                      }`}
+                    >
+                      {item.label}
+                    </Link>
+                  ))
+                : // Menu de Páginas Internas (links para outras páginas)
+                  internalNavItems.map((item) => (
+                    <Link
+                      key={item.href}
+                      href={item.href}
+                      className={`hover:text-foreground transition-colors text-md font-medium cursor-pointer ${
+                        isScrolled ? "text-muted-foreground" : "text-white"
+                      }`}
+                    >
+                      {item.label}
+                    </Link>
+                  ))}
             </nav>
 
             <div className="hidden lg:flex items-center gap-2">
@@ -138,16 +167,29 @@ export function Header() {
           {/* Conteúdo do menu */}
           <nav className="flex-1 p-4">
             <div className="flex flex-col gap-2">
-              {navItems.map((item) => (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  className="text-muted-foreground hover:text-foreground hover:bg-accent transition-colors text-sm font-medium py-3 px-4 rounded-lg cursor-pointer"
-                  onClick={(e) => handleSmoothScroll(e, item.href)}
-                >
-                  {item.label}
-                </Link>
-              ))}
+              {isHomePage
+                ? // Menu mobile da Landing Page
+                  navItems.map((item) => (
+                    <Link
+                      key={item.href}
+                      href={item.href}
+                      className="text-muted-foreground hover:text-foreground hover:bg-accent transition-colors text-sm font-medium py-3 px-4 rounded-lg cursor-pointer"
+                      onClick={(e) => handleSmoothScroll(e, item.href)}
+                    >
+                      {item.label}
+                    </Link>
+                  ))
+                : // Menu mobile de Páginas Internas
+                  internalNavItems.map((item) => (
+                    <Link
+                      key={item.href}
+                      href={item.href}
+                      className="text-muted-foreground hover:text-foreground hover:bg-accent transition-colors text-sm font-medium py-3 px-4 rounded-lg cursor-pointer"
+                      onClick={() => setIsMenuOpen(false)}
+                    >
+                      {item.label}
+                    </Link>
+                  ))}
             </div>
           </nav>
 

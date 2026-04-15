@@ -1,5 +1,3 @@
-import { Feather } from "lucide-react";
-
 export const SECTION_IDS = {
   CARRINHO: "carrinho",
   ABOUT: "aranha",

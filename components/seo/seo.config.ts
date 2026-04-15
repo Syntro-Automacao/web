@@ -4,6 +4,10 @@
  */
 
 export const SITE_CONFIG = {
+  siteName: "Syntro Automação Industrial",
+  siteUrl: "https://syntro.com.br",
+  defaultTitle: "Syntro Automação Industrial | Robôs Cartesianos, SCADA e IoT",
+  titleTemplate: "%s | Syntro Automação",
   name: "Syntro Automação Industrial",
   url: "https://syntro.com.br",
   description:

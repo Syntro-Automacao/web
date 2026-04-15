@@ -2,18 +2,11 @@
 
 import { useEffect, useState, lazy, Suspense } from "react";
 import dynamic from "next/dynamic";
-import { Header } from "@/components/layout/Header/Header";
-import { Footer } from "@/components/layout/Footer/Footer";
 import { Hero } from "@/components/sections/Hero/Hero";
 import { SobreIndex } from "@/components/sections/Sobre/SobreIndex";
 import { LoaderScreen } from "@/components/loading/LoaderScreen";
 import { SoftwareIndex } from "@/components/sections/Software/SoftwareIndex";
-import { Services } from "@/components/sections/Services";
-import { Differentials } from "@/components/sections/Differentials";
-import { Cases } from "@/components/sections/Cases";
-import { Mission } from "@/components/sections/Mission";
-import { CTA } from "@/components/sections/Cta";
-import { BorunteIndex } from "@/components/sections/Borunte/BorunteIndex";
+import { RoboArmIndex } from "@/components/sections/RoboArm/RoboArmIndex";
 import { RoboHdIndex } from "@/components/sections/RoboHd/RoboHdIndex";
 import { CartesianoIndex } from "@/components/sections/Cartesiano/CartesianoIndex";
 import { FerramentalIndex } from "@/components/sections/Ferramental/FerramentalIndex";
@@ -77,9 +70,6 @@ export default function HomePage() {
       {!loadingFinished && (
         <LoaderScreen canFinish={heroReady} onFinish={handleLoadingFinish} />
       )}
-
-      <Header />
-
       <main className="relative">
         <div
           id="syntro"
@@ -94,19 +84,11 @@ export default function HomePage() {
         <Iot />
         <Grid />
         <SoftwareIndex />
-        <BorunteIndex />
+        <RoboArmIndex />
         <RoboHdIndex />
         <CartesianoIndex />
         <FerramentalIndex />
-        {/* <RoboEscada />
-        <RoboDelta />
-        <Services />
-        <Differentials />
-        <Cases />
-        <Mission />
-        <CTA /> */}
       </main>
-      <Footer />
     </>
   );
 }
