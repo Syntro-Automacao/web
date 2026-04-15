@@ -6,6 +6,8 @@ export const revalidate = false;
 
 export default function robots(): MetadataRoute.Robots {
   return {
+    host: SITE_CONFIG.siteUrl,
+    sitemap: `${SITE_CONFIG.siteUrl}/sitemap.xml`,
     rules: [
       {
         userAgent: "*",
@@ -13,7 +15,5 @@ export default function robots(): MetadataRoute.Robots {
         disallow: ["/api/", "/_next/", "/private/"],
       },
     ],
-    sitemap: `${SITE_CONFIG.siteUrl}/sitemap.xml`,
-    host: SITE_CONFIG.siteUrl,
   };
 }
