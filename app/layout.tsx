@@ -74,9 +74,9 @@ export const metadata: Metadata = {
       "Especialistas em automação industrial com robôs cartesianos, sistemas SCADA, IoT industrial e CLP. Soluções completas para indústrias em São Paulo e Brasil.",
     images: [
       {
-        url: "https://syntro.com.br/og-image.webp",
+        url: "https://syntro.com.br/logo-image.webp",
         width: 1200,
-        height: 630,
+        height: 447,
         alt: "Syntro Automação Industrial",
       },
     ],
