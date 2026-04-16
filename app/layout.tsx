@@ -118,7 +118,6 @@ export default function RootLayout({
           <main className="min-h-screen">{children}</main>
           <Footer />
         </ThemeProvider>
-        <Analytics />
         <BackToTopButton />
         <WhatsAppFloat />
       </body>
