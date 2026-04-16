@@ -5,7 +5,7 @@ import React, { useState, useEffect } from "react";
 export const WhatsAppFloat = () => {
   const [isVisible, setIsVisible] = useState(false);
 
-  const phoneNumber = "+5519981905607";
+  const phoneNumber = "+5519996362101";
   const message =
     "Olá! Gostaria de saber mais sobre os serviços da Syntro Automação.";
 
