@@ -35,8 +35,8 @@ export const SITE_CONFIG = {
     address: "São Paulo, SP - Brasil",
   },
   images: {
-    og: "https://syntro.com.br/og-image.webp",
-    twitter: "https://syntro.com.br/twitter-image.webp",
+    og: "https://syntro.com.br/og-image.jpg",
+    twitter: "https://syntro.com.br/og-image.jpg",
     logo: "https://syntro.com.br/logo.svg",
   },
 } as const;
