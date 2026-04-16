@@ -5,23 +5,33 @@
   RewriteEngine On
   RewriteBase /
   
+  # NEXT.JS STATIC EXPORT - CONFIGURAÇÃO ESPECÍFICA
+  # Esta configuração é para arquivos gerados por 'next export' na pasta out/
+  
   # 1. GARANTIR ACESSO A ARQUIVOS IMPORTANTES PRIMEIRO
   RewriteRule ^manifest\.json$ - [L]
   RewriteRule ^sitemap\.xml$ - [L]
   RewriteRule ^robots\.txt$ - [L]
   RewriteRule ^favicon\.ico$ - [L]
   
-  # 2. REDIRECIONAMENTOS DE URL LIMPA (remover .html)
+  # 2. ARQUIVOS ESTÁTICOS DO NEXT.JS (_next/)
+  RewriteRule ^_next/(.*)$ - [L]
+  
+  # 3. ARQUIVOS DE ASSETS NORMAIS
+  RewriteRule \.(css|js|png|jpg|jpeg|gif|svg|webp|ico|woff|woff2|ttf|eot)$ - [L]
+  
+  # 4. REDIRECIONAMENTO 301 - REMOVER .html DAS URLs
   RewriteCond %{THE_REQUEST} ^[A-Z]{3,}\s/(.+)\.html [NC]
   RewriteRule ^ %1? [R=301,L]
   
-  # 3. ADICIONAR .html INTERNAMENTE (SPA Routing)
+  # 5. ADICIONAR .html INTERNAMENTE - SOMENTE PARA PÁGINAS INTERNAS
+  # Regra principal: /contato/ → contato.html (internamente)
   RewriteCond %{REQUEST_FILENAME} !-d
   RewriteCond %{REQUEST_FILENAME} !-f
-  RewriteCond %{REQUEST_FILENAME}\.html -f
-  RewriteRule ^(.*)$ $1.html [L]
+  RewriteCond %{DOCUMENT_ROOT}/$1\.html -f
+  RewriteRule ^(contato|sobre|servicos|softwares-industriais|robos|blog|cases)/?$ $1.html [L]
   
-  # 4. FALLBACK PARA INDEX.HTML (Single Page Application)
+  # 6. FALLBACK PARA INDEX.HTML (SPA ROUTING)
   RewriteCond %{REQUEST_FILENAME} !-d
   RewriteCond %{REQUEST_FILENAME} !-f
   RewriteRule ^ index.html [L]
