@@ -1,27 +1,33 @@
-# .htaccess - Configuração para Next.js Static Export
-# Remove a necessidade de digitar .html nas URLs
+# .htaccess - Configuração Completa para Next.js Static Export
+# LiteSpeed/cPanel - Resolve URLs limpas e manifest.json
 
 <IfModule mod_rewrite.c>
   RewriteEngine On
   RewriteBase /
   
-  # Remove .html das URLs (redireciona permanentemente)
-  RewriteCond %{THE_REQUEST} ^[A-Z]{3,}\s/(.+)\\.html [NC]
-  RewriteRule ^ %1 [R=301,L]
+  # 1. GARANTIR ACESSO A ARQUIVOS IMPORTANTES PRIMEIRO
+  RewriteRule ^manifest\.json$ - [L]
+  RewriteRule ^sitemap\.xml$ - [L]
+  RewriteRule ^robots\.txt$ - [L]
+  RewriteRule ^favicon\.ico$ - [L]
   
-  # Adiciona .html internamente quando não encontrado
+  # 2. REDIRECIONAMENTOS DE URL LIMPA (remover .html)
+  RewriteCond %{THE_REQUEST} ^[A-Z]{3,}\s/(.+)\.html [NC]
+  RewriteRule ^ %1? [R=301,L]
+  
+  # 3. ADICIONAR .html INTERNAMENTE (SPA Routing)
   RewriteCond %{REQUEST_FILENAME} !-d
   RewriteCond %{REQUEST_FILENAME} !-f
-  RewriteCond %{REQUEST_FILENAME}.html -f
+  RewriteCond %{REQUEST_FILENAME}\.html -f
   RewriteRule ^(.*)$ $1.html [L]
   
-  # Fallback para index.html se não existir
-  RewriteCond %{REQUEST_FILENAME} !-f
+  # 4. FALLBACK PARA INDEX.HTML (Single Page Application)
   RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteCond %{REQUEST_FILENAME} !-f
   RewriteRule ^ index.html [L]
 </IfModule>
 
-# Configurações de segurança e performance
+# CONFIGURAÇÕES DE SEGURANÇA E CACHE
 <IfModule mod_headers.c>
   # Cache para arquivos estáticos (1 ano)
   <FilesMatch "\.(css|js|png|jpg|jpeg|gif|svg|ico|webp|woff|woff2|ttf|eot)$">
@@ -33,7 +39,7 @@
     Header set Cache-Control "max-age=3600, public"
   </FilesMatch>
   
-  # Headers específicos para manifest.json e sitemap.xml
+  # Headers específicos para arquivos importantes
   <Files "manifest.json">
     Header set Content-Type "application/json"
     Header set Cache-Control "max-age=3600, public"
@@ -43,20 +49,46 @@
     Header set Content-Type "application/xml"
     Header set Cache-Control "max-age=3600, public"
   </Files>
+  
+  <Files "robots.txt">
+    Header set Content-Type "text/plain"
+    Header set Cache-Control "max-age=3600, public"
+  </Files>
 </IfModule>
 
-# Compressão Gzip para melhor performance
+# COMPRESSÃO GZIP
 <IfModule mod_deflate.c>
   AddOutputFilterByType DEFLATE text/html text/plain text/css text/javascript application/javascript application/json application/xml text/xml
 </IfModule>
 
-# Segurança - Esconder arquivos sensíveis
+# SEGURANÇA - BLOQUEAR APENAS ARQUIVOS REALMENTE SENSÍVEIS
 <Files ~ "^\.">
   Order allow,deny
   Deny from all
 </Files>
 
-<Files ~ "\.(json|lock|md)$">
+<Files ~ "package\.json$">
   Order allow,deny
   Deny from all
+</Files>
+
+<Files ~ "tsconfig\.json$">
+  Order allow,deny
+  Deny from all
+</Files>
+
+<Files ~ "next\.config\.(js|mjs|ts)$">
+  Order allow,deny
+  Deny from all
+</Files>
+
+# PERMITIR ARQUIVOS NECESSÁRIOS
+<Files "manifest.json">
+  Order allow,deny
+  Allow from all
+</Files>
+
+<Files "sitemap.xml">
+  Order allow,deny
+  Allow from all
 </Files>
