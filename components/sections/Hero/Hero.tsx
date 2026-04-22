@@ -148,7 +148,7 @@ export function Hero({ isVisible, onReady }: HeroProps) {
   // 🎯 Fontes otimizadas baseadas na conexão
   const videoSrc =
     connection === "3g"
-      ? "/assets/videos/videoSite_mobile.mp4" // Versão mobile menor
+      ? "/assets/videos/videoSite.mp4" // Versão mobile menor
       : "/assets/videos/videoSite.mp4";
 
   const posterSrc = "/assets/videos/syntro_entrada.webp";

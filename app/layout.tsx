@@ -52,7 +52,7 @@ export const metadata: Metadata = {
     "syntro",
   ],
   metadataBase: new URL("https://syntro.com.br"),
-  alternates: { canonical: "https://syntro.com.br" },
+  alternates: { canonical: "https://syntro.com.br" }, // Será sobrescrito pelas páginas individuais
   robots: {
     index: true,
     follow: true,

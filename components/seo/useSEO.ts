@@ -43,6 +43,9 @@ export function useSEO({
     robots: noIndex
       ? { index: false, follow: false }
       : { index: true, follow: true },
+    alternates: {
+      canonical: "/", // Será sobrescrito pelas páginas com a URL correta
+    },
     openGraph: {
       title: `${title} | Syntro Automação`,
       description,
