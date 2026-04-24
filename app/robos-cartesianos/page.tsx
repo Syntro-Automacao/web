@@ -1,11 +1,11 @@
 import { Footer } from "@/components/layout/Footer/Footer";
 import { Header } from "@/components/layout/Header/Header";
 import { CartesianoIndex } from "@/components/sections/Cartesiano/CartesianoIndex";
-import { useSEO } from "@/components/seo/useSEO";
+import { createSEO } from "@/components/seo/useSEO";
 import type { Metadata } from "next";
 
 // SEO simplificado para a página de Robôs Cartesianos
-export const metadata: Metadata = useSEO({
+export const metadata: Metadata = createSEO({
   title: "Robôs Cartesianos",
   description:
     "Robôs cartesianos de alta precisão para automação industrial. Sistemas confiáveis, manutenção reduzida e integração perfeita.",

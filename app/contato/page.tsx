@@ -1,9 +1,10 @@
-import { useSEO } from "@/components/seo/useSEO";
+import { createSEO } from "@/components/seo/useSEO";
 import { Reveal } from "@/components/motion/Reveal";
 import { Mail, Phone, MapPin, Clock, MessageCircle } from "lucide-react";
 import Link from "next/link";
+import { TrackedCtaLink } from "@/components/analytics/GoogleAnalytics";
 
-export const metadata = useSEO({
+export const metadata = createSEO({
   title: "Contato | Syntro Automação Industrial",
   description:
     "Entre em contato com a Syntro Automação Industrial. Especialistas em robótica, automação industrial, SCADA e IoT. Solicite um orçamento.",
@@ -63,14 +64,16 @@ export default function ContatoPage() {
                     WhatsApp
                   </h3>
                   <p className="text-gray-600 mb-4">Resposta rápida e direta</p>
-                  <a
+                  <TrackedCtaLink
+                    ctaName="whatsapp_contato"
+                    location="contato_cards"
                     href="https://wa.me/+5519996362101?text=Olá! Gostaria de saber mais sobre os serviços da Syntro Automação."
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center px-6 py-3 bg-green-600 text-white font-medium rounded-lg hover:bg-green-700 transition-colors"
                   >
                     Iniciar Conversa
-                  </a>
+                  </TrackedCtaLink>
                 </div>
               </Reveal>
 
@@ -86,12 +89,14 @@ export default function ContatoPage() {
                   <p className="text-gray-600 mb-4">
                     Segunda a Sexta, 8h às 18h
                   </p>
-                  <a
+                  <TrackedCtaLink
+                    ctaName="telefone_contato"
+                    location="contato_cards"
                     href="tel:+5519996362101"
                     className="text-blue-600 font-medium hover:text-blue-700 text-lg"
                   >
                     (19) 99636-2101
-                  </a>
+                  </TrackedCtaLink>
                 </div>
               </Reveal>
 
@@ -107,12 +112,14 @@ export default function ContatoPage() {
                   <p className="text-gray-600 mb-4">
                     Envie suas dúvidas detalhadas
                   </p>
-                  <a
+                  <TrackedCtaLink
+                    ctaName="email_contato"
+                    location="contato_cards"
                     href="mailto:contato@syntro.com.br"
                     className="text-purple-600 font-medium hover:text-purple-700"
                   >
                     contato@syntro.com.br
-                  </a>
+                  </TrackedCtaLink>
                 </div>
               </Reveal>
             </div>
@@ -173,7 +180,9 @@ export default function ContatoPage() {
               Solicite uma visita técnica gratuita e descubra como nossas
               soluções de automação podem revolucionar sua linha de produção.
             </p>
-            <a
+            <TrackedCtaLink
+              ctaName="visita_tecnica_whatsapp"
+              location="contato_final_cta"
               href="https://wa.me/+5519996362101?text=Olá! Gostaria de agendar uma visita técnica para avaliar minha necessidade de automação industrial."
               target="_blank"
               rel="noopener noreferrer"
@@ -181,7 +190,7 @@ export default function ContatoPage() {
             >
               <MessageCircle className="w-5 h-5 mr-2" />
               Solicitar Visita Técnica
-            </a>
+            </TrackedCtaLink>
           </Reveal>
         </div>
       </section>

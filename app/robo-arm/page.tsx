@@ -1,7 +1,7 @@
-import { useSEO } from "@/components/seo/useSEO";
+import { createSEO } from "@/components/seo/useSEO";
 import { RoboArmIndex } from "@/components/sections/RoboArm/RoboArmIndex";
 
-export const metadata = useSEO({
+export const metadata = createSEO({
   title: "Robô Arm Industrial",
   description:
     "Robôs manipuladores articulados para automação industrial. Soluções flexíveis para picking, packing, paletização e operações complexas.",

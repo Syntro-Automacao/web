@@ -20,7 +20,7 @@ export function RoboBandeja3D() {
             fácil integração com diversos sistemas
           </span>
           , como sistemas de visão, ERPs e outras plataformas capazes de enviar
-          instruções para a execução de processos específicos."
+          instruções para a execução de processos específicos.
         </>
       }
       imageSrc="/assets/robos/bandeja/M_Synbot20_001.webp"

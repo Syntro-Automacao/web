@@ -21,7 +21,7 @@ export function AlmacemAutomatico() {
           por metro quadrado. Com um software inteligente de pesagem e sistemas
           de visão, o inventário é feito de forma automática, e com uma
           biblioteca cadastrada de itens com fotos em tempo real, agilizando a
-          procura de itens e ajudando em diversos fatores administrativos."
+          procura de itens e ajudando em diversos fatores administrativos.
         </>
       }
       imageSrc="/assets/images/almacem_automatico.webp"

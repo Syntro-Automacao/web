@@ -1,6 +1,9 @@
+"use client";
+
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Mail, Phone, MapPin } from "lucide-react";
+import { trackCTAClick } from "@/components/analytics/GoogleAnalytics";
 
 export function CTA() {
   return (
@@ -34,7 +37,14 @@ export function CTA() {
                   consultoria gratuita para entender suas necessidades.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4">
-                  <Button size="lg" asChild className="text-base px-8">
+                  <Button
+                    size="lg"
+                    asChild
+                    className="text-base px-8"
+                    onClick={() =>
+                      trackCTAClick("consultoria_email", "cta_section")
+                    }
+                  >
                     <Link href="mailto:contato@syntro.com.br">
                       Solicitar Consultoria
                       <ArrowRight className="ml-2 w-4 h-4" />
@@ -45,6 +55,7 @@ export function CTA() {
                     variant="outline"
                     asChild
                     className="text-base px-8 bg-transparent"
+                    onClick={() => trackCTAClick("whatsapp_cta", "cta_section")}
                   >
                     <Link
                       href="https://wa.me/5511999999999"
@@ -102,5 +113,45 @@ export function CTA() {
         </div>
       </div>
     </section>
+  );
+}
+
+// Componentes clientes para botões com tracking
+function ConsultoriaButton() {
+  const handleClick = () => {
+    trackCTAClick("consultoria_email", "cta_section");
+  };
+
+  return (
+    <Button size="lg" asChild className="text-base px-8" onClick={handleClick}>
+      <Link href="mailto:contato@syntro.com.br">
+        Solicitar Consultoria
+        <ArrowRight className="ml-2 w-4 h-4" />
+      </Link>
+    </Button>
+  );
+}
+
+function WhatsAppCTAButton() {
+  const handleClick = () => {
+    trackCTAClick("whatsapp_cta", "cta_section");
+  };
+
+  return (
+    <Button
+      size="lg"
+      variant="outline"
+      asChild
+      className="text-base px-8 bg-transparent"
+      onClick={handleClick}
+    >
+      <Link
+        href="https://wa.me/5511999999999"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        WhatsApp
+      </Link>
+    </Button>
   );
 }

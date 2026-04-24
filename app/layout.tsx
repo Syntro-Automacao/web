@@ -10,6 +10,7 @@ import BackToTopButton from "@/components/floating/BackToTop";
 import { StructuredData } from "@/components/seo/StructuredData";
 import { Header } from "@/components/layout/Header/Header";
 import { Footer } from "@/components/layout/Footer/Footer";
+import { GoogleAnalytics } from "@/components/analytics/GoogleAnalytics";
 
 const _inter = Inter({ subsets: ["latin"] });
 const _geistMono = Geist_Mono({ subsets: ["latin"] });
@@ -107,6 +108,7 @@ export default function RootLayout({
   return (
     <html lang="pt-BR" suppressHydrationWarning>
       <body className={`${galano.variable} font-sans antialiased`}>
+        <GoogleAnalytics />
         <StructuredData />
         <ThemeProvider
           attribute="class"

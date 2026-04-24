@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 
-interface UseSEOProps {
+interface SEOProps {
   title: string;
   description: string;
   keywords?: string[];
@@ -18,13 +18,13 @@ interface UseSEOProps {
  *   keywords: ["robô", "automação"]
  * });
  */
-export function useSEO({
+export function createSEO({
   title,
   description,
   keywords = [],
   image = "https://syntro.com.br/og-image.webp",
   noIndex = false,
-}: UseSEOProps): Metadata {
+}: SEOProps): Metadata {
   // Keywords base para automação industrial
   const baseKeywords = [
     "automação industrial",
@@ -65,11 +65,11 @@ export function useSEO({
 /**
  * SEO para páginas de produtos específicos
  */
-export function useProductSEO(
+export function createProductSEO(
   productName: string,
   description: string,
 ): Metadata {
-  return useSEO({
+  return createSEO({
     title: productName,
     description,
     keywords: [
@@ -84,13 +84,17 @@ export function useProductSEO(
 /**
  * SEO para páginas de serviços
  */
-export function useServiceSEO(
+export function createServiceSEO(
   serviceName: string,
   description: string,
 ): Metadata {
-  return useSEO({
+  return createSEO({
     title: serviceName,
     description,
     keywords: [serviceName.toLowerCase(), "serviço", "automação", "industrial"],
   });
 }
+
+export const useSEO = createSEO;
+export const useProductSEO = createProductSEO;
+export const useServiceSEO = createServiceSEO;

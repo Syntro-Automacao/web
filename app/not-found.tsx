@@ -1,11 +1,12 @@
 import { Metadata } from "next";
-import { useSEO } from "@/components/seo/useSEO";
+import { createSEO } from "@/components/seo/useSEO";
 import { SobreIndex } from "@/components/sections/Sobre/SobreIndex";
 import { Reveal } from "@/components/motion/Reveal";
 import Link from "next/link";
+import { TrackedCtaLink } from "@/components/analytics/GoogleAnalytics";
 
 // Metadata para a página 404
-export const metadata: Metadata = useSEO({
+export const metadata: Metadata = createSEO({
   title: "Página Não Encontrada",
   description:
     "A página que você está procurando não foi encontrada. Volte para a página inicial ou explore nossas soluções de automação industrial.",
@@ -45,14 +46,16 @@ export default function NotFoundPage() {
               >
                 Voltar para Home
               </Link>
-              <a
+              <TrackedCtaLink
+                ctaName="whatsapp_contato"
+                location="404_hero"
                 href="https://wa.me/+5519996362101?text=Olá! Gostaria de saber mais sobre os serviços da Syntro Automação."
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center px-6 py-3 bg-green-600 text-white font-medium rounded-lg hover:bg-green-700 transition-colors"
               >
                 Falar no WhatsApp
-              </a>
+              </TrackedCtaLink>
             </div>
           </Reveal>
         </div>
@@ -91,14 +94,16 @@ export default function NotFoundPage() {
               revolucionar sua linha de produção com automação industrial
               inteligente.
             </p>
-            <a
+            <TrackedCtaLink
+              ctaName="whatsapp_contato"
+              location="404_cta"
               href="https://wa.me/+5519996362101?text=Olá! Gostaria de saber mais sobre os serviços da Syntro Automação."
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center px-8 py-4 bg-green-600 text-white font-medium rounded-lg hover:bg-green-700 transition-colors text-lg"
             >
               Falar no WhatsApp
-            </a>
+            </TrackedCtaLink>
           </Reveal>
         </div>
       </section>
