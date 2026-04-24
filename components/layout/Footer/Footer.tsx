@@ -59,6 +59,12 @@ export function Footer() {
             © {new Date().getFullYear()} Syntro Automação. Todos os direitos
             reservados.
           </p>
+          <Link
+            href="/privacidade"
+            className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+          >
+            Política de Privacidade
+          </Link>
         </div>
       </div>
     </footer>
