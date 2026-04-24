@@ -11,6 +11,7 @@ import { StructuredData } from "@/components/seo/StructuredData";
 import { Header } from "@/components/layout/Header/Header";
 import { Footer } from "@/components/layout/Footer/Footer";
 import { GoogleAnalytics } from "@/components/analytics/GoogleAnalytics";
+import CookieConsent from "@/components/legal/CookieConsent";
 
 const _inter = Inter({ subsets: ["latin"] });
 const _geistMono = Geist_Mono({ subsets: ["latin"] });
@@ -122,6 +123,7 @@ export default function RootLayout({
         </ThemeProvider>
         <BackToTopButton />
         <WhatsAppFloat />
+        <CookieConsent />
       </body>
     </html>
   );
