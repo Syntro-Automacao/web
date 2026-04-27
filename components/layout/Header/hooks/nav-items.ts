@@ -7,4 +7,5 @@ export const navItems = [
   { label: "Equipamentos", href: `#${SECTION_IDS.HD}` },
   { label: "Robô Cartesiano", href: `#${SECTION_IDS.CARTESIANO}` },
   { label: "Ferramental", href: `#${SECTION_IDS.FERRAMENTAL}` },
+  { label: "Contato", href: "/contato" },
 ];

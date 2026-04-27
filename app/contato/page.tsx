@@ -3,6 +3,7 @@ import { Reveal } from "@/components/motion/Reveal";
 import { Mail, Phone, MapPin, Clock, MessageCircle } from "lucide-react";
 import Link from "next/link";
 import { TrackedCtaLink } from "@/components/analytics/GoogleAnalytics";
+import ContactFormEmailJS from "@/components/forms/ContactFormEmailJS";
 
 export const metadata = createSEO({
   title: "Contato | Syntro Automação Industrial",
@@ -29,30 +30,20 @@ export default function ContatoPage() {
               <h1 className="text-4xl md:text-6xl font-bold mb-6">
                 Entre em Contato
               </h1>
-              <p className="text-xl md:text-2xl mb-8 text-blue-100">
+              <p className="text-xl md:text-2xl ext-blue-100">
                 Transforme sua indústria com as soluções de automação da Syntro
               </p>
             </Reveal>
           </div>
         </div>
       </section>
-
+      <Reveal>
+        <ContactFormEmailJS />
+      </Reveal>
       {/* Informações de Contato */}
       <section className="py-16 md:py-24 bg-gray-50">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
-            <Reveal>
-              <div className="text-center mb-16">
-                <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
-                  Fale com Nossos Especialistas
-                </h2>
-                <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-                  Estamos prontos para entender suas necessidades e oferecer a
-                  melhor solução de automação industrial para sua empresa.
-                </p>
-              </div>
-            </Reveal>
-
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
               {/* WhatsApp */}
               <Reveal>
@@ -123,52 +114,9 @@ export default function ContatoPage() {
                 </div>
               </Reveal>
             </div>
-
-            {/* Localização e Horário */}
-            <div className="grid md:grid-cols-2 gap-8">
-              <Reveal>
-                <div className="bg-white p-8 rounded-xl shadow-lg">
-                  <div className="flex items-center mb-4">
-                    <MapPin className="w-6 h-6 text-blue-600 mr-3" />
-                    <h3 className="text-xl font-semibold text-gray-800">
-                      Localização
-                    </h3>
-                  </div>
-                  <p className="text-gray-600 mb-2">
-                    <strong>Syntro Automação Industrial</strong>
-                  </p>
-                  <p className="text-gray-600">Campinas - SP</p>
-                </div>
-              </Reveal>
-              <Reveal>
-                <div className="bg-white p-8 rounded-xl shadow-lg">
-                  <div className="flex items-center mb-4">
-                    <Clock className="w-6 h-6 text-blue-600 mr-3" />
-                    <h3 className="text-xl font-semibold text-gray-800">
-                      Horário de Atendimento
-                    </h3>
-                  </div>
-                  <div className="space-y-2 text-gray-600">
-                    <p>
-                      <strong>Segunda a Sexta:</strong> 7h às 17h
-                    </p>
-                    <p>
-                      <strong>Sábado:</strong> 8h às 12h
-                    </p>
-                    <p>
-                      <strong>Domingo:</strong> Fechado
-                    </p>
-                    <p className="text-sm mt-4 text-blue-600">
-                      <strong>WhatsApp:</strong> 24 horas
-                    </p>
-                  </div>
-                </div>
-              </Reveal>
-            </div>
           </div>
         </div>
       </section>
-
       {/* CTA Final */}
       <section className="py-16 bg-blue-600">
         <div className="container mx-auto px-4 text-center">
@@ -194,6 +142,7 @@ export default function ContatoPage() {
           </Reveal>
         </div>
       </section>
+      ,
     </div>
   );
 }

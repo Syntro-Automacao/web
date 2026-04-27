@@ -32,6 +32,11 @@ export function Header() {
     e: React.MouseEvent<HTMLAnchorElement>,
     href: string,
   ) => {
+    if (!href.startsWith("#")) {
+      setIsMenuOpen(false);
+      return;
+    }
+
     e.preventDefault();
     setIsMenuOpen(false);
 
