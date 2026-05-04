@@ -6,18 +6,41 @@ import ReactGA from "react-ga4";
 
 const GA_MEASUREMENT_ID =
   process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID ?? "G-CHK228GNT6";
+const CONSENT_KEY = "syntro_cookie_consent";
+
+function getConsentValue() {
+  try {
+    return localStorage.getItem(CONSENT_KEY);
+  } catch {
+    return null;
+  }
+}
+
+function isAnalyticsEnabled() {
+  const raw = getConsentValue();
+  if (!raw) return false;
+  if (raw === "accepted") return true;
+  if (raw === "dismissed") return false;
+
+  try {
+    const parsed = JSON.parse(raw);
+    return Boolean(parsed?.analytics);
+  } catch {
+    return false;
+  }
+}
 
 export function useAnalytics() {
   const pathname = usePathname();
 
   useEffect(() => {
-    if (GA_MEASUREMENT_ID) {
+    if (GA_MEASUREMENT_ID && isAnalyticsEnabled()) {
       ReactGA.initialize(GA_MEASUREMENT_ID);
     }
   }, []);
 
   useEffect(() => {
-    if (GA_MEASUREMENT_ID && pathname) {
+    if (GA_MEASUREMENT_ID && isAnalyticsEnabled() && pathname) {
       trackPageView(pathname);
     }
   }, [pathname]);
@@ -30,7 +53,7 @@ export const trackEvent = (
   label?: string,
   value?: number,
 ) => {
-  if (!GA_MEASUREMENT_ID) return;
+  if (!GA_MEASUREMENT_ID || !isAnalyticsEnabled()) return;
 
   const eventParams: any = { action };
 
@@ -57,7 +80,7 @@ export const trackCTAClick = (ctaName: string, location?: string) => {
 
 // Função para tracking de visualizações de página
 export const trackPageView = (page: string, title?: string) => {
-  if (!GA_MEASUREMENT_ID) return;
+  if (!GA_MEASUREMENT_ID || !isAnalyticsEnabled()) return;
 
   ReactGA.send({
     hitType: "pageview",

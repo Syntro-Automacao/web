@@ -5,6 +5,7 @@ import Link from "next/link";
 import { AnimatePresence, motion } from "framer-motion";
 import { X } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Switch } from "@/components/ui/switch";
 
 const STORAGE_KEY = "syntro_cookie_consent";
 
@@ -24,16 +25,51 @@ function writeStoredValue(value) {
   }
 }
 
+function readConsent() {
+  const raw = readStoredValue();
+  if (!raw) return null;
+  if (raw === "accepted") return { analytics: true, marketing: true };
+  if (raw === "dismissed") return { analytics: false, marketing: false };
+
+  try {
+    const parsed = JSON.parse(raw);
+    return {
+      analytics: Boolean(parsed?.analytics),
+      marketing: Boolean(parsed?.marketing),
+    };
+  } catch {
+    return null;
+  }
+}
+
+function writeConsent(consent) {
+  writeStoredValue(
+    JSON.stringify({
+      v: 2,
+      analytics: Boolean(consent.analytics),
+      marketing: Boolean(consent.marketing),
+      ts: new Date().toISOString(),
+    }),
+  );
+  window.dispatchEvent(new Event("syntro:cookie-consent"));
+}
+
 function CookieConsent({
   privacyPolicyHref = "/privacidade",
   companyName = "Syntro Automação Industrial",
   onAccept = () => {},
 }) {
   const [isVisible, setIsVisible] = useState(false);
+  const [isCustomizing, setIsCustomizing] = useState(false);
+  const [preferences, setPreferences] = useState({
+    analytics: true,
+    marketing: true,
+  });
 
   useEffect(() => {
-    const stored = readStoredValue();
+    const stored = readConsent();
     if (!stored) setIsVisible(true);
+    if (stored) setPreferences(stored);
   }, []);
 
   const motionVariants = useMemo(
@@ -45,15 +81,23 @@ function CookieConsent({
     [],
   );
 
-  const handleAccept = () => {
-    writeStoredValue("accepted");
+  const handleAcceptAll = () => {
+    const consent = { analytics: true, marketing: true };
+    writeConsent(consent);
     setIsVisible(false);
-    onAccept();
+    onAccept(consent);
   };
 
-  const handleClose = () => {
-    writeStoredValue("dismissed");
+  const handleReject = () => {
+    const consent = { analytics: false, marketing: false };
+    writeConsent(consent);
     setIsVisible(false);
+  };
+
+  const handleSavePreferences = () => {
+    writeConsent(preferences);
+    setIsVisible(false);
+    onAccept(preferences);
   };
 
   return (
@@ -71,7 +115,7 @@ function CookieConsent({
             <div className="relative p-5 sm:p-6">
               <button
                 type="button"
-                onClick={handleClose}
+                onClick={handleReject}
                 aria-label="Fechar"
                 className="absolute right-3 top-3 inline-flex h-9 w-9 items-center justify-center rounded-xl text-muted-foreground hover:bg-accent hover:text-accent-foreground transition-colors"
               >
@@ -102,13 +146,91 @@ function CookieConsent({
                   </div>
                 </div>
 
-                <div className="mt-4 flex flex-col sm:flex-row gap-3 sm:items-center sm:justify-end">
+                {isCustomizing ? (
+                  <div className="mt-5 grid gap-4">
+                    <div className="rounded-xl border border-border bg-background/60 p-4">
+                      <div className="flex items-center justify-between gap-4">
+                        <div>
+                          <p className="text-sm font-medium text-foreground">
+                            Cookies necessários
+                          </p>
+                          <p className="text-xs text-muted-foreground">
+                            Essenciais para o funcionamento do site.
+                          </p>
+                        </div>
+                        <Switch checked disabled />
+                      </div>
+                    </div>
+
+                    <div className="rounded-xl border border-border bg-background/60 p-4">
+                      <div className="flex items-center justify-between gap-4">
+                        <div>
+                          <p className="text-sm font-medium text-foreground">
+                            Medição (Analytics)
+                          </p>
+                          <p className="text-xs text-muted-foreground">
+                            Ajuda a entender o uso do site para melhorias.
+                          </p>
+                        </div>
+                        <Switch
+                          checked={preferences.analytics}
+                          onCheckedChange={(checked) =>
+                            setPreferences((prev) => ({
+                              ...prev,
+                              analytics: Boolean(checked),
+                            }))
+                          }
+                        />
+                      </div>
+                    </div>
+
+                    <div className="rounded-xl border border-border bg-background/60 p-4">
+                      <div className="flex items-center justify-between gap-4">
+                        <div>
+                          <p className="text-sm font-medium text-foreground">
+                            Marketing (Google Ads)
+                          </p>
+                          <p className="text-xs text-muted-foreground">
+                            Usado para medir campanhas e conversões.
+                          </p>
+                        </div>
+                        <Switch
+                          checked={preferences.marketing}
+                          onCheckedChange={(checked) =>
+                            setPreferences((prev) => ({
+                              ...prev,
+                              marketing: Boolean(checked),
+                            }))
+                          }
+                        />
+                      </div>
+                    </div>
+                  </div>
+                ) : null}
+
+                <div className="mt-5 flex flex-col sm:flex-row gap-3 sm:items-center sm:justify-end">
                   <Button
                     type="button"
-                    onClick={handleAccept}
+                    variant="outline"
+                    onClick={() => setIsCustomizing((v) => !v)}
                     className="rounded-xl"
                   >
-                    Aceitar
+                    {isCustomizing ? "Voltar" : "Preferências"}
+                  </Button>
+                  <Button
+                    type="button"
+                    variant="outline"
+                    onClick={handleReject}
+                    className="rounded-xl"
+                  >
+                    Recusar
+                  </Button>
+                  <Button
+                    type="button"
+                    onClick={isCustomizing ? handleSavePreferences : handleAcceptAll}
+                    className="rounded-xl"
+                  >
+                    {isCustomizing ? "Salvar" : "Aceitar"}
                   </Button>
                 </div>
               </div>

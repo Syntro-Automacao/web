@@ -11,6 +11,7 @@ import { StructuredData } from "@/components/seo/StructuredData";
 import { Header } from "@/components/layout/Header/Header";
 import { Footer } from "@/components/layout/Footer/Footer";
 import { GoogleAnalytics } from "@/components/analytics/GoogleAnalytics";
+import { GoogleAdsTag } from "@/components/analytics/GoogleAdsTag";
 import CookieConsent from "@/components/legal/CookieConsent";
 
 const _inter = Inter({ subsets: ["latin"] });
@@ -109,6 +110,7 @@ export default function RootLayout({
   return (
     <html lang="pt-BR" suppressHydrationWarning>
       <body className={`${galano.variable} font-sans antialiased`}>
+        <GoogleAdsTag />
         <GoogleAnalytics />
         <StructuredData />
         <ThemeProvider

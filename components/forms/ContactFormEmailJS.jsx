@@ -20,6 +20,32 @@ const EMAILJS_TEMPLATE_ID_NOTIFY =
 const EMAILJS_TEMPLATE_ID_AUTOREPLY =
   process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID_AUTOREPLY;
 const EMAILJS_PUBLIC_KEY = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
+const ADS_FORM_SEND_TO = process.env.NEXT_PUBLIC_GOOGLE_ADS_FORM_SEND_TO;
+
+function isMarketingEnabled() {
+  try {
+    const raw = localStorage.getItem("syntro_cookie_consent");
+    if (!raw) return false;
+    if (raw === "accepted") return true;
+    if (raw === "dismissed") return false;
+    const parsed = JSON.parse(raw);
+    return Boolean(parsed?.marketing);
+  } catch {
+    return false;
+  }
+}
+
+function trackGoogleAdsConversion(sendTo) {
+  try {
+    if (!sendTo) return;
+    if (!isMarketingEnabled()) return;
+    const gtag = window.gtag;
+    if (typeof gtag !== "function") return;
+    gtag("event", "conversion", { send_to: sendTo });
+  } catch {
+    return;
+  }
+}
 
 export default function ContactFormEmailJS() {
   const [formData, setFormData] = useState(INITIAL_FORM);
@@ -89,6 +115,8 @@ export default function ContactFormEmailJS() {
         },
         EMAILJS_PUBLIC_KEY,
       );
+
+      trackGoogleAdsConversion(ADS_FORM_SEND_TO);
 
       let autoReplySent = true;
       try {
