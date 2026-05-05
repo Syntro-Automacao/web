@@ -1,5 +1,6 @@
 import { MetadataRoute } from "next";
 import { SITE_CONFIG } from "@/components/seo/seo.config";
+import { robosCartesianosCidades } from "@/data/robosCartesianosCidades";
 
 // Configuração necessária para static export
 export const dynamic = "force-static";
@@ -38,6 +39,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly",
       priority: 0.9,
     },
+    ...robosCartesianosCidades.map((c) => ({
+      url: `${baseUrl}/robos-cartesianos-${c.slug}`,
+      lastModified: currentDate,
+      changeFrequency: "monthly" as const,
+      priority: 0.6,
+    })),
     {
       url: `${baseUrl}/contato`,
       lastModified: currentDate,

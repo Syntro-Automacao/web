@@ -1,5 +1,3 @@
-import { Footer } from "@/components/layout/Footer/Footer";
-import { Header } from "@/components/layout/Header/Header";
 import { CartesianoIndex } from "@/components/sections/Cartesiano/CartesianoIndex";
 import { createSEO } from "@/components/seo/useSEO";
 import type { Metadata } from "next";
@@ -23,6 +21,7 @@ export default function RobosCartesianosPage() {
   return (
     <>
       <main className="relative">
+        <div className="pt-24 bg-(--bg-cinza)"></div>
         <CartesianoIndex />
       </main>
     </>

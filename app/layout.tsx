@@ -120,7 +120,7 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <Header />
-          <main className="min-h-screen">{children}</main>
+          {children}
           <Footer />
         </ThemeProvider>
         <BackToTopButton />

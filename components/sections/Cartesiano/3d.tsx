@@ -1,5 +1,4 @@
 import { FeatureSection } from "@/components/sections/Features/FeatureSection";
-import { SECTION_IDS } from "@/components/sections/hooks/section-ids";
 export function RoboBandeja3D() {
   return (
     <FeatureSection
