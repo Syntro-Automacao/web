@@ -15,26 +15,29 @@ function getConsentValue() {
   }
 }
 
-function isMarketingEnabled() {
+function readConsent() {
   const raw = getConsentValue();
-  if (!raw) return false;
-  if (raw === "accepted") return true;
-  if (raw === "dismissed") return false;
+  if (!raw) return { analytics: false, marketing: false };
+  if (raw === "accepted") return { analytics: true, marketing: true };
+  if (raw === "dismissed") return { analytics: false, marketing: false };
 
   try {
     const parsed = JSON.parse(raw);
-    return Boolean(parsed?.marketing);
+    return {
+      analytics: Boolean(parsed?.analytics),
+      marketing: Boolean(parsed?.marketing),
+    };
   } catch {
-    return false;
+    return { analytics: false, marketing: false };
   }
 }
 
 export function GoogleAdsTag() {
-  const [isEnabled, setIsEnabled] = useState(false);
+  const [consentState, setConsentState] = useState(() => readConsent());
 
   useEffect(() => {
     const update = () => {
-      setIsEnabled(isMarketingEnabled());
+      setConsentState(readConsent());
     };
     const onConsentChange = () => update();
 
@@ -47,7 +50,22 @@ export function GoogleAdsTag() {
     };
   }, []);
 
-  if (!ADS_ID || !isEnabled) return null;
+  useEffect(() => {
+    try {
+      const gtag = (window as unknown as { gtag?: unknown }).gtag;
+      if (typeof gtag !== "function") return;
+      gtag("consent", "update", {
+        ad_storage: consentState.marketing ? "granted" : "denied",
+        ad_user_data: consentState.marketing ? "granted" : "denied",
+        ad_personalization: consentState.marketing ? "granted" : "denied",
+        analytics_storage: consentState.analytics ? "granted" : "denied",
+      });
+    } catch {
+      return;
+    }
+  }, [consentState.analytics, consentState.marketing]);
+
+  if (!ADS_ID) return null;
 
   return (
     <>
@@ -62,6 +80,13 @@ export function GoogleAdsTag() {
           __html: `
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
+            gtag('consent', 'default', {
+              ad_storage: 'denied',
+              ad_user_data: 'denied',
+              ad_personalization: 'denied',
+              analytics_storage: 'denied',
+              wait_for_update: 500
+            });
             gtag('js', new Date());
             gtag('config', '${ADS_ID}');
           `,
