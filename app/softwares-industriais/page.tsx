@@ -1,114 +1,185 @@
-import { Metadata } from "next";
+import type { Metadata } from "next";
+import Link from "next/link";
+import { BarChart3, BellRing, DatabaseZap, MessageCircle } from "lucide-react";
 import { createSEO } from "@/components/seo/useSEO";
-import { SoftwareIndex } from "@/components/sections/Software/SoftwareIndex";
 import { TrackedCtaLink } from "@/components/analytics/GoogleAnalytics";
+import { SoftwareIndex } from "@/components/sections/Software/SoftwareIndex";
+import Grid from "@/components/sections/Grid/Grid";
+import { Iot } from "@/components/sections/Iot/Iot";
 
 export const metadata: Metadata = createSEO({
-  title: "Softwares Industriais | Syntro Automação",
+  title: "Software Industrial com IoT | Dashboards e Monitoramento | Syntro",
   description:
-    "Desenvolvimento de softwares industriais personalizados para automação, controle de processos, monitoramento e gestão industrial. Soluções em SCADA, IoT e sistemas embarcados.",
+    "Desenvolvimento de software industrial com IoT, dashboards, coleta de dados em tempo real, integração com CLPs, sensores e monitoramento remoto de máquinas.",
   keywords: [
-    "software industrial",
-    "desenvolvimento software automação",
-    "scada software",
-    "sistema supervisório",
+    "software industrial com iot",
     "iot industrial",
-    "controle de processos",
-    "monitoramento industrial",
-    "software embarcado",
-    "hmi industrial",
-    "sistemas scada",
+    "dashboards industriais",
+    "coleta de dados em tempo real",
+    "integração com clps",
+    "supervisórios industriais",
+    "rastreabilidade",
+    "alertas automáticos",
+    "indicadores de produção",
+    "manutenção preventiva",
   ],
 });
 
+const diferenciais = [
+  {
+    title: "Coleta de dados em tempo real",
+    description:
+      "Integramos CLPs, sensores, máquinas e bancos de dados para transformar o chão de fábrica em informação confiável para operação e gestão.",
+    icon: DatabaseZap,
+  },
+  {
+    title: "Dashboards e supervisórios industriais",
+    description:
+      "Criamos telas operacionais, supervisórios, históricos, rastreabilidade e indicadores para acompanhar desempenho, consumo e qualidade.",
+    icon: BarChart3,
+  },
+  {
+    title: "Alertas e manutenção preventiva",
+    description:
+      "Configuramos eventos, notificações e regras de manutenção preventiva para reduzir paradas e aumentar previsibilidade da produção.",
+    icon: BellRing,
+  },
+];
+
 export default function SoftwaresIndustriaisPage() {
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
-      {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-blue-600 to-blue-800 text-white py-20">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-4xl mx-auto text-center">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-              Softwares Industriais
-            </h1>
-            <p className="text-xl md:text-2xl mb-8 text-blue-100">
-              Soluções em software para automação industrial, controle de
-              processos e monitoramento
+    <main className="bg-background">
+      <section className="relative overflow-hidden border-b border-border bg-gradient-to-br from-blue-700 via-blue-600 to-slate-900 text-white">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-28">
+          <div className="max-w-4xl">
+            <p className="text-sm font-semibold uppercase tracking-[0.22em] text-blue-100/90">
+              Soluções em software
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <h1 className="mt-4 text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
+              Software Industrial com IoT para Controle e Monitoramento
+            </h1>
+            <p className="mt-6 max-w-3xl text-lg md:text-xl text-blue-100 leading-relaxed">
+              Desenvolvemos software industrial com IoT, dashboards,
+              monitoramento remoto, coleta de dados em tempo real e integração
+              com CLPs, sensores e máquinas.
+            </p>
+            <div className="mt-8 flex flex-col sm:flex-row gap-4">
               <TrackedCtaLink
-                ctaName="consultoria_whatsapp"
+                ctaName="orcamento_software_whatsapp"
                 location="softwares_hero"
-                href="https://wa.me/+5519996362101?text=Olá! Gostaria de saber mais sobre desenvolvimento de softwares industriais para minha empresa."
+                href="https://wa.me/+5519996362101?text=Olá! Gostaria de desenvolver um software industrial com IoT para minha operação."
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center px-8 py-4 bg-white text-blue-600 font-bold rounded-lg hover:bg-gray-100 transition-colors text-lg"
+                className="inline-flex items-center justify-center rounded-xl bg-white px-6 py-3 text-base font-semibold text-blue-700 transition-colors hover:bg-blue-50"
               >
-                <svg
-                  className="w-5 h-5 mr-2"
-                  fill="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.2-1.38c1.45.79 3.08 1.21 4.79 1.21 5.46 0 9.91-4.45 9.91-9.91 0-5.47-4.45-9.91-9.91-9.91zM12.04 20.32c-1.48 0-2.9-.4-4.18-1.15l-.3-.18-3.12.82.83-3.04-.19-.3c-1.4-1.62-2.14-3.57-2.14-5.67 0-5.47 4.45-9.91 9.91-9.91 2.65 0 5.14 1.03 7.01 2.88 1.87 1.87 2.9 4.36 2.9 7.01 0 5.47-4.45 9.91-9.91 9.91z" />
-                </svg>
-                Solicitar Consultoria
+                <MessageCircle className="w-5 h-5 mr-2" />
+                Solicitar análise
               </TrackedCtaLink>
-              <TrackedCtaLink
-                ctaName="ligar_telefone"
-                location="softwares_hero"
-                href="tel:+5519996362101"
-                className="inline-flex items-center px-8 py-4 bg-blue-700 text-white font-bold rounded-lg hover:bg-blue-600 transition-colors text-lg"
+              <Link
+                href="/contato"
+                className="inline-flex items-center justify-center rounded-xl border border-white/30 px-6 py-3 text-base font-semibold text-white transition-colors hover:bg-white/10"
               >
-                <svg
-                  className="w-5 h-5 mr-2"
-                  fill="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.12.35.03.74-.25 1.02l-2.2 2.2z" />
-                </svg>
-                Ligar Agora
-              </TrackedCtaLink>
+                Falar com a equipe
+              </Link>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Conteúdo Principal */}
-      <section className="py-16">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <SoftwareIndex />
+      <section className="py-10 md:py-14">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 grid gap-6 md:grid-cols-3">
+          {diferenciais.map((item) => {
+            const Icon = item.icon;
+            return (
+              <article
+                key={item.title}
+                className="rounded-2xl border border-border bg-card p-6 shadow-sm"
+              >
+                <div className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-primary/10 text-primary">
+                  <Icon className="h-5 w-5" />
+                </div>
+                <h2 className="mt-4 text-xl font-semibold text-foreground">
+                  {item.title}
+                </h2>
+                <p className="mt-3 text-sm leading-7 text-muted-foreground">
+                  {item.description}
+                </p>
+              </article>
+            );
+          })}
         </div>
+      </section>
+      <section className="py-6 md:py-10">
+        <Iot />
+        <Grid />
+      </section>
+      <section className="py-6 md:py-10">
+        <SoftwareIndex />
       </section>
 
-      {/* Call to Action Section */}
-      <section className="bg-blue-600 text-white py-16">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            Pronto para automatizar seus processos?
-          </h2>
-          <p className="text-xl mb-8 text-blue-100">
-            Entre em contato e descubra como nossos softwares industriais podem
-            transformar sua operação
-          </p>
-          <TrackedCtaLink
-            ctaName="visita_tecnica_whatsapp"
-            location="softwares_cta"
-            href="https://wa.me/+5519996362101?text=Olá! Gostaria de agendar uma visita técnica para avaliar minha necessidade de software industrial e automação."
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center px-8 py-4 bg-white text-blue-600 font-bold rounded-lg hover:bg-gray-100 transition-colors text-lg"
-          >
-            <svg
-              className="w-5 h-5 mr-2"
-              fill="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-            </svg>
-            Agendar Visita Técnica
-          </TrackedCtaLink>
+      <section className="py-16 md:py-20 bg-muted/40 border-y border-border">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid gap-8 lg:grid-cols-[1.2fr_0.8fr]">
+            <div>
+              <h2 className="text-3xl font-semibold tracking-tight text-foreground">
+                Integração industrial para rastreabilidade e tomada de decisão
+              </h2>
+              <p className="mt-4 text-base leading-8 text-muted-foreground">
+                Nossos projetos combinam software, conectividade e visualização
+                para acompanhar indicadores de produção, consumo, qualidade,
+                paradas e setup. Isso permite padronizar a operação, registrar
+                dados e acelerar a resposta da equipe técnica.
+              </p>
+              <p className="mt-4 text-base leading-8 text-muted-foreground">
+                Também podemos integrar o software a{" "}
+                <Link
+                  href="/equipamentos-especiais"
+                  className="font-medium text-primary hover:opacity-80"
+                >
+                  equipamentos especiais
+                </Link>{" "}
+                e a células com{" "}
+                <Link
+                  href="/robos-cartesianos"
+                  className="font-medium text-primary hover:opacity-80"
+                >
+                  robôs cartesianos
+                </Link>
+                , criando uma arquitetura única entre máquina, supervisão e
+                gestão.
+              </p>
+            </div>
+            <div className="rounded-2xl border border-border bg-card p-6 shadow-sm">
+              <h3 className="text-xl font-semibold text-foreground">
+                Precisa monitorar máquinas e processos em tempo real?
+              </h3>
+              <p className="mt-3 text-sm leading-7 text-muted-foreground">
+                Solicite uma análise para desenvolver um software industrial com
+                IoT para sua operação.
+              </p>
+              <div className="mt-6 flex flex-col gap-3">
+                <TrackedCtaLink
+                  ctaName="cta_orcamento_software"
+                  location="softwares_bottom_cta"
+                  href="https://wa.me/+5519996362101?text=Olá! Quero solicitar uma análise de software industrial com IoT."
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center rounded-xl bg-primary px-5 py-3 text-sm font-semibold text-primary-foreground transition-opacity hover:opacity-95"
+                >
+                  <MessageCircle className="w-4 h-4 mr-2" />
+                  Solicitar orçamento
+                </TrackedCtaLink>
+                <Link
+                  href="/contato"
+                  className="inline-flex items-center justify-center rounded-xl border border-border px-5 py-3 text-sm font-semibold text-foreground transition-colors hover:bg-accent"
+                >
+                  Ir para contato
+                </Link>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
-    </div>
+    </main>
   );
 }

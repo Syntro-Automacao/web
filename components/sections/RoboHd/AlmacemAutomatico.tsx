@@ -14,7 +14,7 @@ export function AlmacemAutomatico() {
           </span>
           , fazendo com que o controle seja{" "}
           <span className="text-2xl text-primary font-bold">
-            totalmente automatizado sem interversão humana.{" "}
+            totalmente automatizado sem intervenção humana.{" "}
           </span>
           Isso faz com que o equipamento possa armazenar de forma vertical,
           ocupando assim, menor espaço no local, com maior quantidade de itens

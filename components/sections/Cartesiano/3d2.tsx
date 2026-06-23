@@ -23,7 +23,7 @@ export function RoboBandeja3D2() {
               a manutenção.
             </p>
             <p className="indent-8 2xl:text-2xl text-lg leading-relaxed mb-8">
-              O equipamento consta tambem com sistema de{" "}
+              O equipamento conta também com sistema de{" "}
               <span className="text-2xl text-primary font-bold">
                 segurança operacional,{" "}
               </span>

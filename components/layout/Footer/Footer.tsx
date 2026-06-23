@@ -10,14 +10,26 @@ const socialLinks = [
   },
 ];
 
+const footerLinksPrimary = [
+  { label: "Softwares Industriais", href: "/softwares-industriais" },
+  { label: "Equipamentos Especiais", href: "/equipamentos-especiais" },
+  { label: "Ferramental para Robôs", href: "/ferramental-para-robos" },
+];
+
+const footerLinksSecondary = [
+  { label: "Robôs Cartesianos", href: "/robos-cartesianos" },
+  { label: "Robô 6 Eixos", href: "/robo-arm" },
+  { label: "Contato", href: "/contato" },
+];
+
 export function Footer() {
   return (
     <footer className="bg-card/50 border-t border-border">
       <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Main Footer */}
-        <div className="py-12 lg:py-16 grid md:grid-cols-4 lg:grid-cols-4 gap-8 lg:gap-12">
+        <div className="py-12 lg:py-16 grid md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
           {/* Brand */}
-          <div className="lg:col-span-3 md:col-span-2">
+          <div>
             <Link href="/" className="flex items-center gap-2 mb-4">
               <Logo className="h-8 w-auto text-primary" />
             </Link>
@@ -42,8 +54,40 @@ export function Footer() {
             </div>
           </div>
 
+          <div>
+            <h3 className="text-foreground font-semibold mb-4">Soluções</h3>
+            <ul className="space-y-3 text-sm text-muted-foreground">
+              {footerLinksPrimary.map((item) => (
+                <li key={item.href}>
+                  <Link
+                    href={item.href}
+                    className="hover:text-foreground transition-colors"
+                  >
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div>
+            <h3 className="text-foreground font-semibold mb-4">Navegação</h3>
+            <ul className="space-y-3 text-sm text-muted-foreground">
+              {footerLinksSecondary.map((item) => (
+                <li key={item.href}>
+                  <Link
+                    href={item.href}
+                    className="hover:text-foreground transition-colors"
+                  >
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
           {/* Contact */}
-          <div className="lg:col-span-1 md:col-span-1">
+          <div>
             <h3 className="text-foreground font-semibold mb-4">Contato</h3>
             <ul className="space-y-3 text-sm text-muted-foreground">
               <li>contato@syntro.com.br</li>

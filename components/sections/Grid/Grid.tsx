@@ -1,3 +1,5 @@
+"use client";
+
 import GridMotion from "./GridMotion";
 import { useEffect, useState } from "react";
 

@@ -7,7 +7,6 @@ import { Menu, X } from "lucide-react";
 import { ThemeToggle } from "@/components/layout/Header/ThemeToggle";
 import { Logo } from "@/components/icons/logo";
 import { navItems } from "@/components/layout/Header/hooks/nav-items";
-import { SECTION_IDS } from "@/components/sections/hooks/section-ids";
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -64,9 +63,11 @@ export function Header() {
   // Menu para páginas internas (com links para outras páginas)
   const internalNavItems = [
     { label: "Home", href: "/" },
-    { label: "Robô Arm", href: "/robo-arm" },
+    { label: "Softwares Industriais", href: "/softwares-industriais" },
+    { label: "Equipamentos Especiais", href: "/equipamentos-especiais" },
+    { label: "Ferramental para Robôs", href: "/ferramental-para-robos" },
+    { label: "Robô 6 Eixos", href: "/robo-arm" },
     { label: "Robôs Cartesianos", href: "/robos-cartesianos" },
-    { label: "Sobre", href: "/#sobre" },
     { label: "Contato", href: "/contato" },
   ];
 
