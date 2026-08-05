@@ -4,6 +4,10 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Mail, Phone, MapPin } from "lucide-react";
 import { trackCTAClick } from "@/components/analytics/GoogleAnalytics";
+import {
+  fireWhatsAppClick,
+  firePhoneClick,
+} from "@/components/analytics/conversionTracking";
 
 export function CTA() {
   return (
@@ -55,10 +59,17 @@ export function CTA() {
                     variant="outline"
                     asChild
                     className="text-base px-8 bg-transparent"
-                    onClick={() => trackCTAClick("whatsapp_cta", "cta_section")}
+                    onClick={() => {
+                      trackCTAClick("whatsapp_cta", "cta_section");
+                      fireWhatsAppClick({
+                        cta_name: "whatsapp_cta",
+                        cta_location: "cta_section",
+                        phone_number: "+5519996362101",
+                      });
+                    }}
                   >
                     <Link
-                      href="https://wa.me/5511999999999"
+                      href="https://wa.me/+5519996362101"
                       target="_blank"
                       rel="noopener noreferrer"
                     >
@@ -85,13 +96,37 @@ export function CTA() {
 
                   <div className="flex items-start gap-4">
                     <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                      <Phone className="w-5 h-5 text-primary" />
+                      <a
+                        href="tel:+5519996362101"
+                        onClick={() => {
+                          firePhoneClick({
+                            cta_name: "telefone_cta",
+                            cta_location: "cta_section",
+                            phone_number: "+5519996362101",
+                          });
+                        }}
+                        className="text-foreground hover:text-primary transition-colors"
+                      >
+                        <Phone className="w-5 h-5 text-primary" />
+                      </a>
                     </div>
                     <div>
                       <h3 className="text-sm font-medium text-muted-foreground mb-1">
                         Telefone
                       </h3>
-                      <p className="text-foreground">+55 (11) 9999-9999</p>
+                      <a
+                        href="tel:+5519996362101"
+                        onClick={() => {
+                          firePhoneClick({
+                            cta_name: "telefone_cta",
+                            cta_location: "cta_section",
+                            phone_number: "+5519996362101",
+                          });
+                        }}
+                        className="text-foreground hover:text-primary transition-colors"
+                      >
+                        +55 (19) 99636-2101
+                      </a>
                     </div>
                   </div>
 

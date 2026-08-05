@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { BarChart3, BellRing, DatabaseZap, MessageCircle } from "lucide-react";
 import { createSEO } from "@/components/seo/useSEO";
-import { TrackedCtaLink } from "@/components/analytics/GoogleAnalytics";
+import { TrackedWhatsAppLink } from "@/components/analytics/GoogleAnalytics";
 import { SoftwareIndex } from "@/components/sections/Software/SoftwareIndex";
 import Grid from "@/components/sections/Grid/Grid";
 import { Iot } from "@/components/sections/Iot/Iot";
@@ -64,7 +64,7 @@ export default function SoftwaresIndustriaisPage() {
               com CLPs, sensores e máquinas.
             </p>
             <div className="mt-8 flex flex-col sm:flex-row gap-4">
-              <TrackedCtaLink
+              <TrackedWhatsAppLink
                 ctaName="orcamento_software_whatsapp"
                 location="softwares_hero"
                 href="https://wa.me/+5519996362101?text=Olá! Gostaria de desenvolver um software industrial com IoT para minha operação."
@@ -74,7 +74,7 @@ export default function SoftwaresIndustriaisPage() {
               >
                 <MessageCircle className="w-5 h-5 mr-2" />
                 Solicitar análise
-              </TrackedCtaLink>
+              </TrackedWhatsAppLink>
               <Link
                 href="/contato"
                 className="inline-flex items-center justify-center rounded-xl border border-white/30 px-6 py-3 text-base font-semibold text-white transition-colors hover:bg-white/10"
@@ -158,7 +158,7 @@ export default function SoftwaresIndustriaisPage() {
                 IoT para sua operação.
               </p>
               <div className="mt-6 flex flex-col gap-3">
-                <TrackedCtaLink
+                <TrackedWhatsAppLink
                   ctaName="cta_orcamento_software"
                   location="softwares_bottom_cta"
                   href="https://wa.me/+5519996362101?text=Olá! Quero solicitar uma análise de software industrial com IoT."
@@ -168,7 +168,7 @@ export default function SoftwaresIndustriaisPage() {
                 >
                   <MessageCircle className="w-4 h-4 mr-2" />
                   Solicitar orçamento
-                </TrackedCtaLink>
+                </TrackedWhatsAppLink>
                 <Link
                   href="/contato"
                   className="inline-flex items-center justify-center rounded-xl border border-border px-5 py-3 text-sm font-semibold text-foreground transition-colors hover:bg-accent"

@@ -1,7 +1,20 @@
 "use client";
 
-import { Suspense, type AnchorHTMLAttributes, useEffect, useState } from "react";
+import {
+  Suspense,
+  type AnchorHTMLAttributes,
+  type MouseEvent,
+  useEffect,
+  useState,
+} from "react";
 import { trackCTAClick, useAnalytics } from "./useAnalytics";
+import {
+  fireWhatsAppClick,
+  firePhoneClick,
+  handleWhatsAppAnchorClick,
+  handlePhoneAnchorClick,
+  type SyntroEventParams,
+} from "./conversionTracking";
 
 function AnalyticsComponent() {
   useAnalytics();
@@ -40,6 +53,78 @@ export function TrackedCtaLink({
         onClick?.(event);
       }}
     />
+  );
+}
+
+type TrackedWhatsAppLinkProps = AnchorHTMLAttributes<HTMLAnchorElement> & {
+  ctaName?: string;
+  location?: string;
+  trackingParams?: SyntroEventParams;
+};
+
+export function TrackedWhatsAppLink({
+  ctaName,
+  location,
+  trackingParams,
+  onClick,
+  children,
+  ...props
+}: TrackedWhatsAppLinkProps) {
+  return (
+    <a
+      {...props}
+      data-syntro-auto-tracked="1"
+      onClick={(event: MouseEvent<HTMLAnchorElement>) => {
+        const target = event.currentTarget;
+        target.setAttribute("data-syntro-auto-tracked", "1");
+        const derived: SyntroEventParams = {
+          cta_name: ctaName,
+          cta_location: location,
+          ...trackingParams,
+        };
+        handleWhatsAppAnchorClick(event, derived);
+        fireWhatsAppClick(derived);
+        onClick?.(event);
+      }}
+    >
+      {children}
+    </a>
+  );
+}
+
+type TrackedPhoneLinkProps = AnchorHTMLAttributes<HTMLAnchorElement> & {
+  ctaName?: string;
+  location?: string;
+  trackingParams?: SyntroEventParams;
+};
+
+export function TrackedPhoneLink({
+  ctaName,
+  location,
+  trackingParams,
+  onClick,
+  children,
+  ...props
+}: TrackedPhoneLinkProps) {
+  return (
+    <a
+      {...props}
+      data-syntro-auto-tracked="1"
+      onClick={(event: MouseEvent<HTMLAnchorElement>) => {
+        const target = event.currentTarget;
+        target.setAttribute("data-syntro-auto-tracked", "1");
+        const derived: SyntroEventParams = {
+          cta_name: ctaName,
+          cta_location: location,
+          ...trackingParams,
+        };
+        handlePhoneAnchorClick(event, derived);
+        firePhoneClick(derived);
+        onClick?.(event);
+      }}
+    >
+      {children}
+    </a>
   );
 }
 

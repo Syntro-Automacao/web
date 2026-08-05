@@ -1,54 +1,62 @@
 "use client";
 
-import { trackCTAClick } from "@/components/analytics/GoogleAnalytics";
+import {
+  TrackedWhatsAppLink,
+  TrackedPhoneLink,
+  TrackedCtaLink,
+} from "@/components/analytics/GoogleAnalytics";
 
-// Componentes clientes para links com tracking
 export function WhatsAppLink() {
-  const handleClick = () => {
-    trackCTAClick("whatsapp_contato", "contato_page");
-  };
-
   return (
-    <a
+    <TrackedWhatsAppLink
+      ctaName="whatsapp_contato"
+      location="contato_page"
       href="https://wa.me/+5519996362101?text=Olá! Gostaria de saber mais sobre os serviços da Syntro Automação."
       target="_blank"
       rel="noopener noreferrer"
       className="inline-flex items-center px-6 py-3 bg-green-600 text-white font-medium rounded-lg hover:bg-green-700 transition-colors"
-      onClick={handleClick}
     >
       Iniciar Conversa
-    </a>
+    </TrackedWhatsAppLink>
   );
 }
 
 export function EmailLink() {
-  const handleClick = () => {
-    trackCTAClick("email_contato", "contato_page");
-  };
-
   return (
-    <a
+    <TrackedCtaLink
+      ctaName="email_contato"
+      location="contato_page"
       href="mailto:contato@syntro.com.br"
       className="text-purple-600 font-medium hover:text-purple-700"
-      onClick={handleClick}
     >
       contato@syntro.com.br
-    </a>
+    </TrackedCtaLink>
+  );
+}
+
+export function PhoneLink() {
+  return (
+    <TrackedPhoneLink
+      ctaName="telefone_contato"
+      location="contato_page"
+      href="tel:+5519996362101"
+      className="text-blue-600 font-medium hover:text-blue-700 text-lg"
+      trackingParams={{ phone_number: "+5519996362101" }}
+    >
+      (19) 99636-2101
+    </TrackedPhoneLink>
   );
 }
 
 export function VisitaTecnicaLink() {
-  const handleClick = () => {
-    trackCTAClick("visita_tecnica", "contato_page");
-  };
-
   return (
-    <a
+    <TrackedWhatsAppLink
+      ctaName="visita_tecnica_whatsapp"
+      location="contato_page"
       href="https://wa.me/+5519996362101?text=Olá! Gostaria de agendar uma visita técnica para avaliar minha necessidade de automação industrial."
       target="_blank"
       rel="noopener noreferrer"
       className="inline-flex items-center px-8 py-4 bg-white text-blue-600 font-bold rounded-lg hover:bg-gray-100 transition-colors text-lg"
-      onClick={handleClick}
     >
       <svg
         className="w-5 h-5 mr-2"
@@ -64,6 +72,6 @@ export function VisitaTecnicaLink() {
         />
       </svg>
       Solicitar Visita Técnica
-    </a>
+    </TrackedWhatsAppLink>
   );
 }

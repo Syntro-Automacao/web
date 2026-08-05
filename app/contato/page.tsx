@@ -2,7 +2,11 @@ import { createSEO } from "@/components/seo/useSEO";
 import { Reveal } from "@/components/motion/Reveal";
 import { Mail, Phone, MapPin, Clock, MessageCircle } from "lucide-react";
 import Link from "next/link";
-import { TrackedCtaLink } from "@/components/analytics/GoogleAnalytics";
+import {
+  TrackedCtaLink,
+  TrackedWhatsAppLink,
+  TrackedPhoneLink,
+} from "@/components/analytics/GoogleAnalytics";
 import ContactFormEmailJS from "@/components/forms/ContactFormEmailJS";
 
 export const metadata = createSEO({
@@ -55,7 +59,7 @@ export default function ContatoPage() {
                     WhatsApp
                   </h3>
                   <p className="text-gray-600 mb-4">Resposta rápida e direta</p>
-                  <TrackedCtaLink
+                  <TrackedWhatsAppLink
                     ctaName="whatsapp_contato"
                     location="contato_cards"
                     href="https://wa.me/+5519996362101?text=Olá! Gostaria de saber mais sobre os serviços da Syntro Automação."
@@ -64,7 +68,7 @@ export default function ContatoPage() {
                     className="inline-flex items-center px-6 py-3 bg-green-600 text-white font-medium rounded-lg hover:bg-green-700 transition-colors"
                   >
                     Iniciar Conversa
-                  </TrackedCtaLink>
+                  </TrackedWhatsAppLink>
                 </div>
               </Reveal>
 
@@ -80,14 +84,14 @@ export default function ContatoPage() {
                   <p className="text-gray-600 mb-4">
                     Segunda a Sexta, 8h às 18h
                   </p>
-                  <TrackedCtaLink
+                  <TrackedPhoneLink
                     ctaName="telefone_contato"
                     location="contato_cards"
                     href="tel:+5519996362101"
                     className="text-blue-600 font-medium hover:text-blue-700 text-lg"
                   >
                     (19) 99636-2101
-                  </TrackedCtaLink>
+                  </TrackedPhoneLink>
                 </div>
               </Reveal>
 
@@ -128,7 +132,7 @@ export default function ContatoPage() {
               Solicite uma visita técnica gratuita e descubra como nossas
               soluções de automação podem revolucionar sua linha de produção.
             </p>
-            <TrackedCtaLink
+            <TrackedWhatsAppLink
               ctaName="visita_tecnica_whatsapp"
               location="contato_final_cta"
               href="https://wa.me/+5519996362101?text=Olá! Gostaria de agendar uma visita técnica para avaliar minha necessidade de automação industrial."
@@ -138,7 +142,7 @@ export default function ContatoPage() {
             >
               <MessageCircle className="w-5 h-5 mr-2" />
               Solicitar Visita Técnica
-            </TrackedCtaLink>
+            </TrackedWhatsAppLink>
           </Reveal>
         </div>
       </section>

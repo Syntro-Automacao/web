@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Cpu, Factory, Settings2, MessageCircle } from "lucide-react";
 import { createSEO } from "@/components/seo/useSEO";
-import { TrackedCtaLink } from "@/components/analytics/GoogleAnalytics";
+import { TrackedWhatsAppLink } from "@/components/analytics/GoogleAnalytics";
 import { RoboHdIndex } from "@/components/sections/RoboHd/RoboHdIndex";
 
 export const metadata: Metadata = createSEO({
@@ -61,7 +61,7 @@ export default function EquipamentosEspeciaisPage() {
               robustez, integração e alta confiabilidade operacional.
             </p>
             <div className="mt-8 flex flex-col sm:flex-row gap-4">
-              <TrackedCtaLink
+              <TrackedWhatsAppLink
                 ctaName="cta_equipamentos_whatsapp"
                 location="equipamentos_hero"
                 href="https://wa.me/+5519996362101?text=Olá! Tenho um processo que precisa de um equipamento especial para automação industrial."
@@ -71,7 +71,7 @@ export default function EquipamentosEspeciaisPage() {
               >
                 <MessageCircle className="w-5 h-5 mr-2" />
                 Solicitar avaliação
-              </TrackedCtaLink>
+              </TrackedWhatsAppLink>
               <Link
                 href="/contato"
                 className="inline-flex items-center justify-center rounded-xl border border-white/25 px-6 py-3 text-base font-semibold text-white transition-colors hover:bg-white/10"
@@ -152,7 +152,7 @@ export default function EquipamentosEspeciaisPage() {
                 para sua aplicação.
               </p>
               <div className="mt-6 flex flex-col gap-3">
-                <TrackedCtaLink
+                <TrackedWhatsAppLink
                   ctaName="cta_equipamentos_orcamento"
                   location="equipamentos_bottom_cta"
                   href="https://wa.me/+5519996362101?text=Olá! Quero solicitar um orçamento para um equipamento especial."
@@ -162,7 +162,7 @@ export default function EquipamentosEspeciaisPage() {
                 >
                   <MessageCircle className="w-4 h-4 mr-2" />
                   Solicitar orçamento
-                </TrackedCtaLink>
+                </TrackedWhatsAppLink>
                 <Link
                   href="/contato"
                   className="inline-flex items-center justify-center rounded-xl border border-border px-5 py-3 text-sm font-semibold text-foreground transition-colors hover:bg-accent"

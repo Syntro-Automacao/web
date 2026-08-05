@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { trackCTAClick } from "@/components/analytics/GoogleAnalytics";
+import { fireWhatsAppClick } from "@/components/analytics/conversionTracking";
 
 export const WhatsAppFloat = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -20,7 +20,11 @@ export const WhatsAppFloat = () => {
   }, []);
 
   const handleWhatsAppClick = () => {
-    trackCTAClick("whatsapp_float", "floating_button");
+    fireWhatsAppClick({
+      cta_name: "whatsapp_float",
+      cta_location: "floating_button",
+      phone_number: phoneNumber,
+    });
     const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, "_blank", "noopener,noreferrer");
   };

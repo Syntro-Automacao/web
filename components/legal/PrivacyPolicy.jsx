@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { TrackedWhatsAppLink } from "@/components/analytics/GoogleAnalytics";
 
 function SectionTitle({ children, id }) {
   return (
@@ -103,7 +104,9 @@ function PrivacyPolicy() {
           </section>
 
           <section className="rounded-2xl border border-border bg-card p-6 sm:p-8 shadow-sm">
-            <SectionTitle id="cookies">4. Cookies (quando aplicável)</SectionTitle>
+            <SectionTitle id="cookies">
+              4. Cookies (quando aplicável)
+            </SectionTitle>
             <div className="mt-4 space-y-4 text-sm sm:text-base text-muted-foreground leading-relaxed">
               <p>
                 Cookies são pequenos arquivos armazenados no seu navegador.
@@ -127,7 +130,9 @@ function PrivacyPolicy() {
           </section>
 
           <section className="rounded-2xl border border-border bg-card p-6 sm:p-8 shadow-sm">
-            <SectionTitle id="whatsapp">5. Redirecionamento para WhatsApp</SectionTitle>
+            <SectionTitle id="whatsapp">
+              5. Redirecionamento para WhatsApp
+            </SectionTitle>
             <div className="mt-4 space-y-4 text-sm sm:text-base text-muted-foreground leading-relaxed">
               <p>
                 O site pode oferecer botões/links que redirecionam você para o
@@ -170,7 +175,9 @@ function PrivacyPolicy() {
               </p>
               <ul className="grid gap-2 list-disc pl-5">
                 <li>Confirmação e acesso</li>
-                <li>Correção de dados incompletos, inexatos ou desatualizados</li>
+                <li>
+                  Correção de dados incompletos, inexatos ou desatualizados
+                </li>
                 <li>Anonimização, bloqueio ou eliminação</li>
                 <li>Portabilidade, quando cabível</li>
                 <li>Informações sobre compartilhamento</li>
@@ -195,7 +202,9 @@ function PrivacyPolicy() {
           </section>
 
           <section className="rounded-2xl border border-border bg-card p-6 sm:p-8 shadow-sm">
-            <SectionTitle id="atualizacoes">9. Atualizações desta Política</SectionTitle>
+            <SectionTitle id="atualizacoes">
+              9. Atualizações desta Política
+            </SectionTitle>
             <div className="mt-4 space-y-4 text-sm sm:text-base text-muted-foreground leading-relaxed">
               <p>
                 Podemos atualizar esta Política para refletir mudanças no site,
@@ -219,14 +228,16 @@ function PrivacyPolicy() {
                 >
                   contato@syntro.com.br
                 </a>
-                <a
+                <TrackedWhatsAppLink
+                  ctaName="privacy_policy_whatsapp"
+                  location="privacidade_contato"
                   href="https://wa.me/+5519996362101?text=Olá! Gostaria de falar sobre privacidade e dados no site da Syntro."
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center justify-center rounded-xl bg-primary px-4 py-2 text-sm font-medium text-primary-foreground shadow-sm hover:opacity-95 transition-opacity"
                 >
                   Falar no WhatsApp
-                </a>
+                </TrackedWhatsAppLink>
               </div>
             </div>
           </section>

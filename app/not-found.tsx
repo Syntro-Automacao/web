@@ -3,7 +3,7 @@ import { createSEO } from "@/components/seo/useSEO";
 import { SobreIndex } from "@/components/sections/Sobre/SobreIndex";
 import { Reveal } from "@/components/motion/Reveal";
 import Link from "next/link";
-import { TrackedCtaLink } from "@/components/analytics/GoogleAnalytics";
+import { TrackedWhatsAppLink } from "@/components/analytics/GoogleAnalytics";
 
 // Metadata para a página 404
 export const metadata: Metadata = createSEO({
@@ -46,7 +46,7 @@ export default function NotFoundPage() {
               >
                 Voltar para Home
               </Link>
-              <TrackedCtaLink
+              <TrackedWhatsAppLink
                 ctaName="whatsapp_contato"
                 location="404_hero"
                 href="https://wa.me/+5519996362101?text=Olá! Gostaria de saber mais sobre os serviços da Syntro Automação."
@@ -55,7 +55,7 @@ export default function NotFoundPage() {
                 className="inline-flex items-center px-6 py-3 bg-green-600 text-white font-medium rounded-lg hover:bg-green-700 transition-colors"
               >
                 Falar no WhatsApp
-              </TrackedCtaLink>
+              </TrackedWhatsAppLink>
             </div>
           </Reveal>
         </div>
@@ -94,7 +94,7 @@ export default function NotFoundPage() {
               revolucionar sua linha de produção com automação industrial
               inteligente.
             </p>
-            <TrackedCtaLink
+            <TrackedWhatsAppLink
               ctaName="whatsapp_contato"
               location="404_cta"
               href="https://wa.me/+5519996362101?text=Olá! Gostaria de saber mais sobre os serviços da Syntro Automação."
@@ -103,7 +103,7 @@ export default function NotFoundPage() {
               className="inline-flex items-center px-8 py-4 bg-green-600 text-white font-medium rounded-lg hover:bg-green-700 transition-colors text-lg"
             >
               Falar no WhatsApp
-            </TrackedCtaLink>
+            </TrackedWhatsAppLink>
           </Reveal>
         </div>
       </section>

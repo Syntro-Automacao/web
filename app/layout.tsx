@@ -12,6 +12,7 @@ import { Header } from "@/components/layout/Header/Header";
 import { Footer } from "@/components/layout/Footer/Footer";
 import { GoogleAnalytics } from "@/components/analytics/GoogleAnalytics";
 import { GoogleAdsTag } from "@/components/analytics/GoogleAdsTag";
+import { GlobalAnchorTracker } from "@/components/analytics/GlobalAnchorTracker";
 import CookieConsent from "@/components/legal/CookieConsent";
 
 const _inter = Inter({ subsets: ["latin"] });
@@ -112,6 +113,7 @@ export default function RootLayout({
       <body className={`${galano.variable} font-sans antialiased`}>
         <GoogleAdsTag />
         <GoogleAnalytics />
+        <GlobalAnchorTracker />
         <StructuredData />
         <ThemeProvider
           attribute="class"

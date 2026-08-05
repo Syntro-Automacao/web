@@ -2,9 +2,14 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import emailjs from "emailjs-com";
 import { Loader2, Send } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import {
+  fireGenerateLeadAsync,
+  markGenerateLeadPending,
+} from "@/components/analytics/conversionTracking";
 
 const INITIAL_FORM = {
   nome: "",
@@ -20,34 +25,8 @@ const EMAILJS_TEMPLATE_ID_NOTIFY =
 const EMAILJS_TEMPLATE_ID_AUTOREPLY =
   process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID_AUTOREPLY;
 const EMAILJS_PUBLIC_KEY = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
-const ADS_FORM_SEND_TO = process.env.NEXT_PUBLIC_GOOGLE_ADS_FORM_SEND_TO;
-
-function isMarketingEnabled() {
-  try {
-    const raw = localStorage.getItem("syntro_cookie_consent");
-    if (!raw) return false;
-    if (raw === "accepted") return true;
-    if (raw === "dismissed") return false;
-    const parsed = JSON.parse(raw);
-    return Boolean(parsed?.marketing);
-  } catch {
-    return false;
-  }
-}
-
-function trackGoogleAdsConversion(sendTo) {
-  try {
-    if (!sendTo) return;
-    if (!isMarketingEnabled()) return;
-    const gtag = window.gtag;
-    if (typeof gtag !== "function") return;
-    gtag("event", "conversion", { send_to: sendTo });
-  } catch {
-    return;
-  }
-}
-
 export default function ContactFormEmailJS() {
+  const router = useRouter();
   const [formData, setFormData] = useState(INITIAL_FORM);
   const [isLoading, setIsLoading] = useState(false);
   const [feedback, setFeedback] = useState({ type: "", message: "" });
@@ -116,7 +95,12 @@ export default function ContactFormEmailJS() {
         EMAILJS_PUBLIC_KEY,
       );
 
-      trackGoogleAdsConversion(ADS_FORM_SEND_TO);
+      const transactionId = markGenerateLeadPending();
+      await fireGenerateLeadAsync({
+        form_name: "contato_syntro",
+        method: "emailjs",
+        transaction_id: transactionId,
+      });
 
       let autoReplySent = true;
       try {
@@ -146,6 +130,8 @@ export default function ContactFormEmailJS() {
           : "Mensagem enviada com sucesso. Se você não receber o e-mail de confirmação, verifique a caixa de spam.",
       });
       setFormData(INITIAL_FORM);
+
+      router.push(`/obrigado?lead=${encodeURIComponent(transactionId)}`);
     } catch {
       setFeedback({
         type: "error",
