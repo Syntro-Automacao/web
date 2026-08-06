@@ -6,7 +6,7 @@ import {
   TrackedCtaLink,
   TrackedWhatsAppLink,
   TrackedPhoneLink,
-} from "@/components/analytics/GoogleAnalytics";
+} from "@/components/analytics/ClientTrackedLinks";
 import ContactFormEmailJS from "@/components/forms/ContactFormEmailJS";
 
 export const metadata = createSEO({

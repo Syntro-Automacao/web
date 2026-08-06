@@ -1,91 +1,44 @@
-# .htaccess - Next.js Static Export (cPanel / LiteSpeed)
+Options -MultiViews
+RewriteEngine On
 
-Options -Indexes
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
-<IfModule mod_rewrite.c>
-  RewriteEngine On
-  RewriteBase /
-
-  # Arquivos importantes
-  RewriteRule ^manifest\.json$ - [L]
-  RewriteRule ^sitemap\.xml$ - [L]
-  RewriteRule ^robots\.txt$ - [L]
-  RewriteRule ^favicon\.ico$ - [L]
-
-  # Arquivos do Next
-  RewriteRule ^_next/ - [L]
-
-  # Assets estáticos
-  RewriteRule \.(css|js|mjs|png|jpg|jpeg|gif|svg|webp|ico|woff|woff2|ttf|eot|json|xml|txt|map)$ - [L]
-
-  # ROTAS DINÂMICAS -> .html
-  # /contato ou /contato/ -> contato.html
-  RewriteCond %{DOCUMENT_ROOT}/$1.html -f
-  RewriteRule ^(.+?)/?$ $1.html [L]
-
-  # Home
-  RewriteRule ^$ index.html [L]
+<IfModule mod_negotiation.c>
+  Options -MultiViews
 </IfModule>
 
-# CACHE E HEADERS
-<IfModule mod_headers.c>
-  <FilesMatch "\.(css|js|mjs|png|jpg|jpeg|gif|svg|ico|webp|woff|woff2|ttf|eot|map)$">
-    Header set Cache-Control "max-age=31536000, public"
-  </FilesMatch>
-
-  <FilesMatch "\.html$">
-    Header set Cache-Control "max-age=3600, public"
-  </FilesMatch>
-
-  <Files "manifest.json">
-    Header set Content-Type "application/json"
-    Header set Cache-Control "max-age=3600, public"
-  </Files>
-
-  <Files "sitemap.xml">
-    Header set Content-Type "application/xml"
-    Header set Cache-Control "max-age=3600, public"
-  </Files>
-
-  <Files "robots.txt">
-    Header set Content-Type "text/plain"
-    Header set Cache-Control "max-age=3600, public"
-  </Files>
+<IfModule mod_mime.c>
+  AddType text/plain .txt
+  AddType application/javascript .js
+  AddType application/json .json
+  AddType image/svg+xml .svg
+  AddType font/woff2 .woff2
 </IfModule>
 
-# GZIP
 <IfModule mod_deflate.c>
-  AddOutputFilterByType DEFLATE text/html text/plain text/css text/javascript application/javascript application/json application/xml text/xml
+  AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css application/javascript application/json image/svg+xml
 </IfModule>
 
-# SEGURANÇA
-<Files ~ "^\.">
-  Order allow,deny
-  Deny from all
-</Files>
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType text/html "access plus 0 seconds"
+  ExpiresByType text/css "access plus 1 year"
+  ExpiresByType application/javascript "access plus 1 year"
+  ExpiresByType image/jpeg "access plus 1 year"
+  ExpiresByType image/png "access plus 1 year"
+  ExpiresByType image/svg+xml "access plus 1 year"
+  ExpiresByType font/woff2 "access plus 1 year"
+</IfModule>
 
-<Files ~ "package\.json$">
-  Order allow,deny
-  Deny from all
-</Files>
+<IfModule mod_headers.c>
+  <FilesMatch "\.(txt)$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+</IfModule>
 
-<Files ~ "tsconfig\.json$">
-  Order allow,deny
-  Deny from all
-</Files>
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /index.html [L]
 
-<Files ~ "next\.config\.(js|mjs|ts)$">
-  Order allow,deny
-  Deny from all
-</Files>
-
-# PERMITIR
-<Files "manifest.json">
-  Order allow,deny
-  Allow from all
-</Files>
-
-<Files "sitemap.xml">
-  Order allow,deny
-  Allow from all
-</Files>
+ErrorDocument 404 /404.html

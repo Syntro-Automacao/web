@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Cpu, Factory, Settings2, MessageCircle } from "lucide-react";
 import { createSEO } from "@/components/seo/useSEO";
-import { TrackedWhatsAppLink } from "@/components/analytics/GoogleAnalytics";
+import { TrackedWhatsAppLink } from "@/components/analytics/ClientTrackedLinks";
 import { RoboHdIndex } from "@/components/sections/RoboHd/RoboHdIndex";
 
 export const metadata: Metadata = createSEO({

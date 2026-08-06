@@ -3,7 +3,7 @@ import { createSEO } from "@/components/seo/useSEO";
 import { SobreIndex } from "@/components/sections/Sobre/SobreIndex";
 import { Reveal } from "@/components/motion/Reveal";
 import Link from "next/link";
-import { TrackedWhatsAppLink } from "@/components/analytics/GoogleAnalytics";
+import { TrackedWhatsAppLink } from "@/components/analytics/ClientTrackedLinks";
 
 // Metadata para a página 404
 export const metadata: Metadata = createSEO({

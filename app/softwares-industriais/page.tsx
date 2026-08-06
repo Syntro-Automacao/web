@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { BarChart3, BellRing, DatabaseZap, MessageCircle } from "lucide-react";
 import { createSEO } from "@/components/seo/useSEO";
-import { TrackedWhatsAppLink } from "@/components/analytics/GoogleAnalytics";
+import { TrackedWhatsAppLink } from "@/components/analytics/ClientTrackedLinks";
 import { SoftwareIndex } from "@/components/sections/Software/SoftwareIndex";
 import Grid from "@/components/sections/Grid/Grid";
 import { Iot } from "@/components/sections/Iot/Iot";

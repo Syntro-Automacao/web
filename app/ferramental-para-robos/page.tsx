@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Grip, PackageCheck, ScanSearch, MessageCircle } from "lucide-react";
 import { createSEO } from "@/components/seo/useSEO";
-import { TrackedWhatsAppLink } from "@/components/analytics/GoogleAnalytics";
+import { TrackedWhatsAppLink } from "@/components/analytics/ClientTrackedLinks";
 import { FerramentalIndex } from "@/components/sections/Ferramental/FerramentalIndex";
 
 export const metadata: Metadata = createSEO({
