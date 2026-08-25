@@ -19,13 +19,13 @@ export function FerramentalVentosas() {
           aplicação.
         </>
       }
-      imageSrc="/assets/images/ferramental_ventosas.webp"
+      imageSrc="/assets/images/ferramental-ventosa.webp"
       imageAlt="Ferramental de trabalho para robos"
       contentFirst={false} // texto à esquerda
       reverseOnMobile={false}
-      imageWidth={300}
-      imageHeight={200}
-      maxImageWidth="400px"
+      imageWidth={600}
+      imageHeight={757}
+      maxImageWidth="600px"
     />
   );
 }
