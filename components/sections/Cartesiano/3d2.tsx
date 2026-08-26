@@ -37,7 +37,7 @@ export function RoboBandeja3D2() {
           <div className="relative order-1 lg:order-2">
             <div className="rounded-lg overflow-hidden flex justify-center">
               <img
-                src="/assets/images/symbotxyz.webp"
+                src="/assets/images/synbotmini25-transparent.webp"
                 alt="Robo cartesiano economico"
                 className="h-auto object-contain"
                 sizes="(max-width: 500px) 95vw, (max-width: 500px) 90vw, 85vw"

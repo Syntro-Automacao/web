@@ -35,7 +35,7 @@ export function RoboHD() {
           <div className="relative">
             <div className="rounded-lg overflow-hidden">
               <UltraLoadingGears
-                src="/assets/robos/robo-hd.webp"
+                src="/assets/images/robohd.webp"
                 alt="Desenvolvimento de máquinas especiais"
                 className="w-full lg:max-w-[600px] mx-auto"
                 minHeight={400}

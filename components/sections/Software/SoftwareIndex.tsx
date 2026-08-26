@@ -8,7 +8,7 @@ export function SoftwareIndex() {
     <>
       <Software />
       <Multiplataforma />
-      <SupervisoryControl />
+      {/* <SupervisoryControl /> */}
       <Criatividade />
     </>
   );
