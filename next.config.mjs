@@ -1,4 +1,4 @@
-﻿﻿import path from "path";
+﻿﻿﻿import path from "path";
 import pkg from "@next/bundle-analyzer";
 const { withBundleAnalyzer } = pkg;
 
@@ -9,6 +9,7 @@ const nextConfig = {
   },
 
   output: "export",
+  trailingSlash: true,
 
   images: {
     unoptimized: true,
