@@ -3,12 +3,13 @@ export function RoboArm() {
   return (
     <section
       id={SECTION_IDS.BORUNTE}
-      className="relative z-20 mx-auto py-24 lg:py-32 scroll-mt-24 sm:scroll-mt-28 lg:scroll-mt-32 bg-(--background)"
+      style={{ backgroundColor: "#fdfbfd" }}
+      className="scroll-mt-28 lg:scroll-mt-32 bg-[#fdfbfd] dark:bg-background"
     >
       <div className="max-w-[1920px] mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
           <div>
-            <h3 className="xs:text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mt-4 mb-6 leading-tight text-balance">
+            <h3 className="xs:text-3xl sm:text-4xl lg:text-5xl font-bold dark:text-primary mt-4 mb-6 leading-tight text-balance">
               Robôs Industriais
             </h3>
 

@@ -207,6 +207,15 @@
 #devtools-indicator {
   display: none !important;
 }
+
+#borunte {
+  background: #fdfdfd;
+}
+
+.dark #borunte {
+  background: var(--background);
+}
+
 .dark .arvore {
   filter: invert(1) brightness(0.5);
 }
