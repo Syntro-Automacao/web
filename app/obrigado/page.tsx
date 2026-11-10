@@ -4,7 +4,7 @@ import { createSEO } from "@/components/seo/useSEO";
 import { ObrigadoClient } from "./ObrigadoClient";
 
 export const metadata: Metadata = createSEO({
-  title: "Obrigado | Syntro Automação",
+  title: "Obrigado",
   description:
     "Recebemos sua mensagem. Em breve a equipe da Syntro Automação Industrial entrará em contato.",
   keywords: ["contato", "obrigado", "syntro", "automação industrial"],

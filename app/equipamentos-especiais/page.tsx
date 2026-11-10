@@ -6,7 +6,7 @@ import { TrackedWhatsAppLink } from "@/components/analytics/ClientTrackedLinks";
 import { RoboHdIndex } from "@/components/sections/RoboHd/RoboHdIndex";
 
 export const metadata: Metadata = createSEO({
-  title: "Equipamentos Especiais para Automação Industrial | Syntro",
+  title: "Equipamentos Especiais para Automação Industrial",
   description:
     "Projeto e desenvolvimento de equipamentos especiais, dispositivos automatizados e soluções industriais sob medida com integração mecânica, elétrica e software.",
   keywords: [

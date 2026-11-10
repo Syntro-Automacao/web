@@ -10,7 +10,7 @@ import {
 import ContactFormEmailJS from "@/components/forms/ContactFormEmailJS";
 
 export const metadata = createSEO({
-  title: "Contato | Syntro Automação Industrial",
+  title: "Contato",
   description:
     "Entre em contato com a Syntro Automação Industrial. Especialistas em robótica, automação industrial, SCADA e IoT. Solicite um orçamento.",
   keywords: [

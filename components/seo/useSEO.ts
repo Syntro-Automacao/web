@@ -37,7 +37,9 @@ export function createSEO({
   ];
 
   return {
-    title: `${title} | Syntro Automação`,
+    // O sufixo da marca é aplicado pelo template em app/layout.tsx
+    // ("%s | Syntro Automação"), evitando duplicação no <title>.
+    title,
     description,
     keywords: [...new Set([...keywords, ...baseKeywords])],
     robots: noIndex
