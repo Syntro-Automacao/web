@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { MessageCircle } from "lucide-react";
-import { Reveal } from "@/components/motion/Reveal";
-import { TrackedWhatsAppLink } from "@/components/analytics/ClientTrackedLinks";
+import { SoftwareTwinHero } from "@/components/sections/Software/SoftwareTwinHero";
 import { SoftwaresIndustriaisContent } from "@/components/pages/SoftwaresIndustriaisContent";
 import type { SoftwaresIndustriaisCidade } from "@/data/softwaresIndustriaisCidades";
 
@@ -16,45 +15,14 @@ export function SoftwaresIndustriaisPage({ cidade }: Props) {
 
   return (
     <main className="bg-background">
-      <section className="relative overflow-hidden border-b border-border bg-gradient-to-br from-blue-700 via-blue-600 to-slate-900 text-white">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
-          <div className="max-w-4xl">
-            <Reveal>
-              <p className="text-sm font-semibold uppercase tracking-[0.22em] text-blue-100/90">
-                Soluções locais
-              </p>
-              <h1 className="mt-4 text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
-                {cidade.h1}
-              </h1>
-              <p className="mt-6 max-w-3xl text-lg md:text-xl text-blue-100 leading-relaxed">
-                {cidade.intro}
-              </p>
-            </Reveal>
-
-            <Reveal>
-              <div className="mt-8 flex flex-col sm:flex-row gap-4">
-                <TrackedWhatsAppLink
-                  ctaName="orcamento_software_local_whatsapp"
-                  location={`softwares_${cidade.slug}_hero`}
-                  href={whatsappHref}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center rounded-xl bg-white px-6 py-3 text-base font-semibold text-blue-700 transition-colors hover:bg-blue-50"
-                >
-                  <MessageCircle className="w-5 h-5 mr-2" />
-                  {cidade.cta}
-                </TrackedWhatsAppLink>
-                <Link
-                  href="/contato"
-                  className="inline-flex items-center justify-center rounded-xl border border-white/30 px-6 py-3 text-base font-semibold text-white transition-colors hover:bg-white/10"
-                >
-                  Falar com a equipe
-                </Link>
-              </div>
-            </Reveal>
-          </div>
-        </div>
-      </section>
+      <SoftwareTwinHero
+        titlePrefix={`Sua linha de produção em ${cidade.cidade},`}
+        description={cidade.intro}
+        ctaLabel={cidade.cta}
+        whatsappHref={whatsappHref}
+        ctaName="orcamento_software_local_whatsapp"
+        location={`softwares_${cidade.slug}_hero`}
+      />
 
       <section className="py-10 md:py-14 bg-muted/30 border-b border-border">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 grid gap-6 lg:grid-cols-[1.2fr_0.8fr]">
