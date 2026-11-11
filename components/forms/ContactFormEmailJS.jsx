@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import emailjs from "emailjs-com";
+import emailjs from "@emailjs/browser";
 import { Loader2, Send } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
