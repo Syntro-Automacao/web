@@ -3,12 +3,18 @@ import type { ReactNode } from "react";
 import { notFound } from "next/navigation";
 import { createSEO } from "@/components/seo/useSEO";
 import { RobosCartesianosPage } from "@/components/pages/RobosCartesianosPage";
+import { RoboArmPage } from "@/components/pages/RoboArmPage";
 import { SoftwaresIndustriaisPage } from "@/components/pages/SoftwaresIndustriaisPage";
 import {
   getRobosCartesianosCidadeBySlug,
   robosCartesianosCidades,
   type RobosCartesianosCidade,
 } from "@/data/robosCartesianosCidades";
+import {
+  getRoboArmCidadeBySlug,
+  roboArmCidades,
+  type RoboArmCidade,
+} from "@/data/roboArmCidades";
 import {
   getSoftwaresIndustriaisCidadeBySlug,
   softwaresIndustriaisCidades,
@@ -19,7 +25,10 @@ type Params = {
   slug: string;
 };
 
-type CidadeLocal = RobosCartesianosCidade | SoftwaresIndustriaisCidade;
+type CidadeLocal =
+  | RobosCartesianosCidade
+  | RoboArmCidade
+  | SoftwaresIndustriaisCidade;
 
 type LocalSection = {
   prefix: string;
@@ -44,6 +53,20 @@ const LOCAL_SECTIONS: LocalSection[] = [
     render: (cidade) => (
       <RobosCartesianosPage cidade={cidade as RobosCartesianosCidade} />
     ),
+  },
+  {
+    prefix: "robo-arm-",
+    cidades: roboArmCidades,
+    getBySlug: getRoboArmCidadeBySlug,
+    keywords: (cidade) => [
+      "robô industrial",
+      "robô arm",
+      "manipulador articulado",
+      "automação industrial",
+      `robô industrial em ${cidade.cidade}`,
+      `automação em ${cidade.cidade}`,
+    ],
+    render: (cidade) => <RoboArmPage cidade={cidade as RoboArmCidade} />,
   },
   {
     prefix: "softwares-industriais-",
