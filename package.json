@@ -68,7 +68,12 @@
     "tailwindcss-animate": "^1.0.7",
     "three": "^0.183.2",
     "vaul": "^1.1.2",
-    "zod": "3.25.76"
+    "zod": "^4.6.7"
+  },
+  "overrides": {
+    "@typescript-eslint/typescript-estree": {
+      "minimatch": "^11.0.8"
+    }
   },
   "devDependencies": {
     "@next/bundle-analyzer": "^16.2.3",
