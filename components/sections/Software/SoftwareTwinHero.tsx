@@ -3,7 +3,8 @@
 import { useState } from "react";
 import { MessageCircle } from "lucide-react";
 import { Reveal } from "@/components/motion/Reveal";
-import { TrackedWhatsAppLink } from "@/components/analytics/ClientTrackedLinks";
+import { trackCTAClick } from "@/components/analytics/GoogleAnalytics";
+import { ContactFormDialog } from "@/components/forms/ContactFormDialog";
 import { cn } from "@/lib/utils";
 
 /* -------------------------------------------------------------------------- */
@@ -245,9 +246,6 @@ const DEFAULT_HOTSPOT_ID = "axis";
 /*  Seção                                                                      */
 /* -------------------------------------------------------------------------- */
 
-const WHATSAPP_HREF =
-  "https://wa.me/+5519996362101?text=Ol%C3%A1!%20Gostaria%20de%20solicitar%20uma%20an%C3%A1lise%20de%20projeto%20de%20softwares%20industriais.";
-
 type Props = {
   /** Texto do título antes do destaque (ex.: "Sua linha de produção em Valinhos,"). */
   titlePrefix?: string;
@@ -255,7 +253,6 @@ type Props = {
   titleAccent?: string;
   description?: string;
   ctaLabel?: string;
-  whatsappHref?: string;
   ctaName?: string;
   location?: string;
 };
@@ -265,11 +262,11 @@ export function SoftwareTwinHero({
   titleAccent = "em tempo real.",
   description = "Conectamos CLPs, robôs e sensores em um supervisório desenvolvido para sua operação.",
   ctaLabel = "Solicitar análise do projeto",
-  whatsappHref = WHATSAPP_HREF,
-  ctaName = "orcamento_software_whatsapp",
+  ctaName = "orcamento_software_form",
   location = "softwares_hero",
 }: Props = {}) {
   const [activeId, setActiveId] = useState(DEFAULT_HOTSPOT_ID);
+  const [isFormOpen, setIsFormOpen] = useState(false);
   const active = HOTSPOTS.find((h) => h.id === activeId) ?? HOTSPOTS[1];
 
   return (
@@ -306,17 +303,17 @@ export function SoftwareTwinHero({
           </p>
 
           <div className="mt-8">
-            <TrackedWhatsAppLink
-              ctaName={ctaName}
-              location={location}
-              href={whatsappHref}
-              target="_blank"
-              rel="noopener noreferrer"
+            <button
+              type="button"
+              onClick={() => {
+                trackCTAClick(ctaName, location);
+                setIsFormOpen(true);
+              }}
               className="inline-flex items-center justify-center rounded-xl bg-primary px-6 py-3.5 text-base font-semibold text-primary-foreground transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
             >
               <MessageCircle className="mr-2 h-5 w-5" aria-hidden="true" />
               {ctaLabel}
-            </TrackedWhatsAppLink>
+            </button>
           </div>
         </Reveal>
 
@@ -477,6 +474,8 @@ export function SoftwareTwinHero({
           </div>
         </Reveal>
       </div>
+
+      <ContactFormDialog open={isFormOpen} onOpenChange={setIsFormOpen} />
     </section>
   );
 }

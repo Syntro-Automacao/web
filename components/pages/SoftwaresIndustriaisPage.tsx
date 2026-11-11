@@ -9,18 +9,13 @@ type Props = {
 };
 
 export function SoftwaresIndustriaisPage({ cidade }: Props) {
-  const whatsappHref = `https://wa.me/+5519996362101?text=${encodeURIComponent(
-    `Olá! Gostaria de um software industrial com IoT em ${cidade.cidade}.`,
-  )}`;
-
   return (
     <main className="bg-background">
       <SoftwareTwinHero
         titlePrefix={`Sua linha de produção em ${cidade.cidade},`}
         description={cidade.intro}
         ctaLabel={cidade.cta}
-        whatsappHref={whatsappHref}
-        ctaName="orcamento_software_local_whatsapp"
+        ctaName="orcamento_software_local_form"
         location={`softwares_${cidade.slug}_hero`}
       />
 

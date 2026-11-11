@@ -25,7 +25,11 @@ const EMAILJS_TEMPLATE_ID_NOTIFY =
 const EMAILJS_TEMPLATE_ID_AUTOREPLY =
   process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID_AUTOREPLY;
 const EMAILJS_PUBLIC_KEY = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
-export default function ContactFormEmailJS() {
+
+export function ContactFormCard({
+  heading = "Fale com Nossos Especialistas",
+  description = "Estamos prontos para entender suas necessidades e oferecer a melhor solução de automação industrial para sua empresa.",
+}) {
   const router = useRouter();
   const [formData, setFormData] = useState(INITIAL_FORM);
   const [isLoading, setIsLoading] = useState(false);
@@ -143,160 +147,157 @@ export default function ContactFormEmailJS() {
   };
 
   return (
+    <div className="rounded-2xl shadow-lg border border-border bg-card overflow-hidden">
+      <div className="p-6 sm:p-8 border-b border-border bg-gradient-to-br from-primary/10 via-card to-card">
+        <p className="text-sm font-medium text-primary">Contato</p>
+        <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
+          {heading}
+        </h2>
+        <p className="text-lg text-gray-600 max-w-3xl mx-auto">{description}</p>
+      </div>
+
+      <div className="p-6 sm:p-8">
+        <form onSubmit={handleSubmit} className="space-y-6">
+          <div className="grid gap-5 md:grid-cols-2">
+            <div className="space-y-2">
+              <label
+                htmlFor="contact-nome"
+                className="text-sm font-medium text-foreground"
+              >
+                Nome
+              </label>
+              <input
+                id="contact-nome"
+                name="nome"
+                type="text"
+                autoComplete="name"
+                value={formData.nome}
+                onChange={handleChange}
+                className="w-full rounded-xl border border-border bg-background px-4 py-3 text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary/40"
+                placeholder="Seu nome"
+              />
+            </div>
+
+            <div className="space-y-2">
+              <label
+                htmlFor="contact-email"
+                className="text-sm font-medium text-foreground"
+              >
+                E-mail
+              </label>
+              <input
+                id="contact-email"
+                name="email"
+                type="email"
+                autoComplete="email"
+                value={formData.email}
+                onChange={handleChange}
+                className="w-full rounded-xl border border-border bg-background px-4 py-3 text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary/40"
+                placeholder="voce@empresa.com"
+              />
+            </div>
+          </div>
+
+          <div className="grid gap-5 md:grid-cols-2">
+            <div className="space-y-2">
+              <label
+                htmlFor="contact-assunto"
+                className="text-sm font-medium text-foreground"
+              >
+                Assunto
+              </label>
+              <select
+                id="contact-assunto"
+                name="assunto"
+                value={formData.assunto}
+                onChange={handleChange}
+                className="w-full rounded-xl border border-border bg-background px-4 py-3 text-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary/40"
+              >
+                <option>Agendar visita</option>
+                <option>Consulta</option>
+                <option>Orçamento</option>
+              </select>
+            </div>
+
+            <div className="space-y-2">
+              <p className="text-sm font-medium text-foreground">Resposta</p>
+              <p className="rounded-xl border border-border bg-background px-4 py-3 text-sm text-muted-foreground">
+                Enviaremos para{" "}
+                <span className="text-foreground font-medium">
+                  contato@syntro.com.br
+                </span>
+              </p>
+            </div>
+          </div>
+
+          <div className="space-y-2">
+            <label
+              htmlFor="contact-mensagem"
+              className="text-sm font-medium text-foreground"
+            >
+              Mensagem
+            </label>
+            <textarea
+              id="contact-mensagem"
+              name="mensagem"
+              rows={6}
+              value={formData.mensagem}
+              onChange={handleChange}
+              className="w-full rounded-xl border border-border bg-background px-4 py-3 text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary/40 resize-y"
+              placeholder="Descreva sua necessidade"
+            />
+          </div>
+
+          {feedback.message ? (
+            <div
+              role="status"
+              className={`rounded-xl px-4 py-3 text-sm border ${
+                feedback.type === "success"
+                  ? "bg-green-500/10 text-green-700 border-green-500/20"
+                  : "bg-red-500/10 text-red-700 border-red-500/20"
+              }`}
+            >
+              {feedback.message}
+            </div>
+          ) : null}
+
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+            <p className="text-xs sm:text-sm text-muted-foreground">
+              Ao enviar, você concorda com a nossa{" "}
+              <Link
+                href="/privacidade"
+                className="text-primary hover:text-primary/80 transition-colors font-medium"
+              >
+                Política de Privacidade
+              </Link>
+              .
+            </p>
+
+            <Button type="submit" disabled={isLoading} className="rounded-xl">
+              {isLoading ? (
+                <>
+                  <Loader2 className="h-4 w-4 mr-2 animate-spin" />
+                  Enviando...
+                </>
+              ) : (
+                <>
+                  <Send className="h-4 w-4 mr-2" />
+                  Enviar mensagem
+                </>
+              )}
+            </Button>
+          </div>
+        </form>
+      </div>
+    </div>
+  );
+}
+
+export default function ContactFormEmailJS() {
+  return (
     <section className="py-16 md:py-20 bg-gradient-to-b from-background to-secondary/40">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="rounded-2xl shadow-lg border border-border bg-card  overflow-hidden">
-          <div className="p-6 sm:p-8 border-b border-border bg-gradient-to-br from-primary/10 via-card to-card">
-            <p className="text-sm font-medium text-primary">Contato</p>
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
-              Fale com Nossos Especialistas
-            </h2>
-            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-              Estamos prontos para entender suas necessidades e oferecer a
-              melhor solução de automação industrial para sua empresa.
-            </p>
-          </div>
-
-          <div className="p-6 sm:p-8">
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div className="grid gap-5 md:grid-cols-2">
-                <div className="space-y-2">
-                  <label
-                    htmlFor="nome"
-                    className="text-sm font-medium text-foreground"
-                  >
-                    Nome
-                  </label>
-                  <input
-                    id="nome"
-                    name="nome"
-                    type="text"
-                    autoComplete="name"
-                    value={formData.nome}
-                    onChange={handleChange}
-                    className="w-full rounded-xl border border-border bg-background px-4 py-3 text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary/40"
-                    placeholder="Seu nome"
-                  />
-                </div>
-
-                <div className="space-y-2">
-                  <label
-                    htmlFor="email"
-                    className="text-sm font-medium text-foreground"
-                  >
-                    E-mail
-                  </label>
-                  <input
-                    id="email"
-                    name="email"
-                    type="email"
-                    autoComplete="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    className="w-full rounded-xl border border-border bg-background px-4 py-3 text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary/40"
-                    placeholder="voce@empresa.com"
-                  />
-                </div>
-              </div>
-
-              <div className="grid gap-5 md:grid-cols-2">
-                <div className="space-y-2">
-                  <label
-                    htmlFor="assunto"
-                    className="text-sm font-medium text-foreground"
-                  >
-                    Assunto
-                  </label>
-                  <select
-                    id="assunto"
-                    name="assunto"
-                    value={formData.assunto}
-                    onChange={handleChange}
-                    className="w-full rounded-xl border border-border bg-background px-4 py-3 text-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary/40"
-                  >
-                    <option>Agendar visita</option>
-                    <option>Consulta</option>
-                    <option>Orçamento</option>
-                  </select>
-                </div>
-
-                <div className="space-y-2">
-                  <p className="text-sm font-medium text-foreground">
-                    Resposta
-                  </p>
-                  <p className="rounded-xl border border-border bg-background px-4 py-3 text-sm text-muted-foreground">
-                    Enviaremos para{" "}
-                    <span className="text-foreground font-medium">
-                      contato@syntro.com.br
-                    </span>
-                  </p>
-                </div>
-              </div>
-
-              <div className="space-y-2">
-                <label
-                  htmlFor="mensagem"
-                  className="text-sm font-medium text-foreground"
-                >
-                  Mensagem
-                </label>
-                <textarea
-                  id="mensagem"
-                  name="mensagem"
-                  rows={6}
-                  value={formData.mensagem}
-                  onChange={handleChange}
-                  className="w-full rounded-xl border border-border bg-background px-4 py-3 text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary/40 resize-y"
-                  placeholder="Descreva sua necessidade"
-                />
-              </div>
-
-              {feedback.message ? (
-                <div
-                  role="status"
-                  className={`rounded-xl px-4 py-3 text-sm border ${
-                    feedback.type === "success"
-                      ? "bg-green-500/10 text-green-700 border-green-500/20"
-                      : "bg-red-500/10 text-red-700 border-red-500/20"
-                  }`}
-                >
-                  {feedback.message}
-                </div>
-              ) : null}
-
-              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-                <p className="text-xs sm:text-sm text-muted-foreground">
-                  Ao enviar, você concorda com a nossa{" "}
-                  <Link
-                    href="/privacidade"
-                    className="text-primary hover:text-primary/80 transition-colors font-medium"
-                  >
-                    Política de Privacidade
-                  </Link>
-                  .
-                </p>
-
-                <Button
-                  type="submit"
-                  disabled={isLoading}
-                  className="rounded-xl"
-                >
-                  {isLoading ? (
-                    <>
-                      <Loader2 className="h-4 w-4 mr-2 animate-spin" />
-                      Enviando...
-                    </>
-                  ) : (
-                    <>
-                      <Send className="h-4 w-4 mr-2" />
-                      Enviar mensagem
-                    </>
-                  )}
-                </Button>
-              </div>
-            </form>
-          </div>
-        </div>
+        <ContactFormCard />
       </div>
     </section>
   );
